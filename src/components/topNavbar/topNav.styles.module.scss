@@ -1,0 +1,61 @@
+// imported mixins
+// @import "../../styles/main";
+
+/****** top-nav parent styles ******/
+.top_nav {
+  border-bottom: 1px solid #c2c2c2;
+  // @include flex(space-between, center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /**** left-items & right-items styles ****/
+  .left_items,
+  .right_items {
+    display: flex;
+
+    /**** currency-selector, email, phone, my-account, login, social-icons styles ****/
+    .currency_selector,
+    .email_address,
+    .phone,
+    .my_account,
+    .login,
+    .social_media_icons {
+      padding: 1rem;
+      // @include flex(null, center);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #202020;
+
+      .icon {
+        display: flex;
+        margin: 0rem 0.5rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    /*** border for right side on some of left items styles***/
+    .currency_selector,
+    .email_address {
+      border-right: 1px solid #c2c2c2;
+    }
+
+    /*** social media icons styles ***/
+    .social_media_icons {
+      .icon {
+        color: #202020;
+        font-size: 1.2rem;
+      }
+    }
+
+    /*** left item ***/
+    .my_account,
+    .login,
+    .social_media_icons {
+      border-left: 1px solid #c2c2c2;
+    }
+  }
+}
