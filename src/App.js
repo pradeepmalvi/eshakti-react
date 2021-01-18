@@ -8,6 +8,7 @@ import Navbar from "./components/navBar/Navbar.component";
 import Footer from "./components/footer/Footer.component";
 import BottomBar from "./components/bottom-bar/BottomBar.component";
 import ProductDetails from "./components/productDetails/ProductDetails";
+import CategoryPage from "./components/category-page/CategoryPage.component";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/product-details" component={ProductDetails}></Route>
+        <Route exax path="/category-page" component={CategoryPage}></Route>
       </Router>
 
       {/* Footer */}

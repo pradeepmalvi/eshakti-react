@@ -14,6 +14,7 @@ import BottomBar from "../components/bottom-bar/BottomBar.component";
 export default function Home() {
   return (
     <div className="home">
+      <HeroSection />
       <SaleBanner />
       <ProductListing
         title={"Top Selling Products"}

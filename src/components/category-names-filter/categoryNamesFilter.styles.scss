@@ -1,0 +1,22 @@
+.category-names-filter {
+  border-bottom: 1px solid #b6b6b6;
+
+  .title {
+    font-size: 1.2rem;
+    color: #242424;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.3rem;
+
+    .link {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -18,6 +18,10 @@ a:visited {
   text-decoration: none;
 }
 
+.link {
+  color: #242424;
+}
+
 ul,
 li {
   list-style: none;

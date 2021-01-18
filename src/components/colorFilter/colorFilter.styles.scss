@@ -1,0 +1,52 @@
+.color-filter {
+  margin-top: 2rem;
+  border-bottom: 1px solid #b6b6b6;
+
+  .title {
+    font-size: 1.2rem;
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .color-list {
+    display: flex;
+    flex-direction: column;
+    color: #333333;
+    margin-bottom: 2rem;
+
+    .each-color {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+
+      .color {
+        display: flex;
+        align-items: center;
+
+        img {
+          margin-right: 0.5rem;
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+
+        .color-name {
+          text-transform: capitalize;
+        }
+      }
+
+      .quantity {
+        .text {
+          display: inline-block;
+          border-radius: 12px;
+          padding: 0.2rem 1.2rem;
+          border: 1px solid #b6b6b6;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}
