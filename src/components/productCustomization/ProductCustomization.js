@@ -1,11 +1,101 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import "./productCustomization.scss";
 import { Modal } from "react-responsive-modal";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { AiOutlineShareAlt } from "react-icons/ai";
+import ImagesCustomization from "./ImagesCustomization";
 
 export default function ProductCustomization({ open, close }) {
+  const [imageCustom, setImageCustom] = useState({
+    top: [
+      {
+        id: "1",
+        type: "top",
+        name: "Peter Pan",
+        img: "https://www.eshakti.com/styling%20images/Peter%20Pan.jpg",
+        top:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Peter%20Pan.jpg?v=21011909",
+      },
+      {
+        id: "2",
+        type: "top",
+        name: "Shawl collar",
+        img: "https://www.eshakti.com/styling%20images/Shawl%20collar.jpg",
+        top:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Shawl%20collar.jpg?v=21011910",
+      },
+    ],
+    bottom: [
+      {
+        id: "1",
+        type: "bottom",
+        name: "Foot Length Dress",
+        img: "https://www.eshakti.com/styling%20images/Floor_Length_Dress.jpg",
+        bottom:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Floor%20Length%20Dress.jpg?v=21011909",
+      },
+      {
+        id: "2",
+        type: "bottom",
+        name: "Knee length",
+        img: "https://www.eshakti.com/styling%20images/Knee%20length.jpg",
+        bottom:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Knee%20length.jpg?v=21011909",
+      },
+    ],
+    leftRight: [
+      {
+        id: "1",
+        type: "leftRight",
+        name: "Sleeveless",
+        img: "https://www.eshakti.com/styling%20images/Sleeveless.jpg",
+        left:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_L.jpg?v=21011909",
+        right:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_R.jpg?v=21011909",
+      },
+      {
+        id: "2",
+        type: "leftRight",
+        name: "Long Length",
+        img: "https://www.eshakti.com/styling%20images/Long%20length.jpg",
+        left:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Long%20length_L.jpg?v=21011910",
+        right:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Long%20length_R.jpg?v=21011910",
+      },
+    ],
+  });
+
+  const [currentCustom, setCurrentCustom] = useState({
+    top:
+      "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Mandarin Collar.jpg?v=21011909",
+    bottom:
+      "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Knee length.jpg?v=21011909",
+    right:
+      "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Bracelet length_R.jpg?v=21011909",
+    left:
+      "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Bracelet length_L.jpg?v=21011909",
+  });
+
+  const changeImage = (data) => {
+    let custom = currentCustom;
+    console.log(currentCustom.top);
+    if (data.type === "top") {
+      custom.top = data.top;
+      setCurrentCustom({ ...currentCustom, top: data.top });
+    } else if (data.type === "bottom") {
+      setCurrentCustom({ ...currentCustom, bottom: data.bottom });
+    } else {
+      setCurrentCustom({
+        ...currentCustom,
+        left: data.left,
+        right: data.right,
+      });
+    }
+  };
+
   const onCloseModal = () => {
     close();
   };
@@ -43,6 +133,7 @@ export default function ProductCustomization({ open, close }) {
       }
     }, speed);
   };
+
   return (
     <div>
       <Modal
@@ -55,12 +146,9 @@ export default function ProductCustomization({ open, close }) {
       >
         <div className="main-customization-wrapper">
           <div className="product-customization-container">
-            <div className="img-wrapper">
-              <img
-                src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                alt=""
-              />
-            </div>
+            <ImagesCustomization
+              currentCustom={currentCustom}
+            ></ImagesCustomization>
             <div className="details-wrapper">
               <h5 className="product-title">
                 Customize your style with eShakti FX
@@ -81,34 +169,16 @@ export default function ProductCustomization({ open, close }) {
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Neckline</div>
                     <div className="images-slider">
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Jewel.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Jewel</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Scoop.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Scoop</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Wide%20Scoop.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Wide Scoop</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Boat.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Wide Scoop</p>
-                      </div>
+                      {imageCustom.top.map((image, key) => (
+                        <div
+                          key={key}
+                          className="image"
+                          onClick={changeImage.bind(this, image)}
+                        >
+                          <img src={image.img} alt="" />
+                          <p className="text-lead">{image.name}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -132,90 +202,16 @@ export default function ProductCustomization({ open, close }) {
                       <BsChevronRight />
                     </div>
                     <div className="images-slider">
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Sleeveless.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Sleeveless</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Inset%20cap.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Inset cap</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Capsleeve.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Capsleeve</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Short%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Short length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
+                      {imageCustom.leftRight.map((image, key) => (
+                        <div
+                          key={key}
+                          className="image"
+                          onClick={changeImage.bind(this, image)}
+                        >
+                          <img src={image.img} alt="" />
+                          <p className="text-lead">{image.name}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -239,90 +235,16 @@ export default function ProductCustomization({ open, close }) {
                       <BsChevronRight />
                     </div>
                     <div className="images-slider">
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Floor_Length_Dress.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Floor Length Dress</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/4-inches-above-ankle-length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">4 inches above ankle length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/2-inches-above-ankle-length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">2 inches above ankle length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Mini.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Short length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Above%20knee%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Above knee length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Knee%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Below%20knee%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
-                      <div className="image">
-                        <img
-                          src="https://www.eshakti.com/styling%20images/Elbow%20length.jpg"
-                          alt=""
-                        />
-                        <p className="text-lead">Elbow length</p>
-                      </div>
+                      {imageCustom.bottom.map((image, key) => (
+                        <div
+                          key={key}
+                          className="image"
+                          onClick={changeImage.bind(this, image)}
+                        >
+                          <img src={image.img} alt="" />
+                          <p className="text-lead">{image.name}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
