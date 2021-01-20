@@ -4,11 +4,11 @@ export default function ImagesCustomization({ currentCustom }) {
   return (
     <div className="img-wrapper">
       <div
-        class="relativeDiv mx-auto"
+        className="relativeDiv mx-auto"
         style={{ width: "376.8px", height: "560px" }}
       >
         <div
-          class="absoluteDiv"
+          className="absoluteDiv"
           style={{
             width: "65.6px",
             height: "228px",
@@ -16,10 +16,14 @@ export default function ImagesCustomization({ currentCustom }) {
             top: "0px",
           }}
         >
-          <img class="img img-fluid img-bg" src={currentCustom.top} alt="" />
+          <img
+            className="img img-fluid img-bg"
+            src={currentCustom.top}
+            alt=""
+          />
         </div>
         <div
-          class="absoluteDiv"
+          className="absoluteDiv"
           style={{
             width: "171.2px",
             height: "228px",
@@ -27,10 +31,14 @@ export default function ImagesCustomization({ currentCustom }) {
             top: "0px",
           }}
         >
-          <img class="img img-fluid img-bg" src={currentCustom.left} alt="" />
+          <img
+            className="img img-fluid img-bg"
+            src={currentCustom.left}
+            alt=""
+          />
         </div>
         <div
-          class="absoluteDiv"
+          className="absoluteDiv"
           style={{
             width: "140px",
             height: "228px",
@@ -38,10 +46,14 @@ export default function ImagesCustomization({ currentCustom }) {
             top: "0px",
           }}
         >
-          <img class="img img-fluid img-bg" src={currentCustom.right} alt="" />
+          <img
+            className="img img-fluid img-bg"
+            src={currentCustom.right}
+            alt=""
+          />
         </div>
         <div
-          class="absoluteDiv"
+          className="absoluteDiv"
           style={{
             width: "376.8px",
             height: "332px",
@@ -49,7 +61,11 @@ export default function ImagesCustomization({ currentCustom }) {
             top: "227.2px",
           }}
         >
-          <img class="img img-fluid img-bg" src={currentCustom.bottom} alt="" />
+          <img
+            className="img img-fluid img-bg"
+            src={currentCustom.bottom}
+            alt=""
+          />
         </div>
       </div>
     </div>

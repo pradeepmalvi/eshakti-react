@@ -16,21 +16,21 @@ function App() {
   return (
     <div className="App">
       {/* homepage of our app */}
-      <TopNav />
-      <Navbar />
-
-      {/* Routes */}
       <Router>
+        <TopNav />
+        <Navbar />
+
+        {/* Routes */}
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/product-details" component={ProductDetails}></Route>
         <Route exax path="/category-page" component={CategoryPage}></Route>
         <Route exax path="/cart" component={CartPage}></Route>
         <Route exax path="/shipping-info" component={ShippingInfoPage}></Route>
-      </Router>
 
-      {/* Footer */}
-      <Footer />
-      <BottomBar />
+        {/* Footer */}
+        <Footer />
+        <BottomBar />
+      </Router>
     </div>
   );
 }

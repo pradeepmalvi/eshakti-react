@@ -1,5 +1,7 @@
-import React from "react";
-import Styles from "./topNav.styles.module.scss";
+import React, { useState } from "react";
+import Styles from "./topNav.styles.scss";
+
+import Login from "../login/Login.component";
 
 // importing react icons
 import { BiCaretDown, BiPhoneCall, BiUser } from "react-icons/bi";
@@ -9,53 +11,61 @@ import { GrFacebookOption, GrTwitter, GrPinterest } from "react-icons/gr";
 import { RiInstagramFill } from "react-icons/ri";
 
 export default function TopNav() {
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
   return (
-    <div className={Styles.top_nav}>
-      <div className={Styles.left_items}>
-        <div className={Styles.currency_selector}>
-          <span className={Styles.currency_name}>USD</span>
-          <span className={Styles.currency_sign}>($)</span>
-          <span className={Styles.icon}>
+    <div className="top_nav">
+      {/* login modal component */}
+      <Login open={open} onCloseModal={onCloseModal} />
+
+      <div className="left_items">
+        <div className="currency_selector">
+          <span className="currency_name">USD</span>
+          <span className="currency_sign">($)</span>
+          <span className="icon">
             <BiCaretDown />
           </span>
         </div>
-        <div className={Styles.email_address}>
-          <span className={Styles.icon}>
+        <div className="email_address">
+          <span className="icon">
             <HiOutlineMail />
           </span>
-          <span className={Styles.text}>customerchampion@eshakti.com</span>
+          <span className="text">customerchampion@eshakti.com</span>
         </div>
-        <div className={Styles.phone}>
-          <span className={Styles.icon}>
+        <div className="phone">
+          <span className="icon">
             <BiPhoneCall />
           </span>
-          <span className={Styles.text}>855 374 2584</span>
+          <span className="text">855 374 2584</span>
         </div>
       </div>
-      <div className={Styles.right_items}>
-        <div className={Styles.my_account}>
-          <span className={Styles.icon}>
+      <div className="right_items">
+        <div className="my_account" onClick={() => onOpenModal()}>
+          <span className="icon">
             <BiUser />
           </span>
-          <span className={Styles.text}>My Account</span>
+          <span className="text">My Account</span>
         </div>
-        <div className={Styles.login}>
-          <span className={Styles.icon}>
+        <div className="login">
+          <span className="icon">
             <IoMdLogIn />
           </span>
-          <span className={Styles.text}>Login</span>
+          <span className="text">Login</span>
         </div>
-        <div className={Styles.social_media_icons}>
-          <a href="#" className={Styles.icon}>
+        <div className="social_media_icons">
+          <a href="#" className="icon">
             <GrFacebookOption />
           </a>
-          <a href="#" className={Styles.icon}>
+          <a href="#" className="icon">
             <GrTwitter />
           </a>
-          <a href="#" className={Styles.icon}>
+          <a href="#" className="icon">
             <RiInstagramFill />
           </a>
-          <a href="#" className={Styles.icon}>
+          <a href="#" className="icon">
             <GrPinterest />
           </a>
         </div>

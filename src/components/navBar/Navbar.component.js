@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./navbar.styles.module.scss";
 
+import { Link } from "react-router-dom";
+
 // importing icons from react-icons
 import {
   AiOutlineShoppingCart,
@@ -16,18 +18,37 @@ export default function Navbar() {
       </div>
       <div className={styles.navlinks}>
         <ul>
-          <li>Top Seller</li>
-          <li>Dress Tops Bottoms</li>
-          <li>Sweater knits</li>
-          <li>Shop by Brand</li>
-          <li>Shop by Occasion</li>
-          <li>Mask</li>
-          <li>Sale</li>
-          <li>Overstock</li>
+          <Link to="/">
+            <li>Top Seller</li>
+          </Link>
+          <Link to="/">
+            <li>Dress Tops Bottoms</li>
+          </Link>
+          <Link to="/">
+            <li>Sweater knits</li>
+          </Link>
+          <Link to="/">
+            <li>Shop by Brand</li>
+          </Link>
+          <Link to="/">
+            <li>Shop by Occasion</li>
+          </Link>
+          <Link to="/">
+            <li>Mask</li>
+          </Link>
+          <Link to="/">
+            <li>Sale</li>
+          </Link>
+          <Link to="/">
+            <li>Overstock</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.action_icons}>
-        <span className={`${styles.shoping_cart} ${styles.icon}`}>
+        <span
+          className={`${styles.shoping_cart} ${styles.icon}`}
+          onClick={() => {}}
+        >
           <AiOutlineShoppingCart />
           <span className={styles.cart_items}>3</span>
         </span>
