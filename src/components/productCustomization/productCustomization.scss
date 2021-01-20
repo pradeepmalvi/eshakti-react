@@ -24,7 +24,7 @@
   margin: 50px 5px;
 }
 .product-customization-container {
-  max-width: 1000px;
+  width: 990px;
   display: flex;
   justify-content: space-between;
   height: 500px;
@@ -36,6 +36,12 @@
     width: 38%;
     img {
       width: 100%;
+    }
+    .relativeDiv {
+      position: relative;
+    }
+    .absoluteDiv {
+      position: absolute;
     }
   }
   .details-wrapper {
@@ -133,6 +139,7 @@
             height: 140px;
             overflow-x: auto;
             display: flex;
+            min-width: 300px;
 
             .image {
               margin-top: 10px;
