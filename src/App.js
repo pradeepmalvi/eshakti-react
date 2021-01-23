@@ -1,3 +1,5 @@
+import "./mediaqueries/main.scss";
+
 // custom components
 import Home from "./pages/Home.component";
 import { BrowserRouter as Router, Route } from "react-router-dom";

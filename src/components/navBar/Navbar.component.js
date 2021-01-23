@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./navbar.styles.module.scss";
+import styles from "./navbar.styles.scss";
 
 import { Link } from "react-router-dom";
 
@@ -12,11 +12,11 @@ import {
 
 export default function Navbar() {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.logo}>
-        <h2 className={styles.logo_text}>logoipsum</h2>
+    <div className="navbar">
+      <div className="logo">
+        <h2 className="logo_text">logoipsum</h2>
       </div>
-      <div className={styles.navlinks}>
+      <div className="navlinks">
         <ul>
           <Link to="/">
             <li>Top Seller</li>
@@ -44,18 +44,15 @@ export default function Navbar() {
           </Link>
         </ul>
       </div>
-      <div className={styles.action_icons}>
-        <span
-          className={`${styles.shoping_cart} ${styles.icon}`}
-          onClick={() => {}}
-        >
+      <div className="action_icons">
+        <span className="shoping_cart icon" onClick={() => {}}>
           <AiOutlineShoppingCart />
-          <span className={styles.cart_items}>3</span>
+          <span className="cart_items">3</span>
         </span>
-        <span className={`${styles.whishlist}  ${styles.icon}`}>
+        <span className="whishlist icon">
           <AiOutlineHeart />
         </span>
-        <span className={`${styles.search}  ${styles.icon}`}>
+        <span className="search icon">
           <AiOutlineSearch />
         </span>
       </div>

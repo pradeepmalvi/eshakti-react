@@ -3,7 +3,7 @@
 
 /****** top-nav parent styles ******/
 .top_nav {
-  border-bottom: 1px solid #c2c2c2;
+  border-bottom: 1px solid #fdfdfd;
   // @include flex(space-between, center);
   display: flex;
   justify-content: space-between;
@@ -41,7 +41,7 @@
     /*** border for right side on some of left items styles***/
     .currency_selector,
     .email_address {
-      border-right: 1px solid #c2c2c2;
+      border-bottom: 1px solid #fdfdfd;
     }
 
     /*** social media icons styles ***/
@@ -57,7 +57,7 @@
     .my_account,
     .login,
     .social_media_icons {
-      border-left: 1px solid #c2c2c2;
+      border-left: 1px solid #fdfdfd;
     }
   }
 }

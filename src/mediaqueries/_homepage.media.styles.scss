@@ -1,0 +1,69 @@
+@media only screen and (max-width: 470px) {
+  .App {
+    .top_nav {
+      .left_items {
+        .currency_selector {
+          display: none;
+        }
+      }
+
+      .right_items {
+        .my_account,
+        .login {
+          padding: 0 0.5rem;
+          .text {
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 992px) {
+  .App {
+    .top_nav {
+      .left_items {
+        .email_address,
+        .phone {
+          padding: 1rem 0.2rem;
+          .text {
+            display: none;
+            padding-right: 0.6rem;
+          }
+        }
+      }
+
+      .right_items {
+        .my_account,
+        .login {
+          .icon {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1170px) {
+  .App {
+    .top_nav {
+      .right_items {
+        .social_media_icons {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .App {
+    .navlinks {
+      li {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
