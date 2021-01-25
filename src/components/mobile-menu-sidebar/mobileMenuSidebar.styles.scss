@@ -1,0 +1,43 @@
+.mobile-menu-sidebar {
+  transform: translateX(-100%);
+  transition: 0.3s transform;
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  z-index: 30;
+  width: 50vh;
+  height: 100vh;
+  background-color: #fff;
+
+  /***  link list styles ***/
+  .navlinks {
+    ul {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      color: #202020;
+
+      .nav-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+
+        li {
+          font-size: 1.1rem;
+          margin: 0 0.7rem;
+          color: #202020;
+        }
+      }
+    }
+  }
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.4rem;
+    color: #202020;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}

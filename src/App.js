@@ -1,3 +1,8 @@
+import { useReducer } from "react";
+
+// context
+import { appReducer } from "./context/reducers/appReducer";
+
 import "./mediaqueries/main.scss";
 
 // custom components
@@ -13,26 +18,46 @@ import ProductDetails from "./components/productDetails/ProductDetails";
 import CategoryPage from "./components/category-page/CategoryPage.component";
 import CartPage from "./components/cartPage/CartPage";
 import ShippingInfoPage from "./components/shipping-info-page/ShippingInfoPage.component";
+import MobileMenuSidebar from "./components/mobile-menu-sidebar/MobileMenuSidebar.component";
+import { appContext } from "./context/context";
 
 function App() {
+  const [appState, dispatchAppState] = useReducer(appReducer, {
+    menu_sidebar: "",
+  });
+
+  console.log(appState);
+
   return (
     <div className="App">
       {/* homepage of our app */}
-      <Router>
-        <TopNav />
-        <Navbar />
+      <appContext.Provider value={{ appState, dispatchAppState }}>
+        <Router>
+          <TopNav />
+          <Navbar />
 
-        {/* Routes */}
-        <Route exact path="/" component={Home}></Route>
-        <Route exact path="/product-details" component={ProductDetails}></Route>
-        <Route exax path="/category-page" component={CategoryPage}></Route>
-        <Route exax path="/cart" component={CartPage}></Route>
-        <Route exax path="/shipping-info" component={ShippingInfoPage}></Route>
+          <MobileMenuSidebar />
 
-        {/* Footer */}
-        <Footer />
-        <BottomBar />
-      </Router>
+          {/* Routes */}
+          <Route exact path="/" component={Home}></Route>
+          <Route
+            exact
+            path="/product-details"
+            component={ProductDetails}
+          ></Route>
+          <Route exax path="/category-page" component={CategoryPage}></Route>
+          <Route exax path="/cart" component={CartPage}></Route>
+          <Route
+            exax
+            path="/shipping-info"
+            component={ShippingInfoPage}
+          ></Route>
+
+          {/* Footer */}
+          <Footer />
+          <BottomBar />
+        </Router>
+      </appContext.Provider>
     </div>
   );
 }

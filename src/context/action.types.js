@@ -1,0 +1,1 @@
+export const OPEN_MENU_SIDEBAR = "OPEN_MENU_SIDEBAR";

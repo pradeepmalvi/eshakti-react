@@ -20,6 +20,133 @@
     }
   }
 }
+
+@media only screen and (max-width: 585px) {
+  .App {
+    .menu-and-wish-icon {
+      .icon {
+        font-size: 1.4rem;
+      }
+    }
+
+    .action_icons {
+      .icon {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    .product_listing {
+      .products {
+        .product_card {
+          width: 100% !important;
+          margin-bottom: 2rem;
+
+          .img {
+            height: 65vh;
+          }
+        }
+      }
+    }
+
+    .our_qualities {
+      .inner_container {
+        .shipping,
+        .return,
+        .support,
+        .payment {
+          width: 100% !important;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .product_listing {
+    .products {
+      .product_card {
+        // width: 100% !important;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .App {
+    .footer {
+      .inner_container {
+        .common {
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+
+        .newsletter {
+          .input_box {
+            input {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-menu-sidebar {
+    width: 100vw !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .product_listing {
+    .product_card {
+      .img {
+        height: 300px;
+      }
+    }
+  }
+
+  .product_listing {
+    .title {
+      font-size: 1.8rem !important;
+    }
+    .description {
+      font-size: 1rem !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .bottom_bar {
+    .inner_area {
+      flex-wrap: wrap;
+      justify-content: center !important;
+
+      .copyright_text {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .product_listing {
+    .description {
+      width: 95% !important;
+    }
+  }
+
+  .footer {
+    .inner_container {
+      .common {
+        width: 48%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 992px) {
   .App {
     .top_nav {
@@ -27,6 +154,7 @@
         .email_address,
         .phone {
           padding: 1rem 0.2rem;
+
           .text {
             display: none;
             padding-right: 0.6rem;
@@ -43,6 +171,10 @@
         }
       }
     }
+
+    .navbar-smaller {
+      padding: 1rem 1rem !important;
+    }
   }
 }
 
@@ -58,11 +190,88 @@
   }
 }
 
+@media only screen and (max-width: 1065px) {
+  .App {
+    .our_qualities {
+      .inner_container {
+        flex-wrap: wrap;
+
+        .shipping,
+        .return,
+        .support,
+        .payment {
+          width: 50%;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1330px) {
+  .App {
+    .navbar-smaller {
+      .menu-and-wish-icon {
+        font-size: 1.7rem;
+      }
+    }
+
+    .product_listing {
+      .products {
+        .product_card {
+          width: 30%;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+
+    .our_qualities {
+      .shipping,
+      .return,
+      .support,
+      .payment {
+        .icon {
+          font-size: 1.8rem !important;
+        }
+        .description {
+          h4 {
+            white-space: nowrap;
+            font-size: 1rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .App {
+    .product_listing {
+      .heading_text {
+        width: 80vw;
+
+        .description {
+          width: 70%;
+        }
+      }
+
+      .products {
+        .product_card {
+          width: 48%;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1500px) {
   .App {
     .navlinks {
-      li {
-        font-size: 0.9rem;
+      .nav-link {
+        li {
+          font-size: 0.9rem;
+        }
       }
     }
   }
