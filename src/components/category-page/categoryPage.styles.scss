@@ -13,11 +13,25 @@
     }
 
     .product-listing {
-      .details-and-viewOptions {
+      .details-and-view-options {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2rem;
+
+        .filter-badge {
+          display: none;
+          justify-content: space-between;
+          align-items: center;
+          border: 1px solid #c0c0c0;
+          padding: 0.5rem;
+          color: #838383;
+
+          .icon {
+            display: flex;
+            margin-left: 0.3rem;
+          }
+        }
 
         .number-of-results {
           color: #838383;
@@ -50,6 +64,13 @@
           }
         }
       }
+
+      .number-of-results-small {
+        display: none;
+        color: #838383;
+        margin-bottom: 1rem;
+      }
+
       .products {
         display: grid;
         grid-template-columns: 32% 32% 32%;
