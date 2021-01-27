@@ -10,6 +10,14 @@ export default function ProductCustomization({ open, close }) {
   const [imageCustom, setImageCustom] = useState({
     top: [
       {
+        id: "0",
+        type: "top",
+        name: "Peter Pan",
+        img: "https://www.eshakti.com/styling%20images/Peter%20Pan.jpg",
+        top:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Peter%20Pan.jpg?v=21011909",
+      },
+      {
         id: "1",
         type: "top",
         name: "Peter Pan",
@@ -20,6 +28,22 @@ export default function ProductCustomization({ open, close }) {
       {
         id: "2",
         type: "top",
+        name: "Mandarin Collar",
+        img: "https://www.eshakti.com/styling%20images/Mandarin%20Collar.jpg",
+        top:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Mandarin%20Collar.jpg?v=21012523",
+      },
+      {
+        id: "3",
+        type: "top",
+        name: "Round Collar",
+        img: "https://www.eshakti.com/styling%20images/Round%20Collar.jpg",
+        top:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Round%20Collar.jpg?v=21012523",
+      },
+      {
+        id: "4",
+        type: "top",
         name: "Shawl collar",
         img: "https://www.eshakti.com/styling%20images/Shawl%20collar.jpg",
         top:
@@ -27,6 +51,14 @@ export default function ProductCustomization({ open, close }) {
       },
     ],
     bottom: [
+      {
+        id: "0",
+        type: "bottom",
+        name: "Foot Length Dress",
+        img: "https://www.eshakti.com/styling%20images/Floor_Length_Dress.jpg",
+        bottom:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Floor%20Length%20Dress.jpg?v=21011909",
+      },
       {
         id: "1",
         type: "bottom",
@@ -38,6 +70,23 @@ export default function ProductCustomization({ open, close }) {
       {
         id: "2",
         type: "bottom",
+        name: "4 Inch Above Ankle Length",
+        img:
+          "https://www.eshakti.com/styling%20images/4-inches-above-ankle-length.jpg",
+        bottom:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-4%20Inch%20Above%20Ankle%20Length.jpg?v=21012523",
+      },
+      {
+        id: "3",
+        type: "bottom",
+        name: "Mini",
+        img: "https://www.eshakti.com/styling%20images/Mini.jpg",
+        bottom:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Mini.jpg?v=21012523",
+      },
+      {
+        id: "4",
+        type: "bottom",
         name: "Knee length",
         img: "https://www.eshakti.com/styling%20images/Knee%20length.jpg",
         bottom:
@@ -45,6 +94,16 @@ export default function ProductCustomization({ open, close }) {
       },
     ],
     leftRight: [
+      {
+        id: "0",
+        type: "leftRight",
+        name: "Sleeveless",
+        img: "https://www.eshakti.com/styling%20images/Sleeveless.jpg",
+        left:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_L.jpg?v=21011909",
+        right:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_R.jpg?v=21011909",
+      },
       {
         id: "1",
         type: "leftRight",
@@ -58,6 +117,27 @@ export default function ProductCustomization({ open, close }) {
       {
         id: "2",
         type: "leftRight",
+        name: "Short length",
+        img: "https://www.eshakti.com/styling%20images/Short%20length.jpg",
+        left:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Short%20length_L.jpg?v=21012523",
+        right:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Short%20length_R.jpg?v=21012523",
+      },
+      {
+        id: "3",
+        type: "leftRight",
+        name: "Three quarter length",
+        img:
+          "https://www.eshakti.com/styling%20images/Three%20quarter%20length.jpg",
+        left:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Three%20quarter%20length_L.jpg?v=21012523",
+        right:
+          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Three%20quarter%20length_R.jpg?v=21012523",
+      },
+      {
+        id: "4",
+        type: "leftRight",
         name: "Long Length",
         img: "https://www.eshakti.com/styling%20images/Long%20length.jpg",
         left:
@@ -69,29 +149,43 @@ export default function ProductCustomization({ open, close }) {
   });
 
   const [currentCustom, setCurrentCustom] = useState({
-    top:
-      "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Mandarin Collar.jpg?v=21011909",
-    bottom:
-      "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Knee length.jpg?v=21011909",
-    right:
-      "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Bracelet length_R.jpg?v=21011909",
-    left:
-      "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Bracelet length_L.jpg?v=21011909",
+    top: {
+      id: "0",
+      type: "top",
+      name: "Peter Pan",
+      img: "https://www.eshakti.com/styling%20images/Peter%20Pan.jpg",
+      top:
+        "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Peter%20Pan.jpg?v=21011909",
+    },
+    bottom: {
+      id: "0",
+      type: "bottom",
+      name: "Foot Length Dress",
+      img: "https://www.eshakti.com/styling%20images/Floor_Length_Dress.jpg",
+      bottom:
+        "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Floor%20Length%20Dress.jpg?v=21011909",
+    },
+    leftRight: {
+      id: "0",
+      type: "leftRight",
+      name: "Sleeveless",
+      img: "https://www.eshakti.com/styling%20images/Sleeveless.jpg",
+      left:
+        "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_L.jpg?v=21011909",
+      right:
+        "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_R.jpg?v=21011909",
+    },
   });
 
   const changeImage = (data) => {
-    let custom = currentCustom;
-    console.log(currentCustom.top);
     if (data.type === "top") {
-      custom.top = data.top;
-      setCurrentCustom({ ...currentCustom, top: data.top });
+      setCurrentCustom({ ...currentCustom, top: data });
     } else if (data.type === "bottom") {
-      setCurrentCustom({ ...currentCustom, bottom: data.bottom });
+      setCurrentCustom({ ...currentCustom, bottom: data });
     } else {
       setCurrentCustom({
         ...currentCustom,
-        left: data.left,
-        right: data.right,
+        leftRight: data,
       });
     }
   };
@@ -162,23 +256,43 @@ export default function ProductCustomization({ open, close }) {
                 <div className="attribute-container">
                   <div className="default-attribute">
                     <div className="text-lead">As Shown</div>
-                    <div className="default-image">
-                      <div className="text-lead">Default</div>
-                    </div>
+                    {currentCustom.top.id === "0" ? (
+                      <div className="default-image selected-image">
+                        <div className="text-lead">Default</div>
+                      </div>
+                    ) : (
+                      <div
+                        className="default-image"
+                        onClick={changeImage.bind(this, imageCustom.top[0])}
+                      >
+                        <div className="text-lead">Default</div>
+                      </div>
+                    )}
                   </div>
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Neckline</div>
                     <div className="images-slider">
-                      {imageCustom.top.map((image, key) => (
-                        <div
-                          key={key}
-                          className="image"
-                          onClick={changeImage.bind(this, image)}
-                        >
-                          <img src={image.img} alt="" />
-                          <p className="text-lead">{image.name}</p>
-                        </div>
-                      ))}
+                      {imageCustom.top.map(
+                        (image, key) =>
+                          image.id !== "0" && (
+                            <div
+                              key={key}
+                              className="image"
+                              onClick={changeImage.bind(this, image)}
+                            >
+                              {currentCustom.top.id === image.id ? (
+                                <img
+                                  className="selected-image"
+                                  src={image.img}
+                                  alt=""
+                                />
+                              ) : (
+                                <img src={image.img} alt="" />
+                              )}
+                              <p className="text-lead">{image.name}</p>
+                            </div>
+                          )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -189,9 +303,21 @@ export default function ProductCustomization({ open, close }) {
                 <div className="attribute-container">
                   <div className="default-attribute">
                     <div className="text-lead">As Shown</div>
-                    <div className="default-image">
-                      <div className="text-lead">Default</div>
-                    </div>
+                    {currentCustom.leftRight.id === "0" ? (
+                      <div className="default-image selected-image">
+                        <div className="text-lead">Default</div>
+                      </div>
+                    ) : (
+                      <div
+                        className="default-image"
+                        onClick={changeImage.bind(
+                          this,
+                          imageCustom.leftRight[0]
+                        )}
+                      >
+                        <div className="text-lead">Default</div>
+                      </div>
+                    )}
                   </div>
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Sleeve Type</div>
@@ -202,16 +328,28 @@ export default function ProductCustomization({ open, close }) {
                       <BsChevronRight />
                     </div>
                     <div className="images-slider">
-                      {imageCustom.leftRight.map((image, key) => (
-                        <div
-                          key={key}
-                          className="image"
-                          onClick={changeImage.bind(this, image)}
-                        >
-                          <img src={image.img} alt="" />
-                          <p className="text-lead">{image.name}</p>
-                        </div>
-                      ))}
+                      {imageCustom.leftRight.map(
+                        (image, key) =>
+                          image.id !== "0" && (
+                            <div
+                              key={key}
+                              className="image"
+                              onClick={changeImage.bind(this, image)}
+                            >
+                              {currentCustom.leftRight.id === image.id ? (
+                                <img
+                                  className="selected-image"
+                                  src={image.img}
+                                  alt=""
+                                />
+                              ) : (
+                                <img src={image.img} alt="" />
+                              )}
+
+                              <p className="text-lead">{image.name}</p>
+                            </div>
+                          )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -222,9 +360,18 @@ export default function ProductCustomization({ open, close }) {
                 <div className="attribute-container">
                   <div className="default-attribute">
                     <div className="text-lead">As Shown</div>
-                    <div className="default-image">
-                      <div className="text-lead">Default</div>
-                    </div>
+                    {currentCustom.bottom.id === "0" ? (
+                      <div className="default-image selected-image">
+                        <div className="text-lead">Default</div>
+                      </div>
+                    ) : (
+                      <div
+                        className="default-image"
+                        onClick={changeImage.bind(this, imageCustom.bottom[0])}
+                      >
+                        <div className="text-lead">Default</div>
+                      </div>
+                    )}
                   </div>
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Sleeve Type</div>
@@ -235,16 +382,27 @@ export default function ProductCustomization({ open, close }) {
                       <BsChevronRight />
                     </div>
                     <div className="images-slider">
-                      {imageCustom.bottom.map((image, key) => (
-                        <div
-                          key={key}
-                          className="image"
-                          onClick={changeImage.bind(this, image)}
-                        >
-                          <img src={image.img} alt="" />
-                          <p className="text-lead">{image.name}</p>
-                        </div>
-                      ))}
+                      {imageCustom.bottom.map(
+                        (image, key) =>
+                          image.id !== "0" && (
+                            <div
+                              key={key}
+                              className="image"
+                              onClick={changeImage.bind(this, image)}
+                            >
+                              {currentCustom.bottom.id === image.id ? (
+                                <img
+                                  className="selected-image"
+                                  src={image.img}
+                                  alt=""
+                                />
+                              ) : (
+                                <img src={image.img} alt="" />
+                              )}
+                              <p className="text-lead">{image.name}</p>
+                            </div>
+                          )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -270,7 +428,8 @@ export default function ProductCustomization({ open, close }) {
           <div className="customization-footer">
             <div className="left-footer">
               <p className="text-lead">
-                Selected style options - Jewel, Elbow length, Above knee length
+                Selected style options - {currentCustom.top.name},{" "}
+                {currentCustom.leftRight.name}, {currentCustom.bottom.name}
               </p>
               <div className="share">
                 <AiOutlineShareAlt /> <span> Share</span>

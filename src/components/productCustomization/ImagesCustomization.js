@@ -18,7 +18,7 @@ export default function ImagesCustomization({ currentCustom }) {
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.top}
+            src={currentCustom.top.top}
             alt=""
           />
         </div>
@@ -33,7 +33,7 @@ export default function ImagesCustomization({ currentCustom }) {
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.left}
+            src={currentCustom.leftRight.left}
             alt=""
           />
         </div>
@@ -48,7 +48,7 @@ export default function ImagesCustomization({ currentCustom }) {
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.right}
+            src={currentCustom.leftRight.right}
             alt=""
           />
         </div>
@@ -63,7 +63,7 @@ export default function ImagesCustomization({ currentCustom }) {
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.bottom}
+            src={currentCustom.bottom.bottom}
             alt=""
           />
         </div>
