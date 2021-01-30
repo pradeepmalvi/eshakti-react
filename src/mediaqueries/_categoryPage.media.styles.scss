@@ -1,12 +1,32 @@
+@media only screen and (max-width: 600px) {
+  .category-page {
+    .inner-container {
+      .product-listing {
+        .details-and-view-options {
+          // flex-direction: column;
+          // align-items: start;
+
+          .right-actions {
+            .dropdown {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 642px) {
-  .category-listing {
+  .category-page {
     .inner-container {
       .product-listing {
         .products {
           grid-template-columns: 100% !important;
+
           .product_card {
             .img {
-              height: 60vh !important;
+              height: 50vh !important;
             }
           }
         }
@@ -17,12 +37,13 @@
 
 @media only screen and (max-width: 690px) {
   .App {
-    .category-listing {
+    .category-page {
       .inner-container {
         .filters-area {
           display: none;
 
           &.show {
+
             .price-filter,
             .category-names-filter,
             .size-filter,
@@ -38,7 +59,7 @@
 }
 
 @media only screen and (max-width: 782px) {
-  .category-listing {
+  .category-page {
     .inner-container {
       .product-listing {
         .product_card {
@@ -46,6 +67,15 @@
             height: 32vh !important;
           }
         }
+
+        .right-actions {
+          .views-icons {
+            display: none !important;
+          }
+
+          ;
+        }
+
       }
     }
   }
@@ -53,7 +83,7 @@
 
 @media only screen and (max-width: 800px) {
   .App {
-    .category-listing {
+    .category-page {
       .inner-container {
         .filters-area {
           display: none;
@@ -82,7 +112,7 @@
 
 @media only screen and (max-width: 992px) {
   .App {
-    .category-listing {
+    .category-page {
       .inner-container {
         .product-listing {
           width: 90vw !important;
@@ -92,6 +122,7 @@
           display: none;
 
           &.show {
+
             .price-filter,
             .category-names-filter,
             .size-filter,
@@ -108,7 +139,7 @@
 
 // @media only screen and (max-width: 1140px) {
 //   .App {
-//     .category-listing {
+//     .category-page {
 //       .inner-container {
 //         .filters-area {
 //           display: none;
@@ -138,7 +169,7 @@
 
 @media only screen and (max-width: 1140px) {
   .App {
-    .category-listing {
+    .category-page {
       position: relative;
 
       .inner-container {
@@ -198,15 +229,17 @@
 
 @media only screen and (max-width: 1260px) {
   .App {
-    .category-listing {
+    .category-page {
       .inner-container {
         .product-listing {
           .details-and-view-options {
             justify-content: flex-end;
           }
+
           .number-of-results-small {
             display: block;
           }
+
           .number-of-results {
             display: none;
           }
@@ -218,9 +251,10 @@
 
 @media only screen and (max-width: 1340px) {
   .App {
-    .category-listing {
+    .category-page {
       .inner-container {
         grid-template-columns: 35% 50%;
+
         .product-listing {
           .products {
             grid-template-columns: 47% 47%;

@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./categoryPage.styles.scss";
+
+// react router
+import { useParams } from "react-router-dom";
 
 // local icons
 import icon1 from "../../assets/icons/01.png";
@@ -19,65 +22,86 @@ import ColorFilter from "../colorFilter/ColorFilter.component";
 // react icons
 import { FaDiceFour } from "react-icons/fa";
 
-export default function CategoryListing() {
-  const [showFilter, setShowFilter] = useState("");
+// importing axios
+import Axios from "../../axios/axios";
+import requests from "../../axios/requests";
 
-  console.log(showFilter);
+export default function CategoryPage() {
+  const [showFilter, setShowFilter] = useState("");
+  const [products, setProducts] = useState([]);
+  const { id } = useParams();
+
+  async function fetchCategoryData(categoryId) {
+    Axios.get(`${requests.getProductByCategory}/${categoryId}`).then((res) =>
+      setProducts(res.data)
+    );
+  }
+
+  useEffect(() => {
+    fetchCategoryData(id);
+  }, [id]);
 
   return (
-    <div className="category-listing">
-      <div className="inner-container">
-        <div className={`filters-area ${showFilter}`}>
-          <CategoryNamesFilter />
-          <PriceFilter />
-          <SizeFilter />
-          <ColorFilter />
-        </div>
-        <div className="product-listing">
-          <div className="details-and-view-options">
-            <div
-              className="filter-badge"
-              onClick={() => setShowFilter(showFilter === "show" ? "" : "show")}
-            >
-              <span className="text">Filters</span>
-              <span className="icon">
-                <FiChevronDown />
-              </span>
-            </div>
-            <div className="number-of-results">Showing 1-12 of 99 Results</div>
-
-            <div className="right-actions">
-              <div className="dropdown">
-                <select>
-                  <option value="">Default Sorting</option>
-                  <option value="">Low to Heigh</option>
-                  <option value="">Heigh to Low</option>
-                </select>
+    <div className="category-page">
+      {products.length > 0 ? (
+        <div className="inner-container">
+          <div className={`filters-area ${showFilter}`}>
+            <CategoryNamesFilter />
+            <PriceFilter />
+            <SizeFilter />
+            <ColorFilter />
+          </div>
+          <div className="product-listing">
+            <div className="details-and-view-options">
+              <div
+                className="filter-badge"
+                onClick={() =>
+                  setShowFilter(showFilter === "show" ? "" : "show")
+                }
+              >
+                <span className="text">Filters</span>
+                <span className="icon">
+                  <FiChevronDown />
+                </span>
               </div>
-              <div className="views-icons">
-                <img src={icon1} alt="img" />
-                <img src={icon2} alt="img" />
-                <img src={icon3} alt="img" />
-                <img src={icon4} alt="img" />
+              <div className="number-of-results">
+                Showing 1-12 of 99 Results
+              </div>
+
+              <div className="right-actions">
+                <div className="dropdown">
+                  <select>
+                    <option value="">Default Sorting</option>
+                    <option value="">Low to Heigh</option>
+                    <option value="">Heigh to Low</option>
+                  </select>
+                </div>
+                <div className="views-icons">
+                  <img src={icon1} alt="img" />
+                  <img src={icon2} alt="img" />
+                  <img src={icon3} alt="img" />
+                  <img src={icon4} alt="img" />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="number-of-results-small">
-            Showing 1-12 of 99 Results
-          </div>
+            <div className="number-of-results-small">
+              Showing 1-12 of 99 Results
+            </div>
 
-          <div className="products">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <div className="products">
+              {products.length > 0
+                ? products.map((product, key) => (
+                    <ProductCard key={key} product={product} />
+                  ))
+                : ""}
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="no-data">
+          <h3>No Products</h3>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,9 +1,8 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
+import "./mediaqueries/main.scss";
 
 // context
 import { appReducer } from "./context/reducers/appReducer";
-
-import "./mediaqueries/main.scss";
 
 // custom components
 import Home from "./pages/Home.component";
@@ -19,19 +18,35 @@ import CategoryPage from "./components/category-page/CategoryPage.component";
 import CartPage from "./components/cartPage/CartPage";
 import ShippingInfoPage from "./components/shipping-info-page/ShippingInfoPage.component";
 import MobileMenuSidebar from "./components/mobile-menu-sidebar/MobileMenuSidebar.component";
-import { appContext } from "./context/context";
+import { AppContext } from "./context/context";
+
+// importing axios
+import Axios from "./axios/axios";
+import requests from "./axios/requests";
+
+import { SET_CATEGORIES } from "./context/action.types";
 
 function App() {
   const [appState, dispatchAppState] = useReducer(appReducer, {
     menu_sidebar: "",
+    nav_links: [],
   });
+
+  useEffect(() => {
+    Axios.get("/product-categories").then((res) => {
+      dispatchAppState({
+        type: SET_CATEGORIES,
+        payload: res.data.product_categories,
+      });
+    });
+  }, []);
 
   console.log(appState);
 
   return (
     <div className="App">
       {/* homepage of our app */}
-      <appContext.Provider value={{ appState, dispatchAppState }}>
+      <AppContext.Provider value={{ appState, dispatchAppState }}>
         <Router>
           <TopNav />
           <Navbar />
@@ -45,8 +60,12 @@ function App() {
             path="/product-details"
             component={ProductDetails}
           ></Route>
-          <Route exax path="/category-page" component={CategoryPage}></Route>
-          <Route exax path="/cart" component={CartPage}></Route>
+          <Route
+            exact
+            path="/category-page/:id"
+            component={CategoryPage}
+          ></Route>
+          <Route exact path="/cart" component={CartPage}></Route>
           <Route
             exax
             path="/shipping-info"
@@ -57,7 +76,7 @@ function App() {
           <Footer />
           <BottomBar />
         </Router>
-      </appContext.Provider>
+      </AppContext.Provider>
     </div>
   );
 }
