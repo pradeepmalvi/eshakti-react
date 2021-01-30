@@ -5,7 +5,7 @@ import UseWindowSize from "../../hooks/useWindowSize";
 
 import { Link } from "react-router-dom";
 
-import { appContext } from "../../context/context";
+import { AppContext } from "../../context/context";
 import { OPEN_MENU_SIDEBAR } from "../../context/action.types";
 
 // importing icons from react-icons
@@ -17,41 +17,30 @@ import {
 } from "react-icons/ai";
 
 export default function Navbar() {
-  const { appState, dispatchAppState } = useContext(appContext);
+  const { appState, dispatchAppState } = useContext(AppContext);
   const { width } = UseWindowSize();
   const navChangeWidth = 1322;
 
   return width > navChangeWidth ? (
     <div className="navbar-bigger">
       <div className="logo">
-        <h2 className="logo_text">logoipsum</h2>
+        <Link to="/" className="link">
+          <h2 className="logo_text">logoipsum</h2>
+        </Link>
       </div>
       <div className="navlinks">
         <ul>
-          <Link className="nav-link" to="/">
-            <li>Top Seller</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Dress Tops Bottoms</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Sweater knits</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Shop by Brand</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Shop by Occasion</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Mask</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Sale</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Overstock</li>
-          </Link>
+          {appState.nav_links.length > 0
+            ? appState.nav_links.map((eachObj, key) => (
+                <Link
+                  className="nav-link"
+                  key={key}
+                  to={`/category-page/${eachObj.id}`}
+                >
+                  <li>{eachObj.main_menu}</li>
+                </Link>
+              ))
+            : null}
         </ul>
       </div>
       <div className="action_icons">
@@ -84,7 +73,9 @@ export default function Navbar() {
       </div>
 
       <div className="logo">
-        <h2 className="logo_text">logoipsum</h2>
+        <Link to="/" className="link">
+          <h2 className="logo_text">logoipsum</h2>
+        </Link>
       </div>
 
       <div className="action_icons">

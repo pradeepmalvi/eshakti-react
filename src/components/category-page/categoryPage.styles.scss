@@ -1,5 +1,7 @@
-.category-listing {
+.category-page {
   padding-top: 3rem;
+  position: relative;
+  min-height: 100vh;
 
   .inner-container {
     display: grid;
@@ -43,8 +45,9 @@
 
           .dropdown {
             margin-right: 1rem;
+
             select {
-              padding: 0.7rem 1rem;
+              padding: 0.55rem 1rem;
               width: 14rem;
               border-color: #dadada;
               background-color: #ffff;
@@ -82,4 +85,15 @@
       }
     }
   }
+
+  .no-data {
+    font-size: 1.2rem;
+    color: #838383;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
 }

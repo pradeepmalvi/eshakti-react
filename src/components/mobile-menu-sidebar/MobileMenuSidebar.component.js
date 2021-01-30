@@ -3,11 +3,11 @@ import "./mobileMenuSidebar.styles.scss";
 
 import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
-import { appContext } from "../../context/context";
+import { AppContext } from "../../context/context";
 import { OPEN_MENU_SIDEBAR } from "../../context/action.types";
 
 export default function MobileMenuSidebar() {
-  const { appState, dispatchAppState } = useContext(appContext);
+  const { appState, dispatchAppState } = useContext(AppContext);
   console.log(appState);
 
   return (
@@ -23,30 +23,17 @@ export default function MobileMenuSidebar() {
       </div>
       <div className="navlinks">
         <ul>
-          <Link className="nav-link" to="/">
-            <li>Top Seller</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Dress Tops Bottoms</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Sweater knits</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Shop by Brand</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Shop by Occasion</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Mask</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Sale</li>
-          </Link>
-          <Link className="nav-link" to="/">
-            <li>Overstock</li>
-          </Link>
+          {appState.nav_links.length > 0
+            ? appState.nav_links.map((eachObj, key) => (
+                <Link
+                  key={key}
+                  className="nav-link"
+                  to={`/category-page/${eachObj.id}`}
+                >
+                  <li>{eachObj.main_menu}</li>
+                </Link>
+              ))
+            : null}
         </ul>
       </div>
     </div>
