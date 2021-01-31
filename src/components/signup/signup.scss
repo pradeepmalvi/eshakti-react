@@ -1,7 +1,7 @@
 .react-responsive-modal-modal {
   padding: 0 !important;
 
-  .inner-container-login {
+  .inner-container-signup {
     width: 50vw;
 
     .title {
@@ -9,14 +9,15 @@
       background: #333333;
       color: #fff;
     }
-
-    .content {
+    .main-wrap {
       display: flex;
+    }
+    .content {
       padding: 2rem;
 
       .right,
       .left {
-        width: 50%;
+        width: 100%;
       }
 
       .left {
@@ -98,4 +99,7 @@
   .react-responsive-modal-closeButton {
     background: #fff;
   }
+}
+.Toastify__toast-body {
+  font-family: "Montserrat", sans-serif;
 }

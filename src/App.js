@@ -1,4 +1,7 @@
 import { useReducer, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductCategory } from "./store/home/homeAction";
+
 import "./mediaqueries/main.scss";
 
 // context
@@ -27,18 +30,23 @@ import requests from "./axios/requests";
 import { SET_CATEGORIES } from "./context/action.types";
 
 function App() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
   const [appState, dispatchAppState] = useReducer(appReducer, {
     menu_sidebar: "",
     nav_links: [],
   });
 
   useEffect(() => {
-    Axios.get("/product-categories").then((res) => {
-      dispatchAppState({
-        type: SET_CATEGORIES,
-        payload: res.data.product_categories,
-      });
-    });
+    // Axios.get("/product-categories").then((res) => {
+    //   dispatchAppState({
+    //     type: SET_CATEGORIES,
+    //     payload: res.data.product_categories,
+    //   });
+    // });
+
+    dispatch(getProductCategory());
   }, []);
 
   console.log(appState);

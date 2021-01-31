@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./mobileMenuSidebar.styles.scss";
 
 import { Link } from "react-router-dom";
@@ -7,6 +9,8 @@ import { AppContext } from "../../context/context";
 import { OPEN_MENU_SIDEBAR } from "../../context/action.types";
 
 export default function MobileMenuSidebar() {
+  const categories = useSelector((state) => state.home.productCategory);
+
   const { appState, dispatchAppState } = useContext(AppContext);
   console.log(appState);
 
@@ -23,16 +27,18 @@ export default function MobileMenuSidebar() {
       </div>
       <div className="navlinks">
         <ul>
-          {appState.nav_links.length > 0
-            ? appState.nav_links.map((eachObj, key) => (
-                <Link
-                  key={key}
-                  className="nav-link"
-                  to={`/category-page/${eachObj.id}`}
-                >
-                  <li>{eachObj.main_menu}</li>
-                </Link>
-              ))
+          {categories
+            ? categories.length > 0
+              ? categories.map((eachObj, key) => (
+                  <Link
+                    key={key}
+                    className="nav-link"
+                    to={`/category-page/${eachObj.id}`}
+                  >
+                    <li>{eachObj.main_menu}</li>
+                  </Link>
+                ))
+              : null
             : null}
         </ul>
       </div>

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductByCategory } from "../../store/home/homeAction";
+
 import "./categoryPage.styles.scss";
 
 // react router
@@ -27,23 +30,27 @@ import Axios from "../../axios/axios";
 import requests from "../../axios/requests";
 
 export default function CategoryPage() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.home.productByCategory);
   const [showFilter, setShowFilter] = useState("");
-  const [products, setProducts] = useState([]);
+
   const { id } = useParams();
 
   async function fetchCategoryData(categoryId) {
     Axios.get(`${requests.getProductByCategory}/${categoryId}`).then((res) =>
-      setProducts(res.data)
+      // setProducts(res.data)
+      console.log(res.data)
     );
   }
 
   useEffect(() => {
-    fetchCategoryData(id);
+    // fetchCategoryData(id);
+    dispatch(getProductByCategory(id));
   }, [id]);
 
   return (
     <div className="category-page">
-      {products.length > 0 ? (
+      {products && products.length > 0 ? (
         <div className="inner-container">
           <div className={`filters-area ${showFilter}`}>
             <CategoryNamesFilter />
@@ -89,7 +96,7 @@ export default function CategoryPage() {
             </div>
 
             <div className="products">
-              {products.length > 0
+              {products && products.length > 0
                 ? products.map((product, key) => (
                     <ProductCard key={key} product={product} />
                   ))
