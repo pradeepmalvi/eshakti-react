@@ -5,4 +5,5 @@ export default {
   onRegister: "register",
   getHomePageProducts: "show-home-product",
   getProduct: "products",
+  getProductById: "products",
 };

@@ -2,6 +2,7 @@ import {
   SET_PRODUCT_CATEGORY,
   SET_PRODUCT_BY_CATEGORY,
   SET_HOMEPAGE_PRODUCTS,
+  SET_PRODUCT_DETAILS,
 } from "../types";
 
 const initalState = [];
@@ -20,10 +21,14 @@ const homeReducer = (state = initalState, action) => {
       };
 
     case SET_HOMEPAGE_PRODUCTS:
-      console.log(action.payload, "data loaded");
       return {
         ...state,
         homePageProducts: action.payload,
+      };
+    case SET_PRODUCT_DETAILS:
+      return {
+        ...state,
+        productDetail: action.payload,
       };
 
     default:

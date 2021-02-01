@@ -6,6 +6,7 @@ import {
   SET_PRODUCT_BY_CATEGORY,
   SET_HOMEPAGE_PRODUCTS,
   SET_PARTICULAR_PRODUCT,
+  SET_PRODUCT_DETAILS,
 } from "../types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -96,13 +97,13 @@ export const getHomePageProducts = (data) => (dispatch) => {
   });
 };
 
-// get product
-// export const getProduct = (data) => (dispatch) => {
-//   Axios.get(`${requests.getProduct}`).then((res) => {
-//     console.log(res.data, "data for product");
-//     dispatch({
-//       type: SET_PARTICULAR_PRODUCT,
-//       payload: res.data,
-//     });
-//   });
-// };
+// Get product by id
+export const getProductById = (productId) => (dispatch) => {
+  Axios.get(`${requests.getProductById}/${productId}`).then((res) => {
+    console.log(res.data[0], "product by id");
+    dispatch({
+      type: SET_PRODUCT_DETAILS,
+      payload: res.data[0],
+    });
+  });
+};

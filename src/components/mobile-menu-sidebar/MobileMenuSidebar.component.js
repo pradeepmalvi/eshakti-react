@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "./mobileMenuSidebar.styles.scss";
 
 import { Link } from "react-router-dom";
-import { CgClose } from "react-icons/cg";
+import { CgClose, CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { AppContext } from "../../context/context";
 import { OPEN_MENU_SIDEBAR } from "../../context/action.types";
 
 export default function MobileMenuSidebar() {
   const { appState, dispatchAppState } = useContext(AppContext);
+  const [activeId, setActiveId] = useState(null);
   const categories = useSelector((state) => state.home.productCategory);
 
   return (
@@ -28,13 +29,40 @@ export default function MobileMenuSidebar() {
           {categories
             ? categories.length > 0
               ? categories.map((eachObj, key) => (
-                  <Link
-                    key={key}
-                    className="nav-link"
-                    to={`/category-page/${eachObj.id}`}
-                  >
-                    <li>{eachObj.main_menu}</li>
-                  </Link>
+                  <>
+                    <Link
+                      key={key}
+                      className="nav-link"
+                      to={`/category-page/${eachObj.id}`}
+                    >
+                      <li className="uppercase">{eachObj.main_menu}</li>
+                      {activeId === eachObj.id ? (
+                        <CgMathMinus
+                          className="rotate-in-2-cw"
+                          onClick={() => setActiveId(null)}
+                        ></CgMathMinus>
+                      ) : (
+                        <CgMathPlus
+                          className="rotate-in-2-cw"
+                          onClick={() => setActiveId(eachObj.id)}
+                        ></CgMathPlus>
+                      )}
+                    </Link>
+                    {activeId === eachObj.id ? (
+                      <ul className="sub-menu swing-in-top-fwd">
+                        {eachObj.sub_menu.map((subMenu) => (
+                          <Link
+                            key={key}
+                            className="sub-link"
+                            to={`/category-page/${subMenu.id}`}
+                          >
+                            <li id={subMenu.id}>{subMenu.name}</li>
+                          </Link>
+                        ))}
+                      </ul>
+                    ) : null}
+                    <div className="seperator"></div>
+                  </>
                 ))
               : null
             : null}
