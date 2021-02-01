@@ -3,4 +3,6 @@ export default {
   getProductByCategory: "get-product-by-category",
   onLogin: "login",
   onRegister: "register",
+  getHomePageProducts: "show-home-product",
+  getProduct: "products",
 };

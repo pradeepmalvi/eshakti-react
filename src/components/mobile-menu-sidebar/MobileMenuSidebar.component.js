@@ -9,10 +9,8 @@ import { AppContext } from "../../context/context";
 import { OPEN_MENU_SIDEBAR } from "../../context/action.types";
 
 export default function MobileMenuSidebar() {
-  const categories = useSelector((state) => state.home.productCategory);
-
   const { appState, dispatchAppState } = useContext(AppContext);
-  console.log(appState);
+  const categories = useSelector((state) => state.home.productCategory);
 
   return (
     <div className={`mobile-menu-sidebar appState ${appState.menu_sidebar}`}>

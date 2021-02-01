@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { getHomePageProducts } from "../store/home/homeAction";
 
 // custom components imports
 import TopNav from "../components/topNavbar/TopNav.component";
@@ -12,23 +16,43 @@ import Footer from "../components/footer/Footer.component";
 import BottomBar from "../components/bottom-bar/BottomBar.component";
 
 export default function Home() {
+  const homepageProducts = useSelector((state) => state.home.homePageProducts);
+  console.log(homepageProducts, "data");
   return (
     <div className="home">
       <HeroSection />
       <SaleBanner />
-      <ProductListing
-        title={"Top Selling Products"}
-        description={
-          "In our own little way we echo that. The idea of eShakti includes all women. Everywhere, Whatever their size, shape, height and style preferences."
-        }
-      />
+      {homepageProducts && (
+        <>
+          <ProductListing
+            products={homepageProducts.best_seller.products || []}
+            title={
+              homepageProducts.best_seller
+                ? homepageProducts.best_seller.title
+                : null
+            }
+            description={
+              homepageProducts.best_seller
+                ? homepageProducts.best_seller.description
+                : null
+            }
+          />
+          <ProductListing
+            products={homepageProducts.new_arrival.products || []}
+            title={
+              homepageProducts.new_arrival
+                ? homepageProducts.new_arrival.title
+                : null
+            }
+            description={
+              homepageProducts.new_arrival
+                ? homepageProducts.new_arrival.description
+                : null
+            }
+          />
+        </>
+      )}
 
-      <ProductListing
-        title={"New Arrivel"}
-        description={
-          "In our own little way we echo that. The idea of eShakti includes all women. Everywhere, Whatever their size, shape, height and style preferences."
-        }
-      />
       <MidBanner />
       <OurQualities />
     </div>

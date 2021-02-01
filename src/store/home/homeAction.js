@@ -4,6 +4,8 @@ import {
   SET_USER_DETAILS,
   SET_PRODUCT_CATEGORY,
   SET_PRODUCT_BY_CATEGORY,
+  SET_HOMEPAGE_PRODUCTS,
+  SET_PARTICULAR_PRODUCT,
 } from "../types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,7 +14,6 @@ import "react-toastify/dist/ReactToastify.css";
 export const onRegister = (data) => (dispatch) => {
   Axios.post(`${requests.onRegister}`, data)
     .then((res) => {
-      console.log(res.data);
       toast("Registered Successfully", {
         type: toast.TYPE.SUCCESS,
         autoClose: 10000,
@@ -40,7 +41,6 @@ export const onRegister = (data) => (dispatch) => {
 export const onLogin = (data) => (dispatch) => {
   Axios.post(`${requests.onLogin}`, data)
     .then((res) => {
-      console.log(res.data);
       toast("Logged in Successfully", {
         type: toast.TYPE.SUCCESS,
         autoClose: 10000,
@@ -49,11 +49,10 @@ export const onLogin = (data) => (dispatch) => {
         type: SET_USER_DETAILS,
         payload: res.data.user,
       });
-      console.log("herer");
+
       localStorage.setItem("es_token", res.data.token);
       localStorage.setItem("es_name", res.data.user.name);
       localStorage.setItem("es_login", true);
-      console.log("herere3454");
       window.location.reload();
     })
     .catch((res) => {
@@ -85,3 +84,25 @@ export const getProductByCategory = (categoryId) => (dispatch) => {
     });
   });
 };
+
+// getHomepageProducts
+export const getHomePageProducts = (data) => (dispatch) => {
+  Axios.get(`${requests.getHomePageProducts}`).then((res) => {
+    console.log(res.data, "data for home");
+    dispatch({
+      type: SET_HOMEPAGE_PRODUCTS,
+      payload: res.data,
+    });
+  });
+};
+
+// get product
+// export const getProduct = (data) => (dispatch) => {
+//   Axios.get(`${requests.getProduct}`).then((res) => {
+//     console.log(res.data, "data for product");
+//     dispatch({
+//       type: SET_PARTICULAR_PRODUCT,
+//       payload: res.data,
+//     });
+//   });
+// };

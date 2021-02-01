@@ -1,7 +1,11 @@
 import { useReducer, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductCategory } from "./store/home/homeAction";
+import {
+  getProductCategory,
+  getHomePageProducts,
+} from "./store/home/homeAction";
 
+// responsive styles
 import "./mediaqueries/main.scss";
 
 // context
@@ -47,9 +51,8 @@ function App() {
     // });
 
     dispatch(getProductCategory());
+    dispatch(getHomePageProducts());
   }, []);
-
-  console.log(appState);
 
   return (
     <div className="App">
@@ -65,7 +68,7 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <Route
             exact
-            path="/product-details"
+            path="/product-details/:id"
             component={ProductDetails}
           ></Route>
           <Route

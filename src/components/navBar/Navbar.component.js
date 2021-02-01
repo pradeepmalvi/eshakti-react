@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import "./navbar.styles.scss";
 
+import { useSelector } from "react-redux";
+
 import UseWindowSize from "../../hooks/useWindowSize";
 
 import { Link } from "react-router-dom";
@@ -17,7 +19,8 @@ import {
 } from "react-icons/ai";
 
 export default function Navbar() {
-  const { appState, dispatchAppState } = useContext(AppContext);
+  const { dispatchAppState } = useContext(AppContext);
+  const categories = useSelector((state) => state.home.productCategory);
   const { width } = UseWindowSize();
   const navChangeWidth = 1322;
 
@@ -30,16 +33,18 @@ export default function Navbar() {
       </div>
       <div className="navlinks">
         <ul>
-          {appState.nav_links.length > 0
-            ? appState.nav_links.map((eachObj, key) => (
-                <Link
-                  className="nav-link"
-                  key={key}
-                  to={`/category-page/${eachObj.id}`}
-                >
-                  <li>{eachObj.main_menu}</li>
-                </Link>
-              ))
+          {categories
+            ? categories.length > 0
+              ? categories.map((eachObj, key) => (
+                  <Link
+                    key={key}
+                    className="nav-link"
+                    to={`/category-page/${eachObj.id}`}
+                  >
+                    <li>{eachObj.main_menu}</li>
+                  </Link>
+                ))
+              : null
             : null}
         </ul>
       </div>

@@ -4,31 +4,29 @@ import "./productCard.styles.scss";
 // import react icons
 import { AiOutlineStar } from "react-icons/ai";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({
+  brand,
+  product_name,
+  product_price,
+  total_price,
+  product_thumbnail,
+}) {
   return (
     <div className="product_card">
       <div className="product_img">
         <div
           className="img"
           style={{
-            backgroundImage: `url(${
-              product ? product.product_thumbnail[0] : ""
-            })`,
+            backgroundImage: `url(${product_thumbnail[0]})`,
           }}
         ></div>
       </div>
-      <div className="brand">Eshakti</div>
-      <div className="product_name">
-        {product ? product.product_name : "product name"}
-      </div>
+      <div className="brand">{brand}</div>
+      <div className="product_name">{product_name}</div>
       <div className="price_and_rating">
         <div className="price">
-          <span className="prev_price">
-            {product ? product.product_price : "33"}$
-          </span>
-          <span className="current_price">
-            {product ? product.total_price : "22"}$
-          </span>
+          <span className="prev_price">{product_price}$</span>
+          <span className="current_price">{total_price}$</span>
         </div>
         <span className="rating">
           <span className="each_star">

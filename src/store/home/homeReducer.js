@@ -1,4 +1,8 @@
-import { SET_PRODUCT_CATEGORY, SET_PRODUCT_BY_CATEGORY } from "../types";
+import {
+  SET_PRODUCT_CATEGORY,
+  SET_PRODUCT_BY_CATEGORY,
+  SET_HOMEPAGE_PRODUCTS,
+} from "../types";
 
 const initalState = [];
 
@@ -13,6 +17,13 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         productByCategory: action.payload,
+      };
+
+    case SET_HOMEPAGE_PRODUCTS:
+      console.log(action.payload, "data loaded");
+      return {
+        ...state,
+        homePageProducts: action.payload,
       };
 
     default:
