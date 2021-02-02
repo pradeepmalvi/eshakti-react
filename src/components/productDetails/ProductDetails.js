@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductById } from "../../store/home/homeAction";
 import "./productDetails.scss";
 import {
   AiOutlineStar,
@@ -9,11 +11,30 @@ import {
 import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
 
+// react router
+import { useParams } from "react-router-dom";
+
 export default function ProductDetails() {
+  const dispatch = useDispatch();
+  const productDetail = useSelector((state) => state.home.productDetail);
+  const variant = productDetail && productDetail.variant_products[0].variants;
+
   const [isCustomizationOpen, setIsCustomization] = useState(false);
+  const [currentVariant, setCurrentVariant] = useState(variant);
+  const [selectedSize, setSelectSize] = useState(
+    currentVariant &&
+      currentVariant.product_size &&
+      currentVariant.product_size[0]
+  );
+  const { id } = useParams();
 
   useEffect(() => {
-    openCustomization();
+    setCurrentVariant(variant);
+    setSelectSize(variant && variant.product_size && variant.product_size[0]);
+  }, [productDetail]);
+
+  useEffect(() => {
+    dispatch(getProductById(id));
   }, []);
 
   const openCustomization = () => {
@@ -22,44 +43,36 @@ export default function ProductDetails() {
   const closeCustomization = () => {
     setIsCustomization(false);
   };
+
+  const changeVarient = (variant) => {
+    setCurrentVariant(variant);
+  };
+
+  const selectSize = (size) => {
+    setSelectSize(size);
+  };
   return (
     <div>
       <div className="product-details-container">
         <div className="img-wrapper">
           <img
-            src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
+            src={currentVariant ? currentVariant.gallary_image[0] : null}
             alt=""
           />
           <div className="thumb-wrapper">
-            <div className="thumb">
-              <img
-                src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                alt=""
-              />
-            </div>
-            <div className="thumb">
-              <img
-                src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                alt=""
-              />
-            </div>
-            <div className="thumb">
-              <img
-                src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                alt=""
-              />
-            </div>
-            <div className="thumb">
-              <img
-                src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                alt=""
-              />
-            </div>
+            {currentVariant &&
+              currentVariant.gallary_image.map((image) => (
+                <div className="thumb">
+                  <img src={image} alt="" />
+                </div>
+              ))}
           </div>
         </div>
         <div className="details-wrapper">
-          <p className="text-muted">eShakti</p>
-          <h5 className="product-title">Bird Embellished Poplin Dress</h5>
+          <p className="text-muted">{productDetail && productDetail.brand}</p>
+          <h5 className="product-title">
+            {productDetail && productDetail.product_name}
+          </h5>
 
           <div className="product-details">
             <div className="product-review">
@@ -80,30 +93,32 @@ export default function ProductDetails() {
                   <AiOutlineStar />
                 </span>
               </span>
-              <span className="review-text">2 Review</span>
+              {/* <span className="review-text">2 Review</span> */}
             </div>
-            <div className="stock-text">In Stock</div>
-            <div className="color-text">STYLE # COL00043454</div>
+            <div className="stock-text">
+              {productDetail && productDetail.stock}
+            </div>
+            {/* <div className="color-text">STYLE # COL00043454</div> */}
           </div>
           <div className="product-price">
-            <p>$29,00</p>
+            <p>${productDetail && productDetail.total_price.toFixed(2)}</p>
           </div>
           <div className="text-muted">Tax Included</div>
 
           <div className="attributes-wrapper">
-            <div className="attribute-item">
+            <div onClick={openCustomization} className="attribute-item">
               <div className="attribute-box">NECKLINE</div>
               <p>Change Style</p>
             </div>
-            <div className="attribute-item">
+            <div onClick={openCustomization} className="attribute-item">
               <div className="attribute-box">Sleeve type</div>
               <p>Change Style</p>
             </div>
-            <div className="attribute-item">
+            <div onClick={openCustomization} className="attribute-item">
               <div className="attribute-box">length</div>
               <p>Change Style</p>
             </div>
-            <div className="attribute-item">
+            <div onClick={openCustomization} className="attribute-item">
               <div className="attribute-box">customize style</div>
               <p>Change Style</p>
             </div>
@@ -112,27 +127,47 @@ export default function ProductDetails() {
           <div className="alert-danger">Hurry, Only 8 left</div>
 
           <div className="color-attribute">
-            COLOR : <b>GREEN</b>
+            COLOR : <b>{currentVariant && currentVariant.color_name}</b>
           </div>
 
           <div className="color-palette-wrapper">
-            <div className="color green"></div>
-            <div className="color black"></div>
-            <div className="color pink"></div>
+            {productDetail &&
+              productDetail.variant_products.map((varient) => (
+                <div
+                  onClick={changeVarient.bind(this, varient.variants)}
+                  className="color"
+                  style={{
+                    backgroundColor: varient.variants.color_code,
+                  }}
+                ></div>
+              ))}
+
+            {/* <div className="color black"></div>
+            <div className="color pink"></div> */}
           </div>
 
           <div className="color-attribute">
-            SIZE : <b>M</b>
+            SIZE : <b>{selectedSize}</b>
           </div>
 
           <div className="size-attribute">
-            <div className="size">S</div>
-            <div className="size">M</div>
+            {currentVariant &&
+              currentVariant.product_size &&
+              currentVariant.product_size.map((size) => (
+                <div className="size" onClick={selectSize.bind(this, size)}>
+                  {size}
+                </div>
+              ))}
           </div>
 
           <div className="height-attribute">
             <select name="" id="" className="size">
-              <option value="">height</option>
+              <option value="">Height</option>
+              {currentVariant &&
+                currentVariant.height &&
+                currentVariant.height.map((height) => (
+                  <option value="">{height}</option>
+                ))}
             </select>
           </div>
 
@@ -158,7 +193,7 @@ export default function ProductDetails() {
             <div className="add-cart-btn">ADD TO CART</div>
           </div>
 
-          <div className="details-thumb">
+          {/* <div className="details-thumb">
             <h5> Matching Masks</h5>
             <div className="thumb-wrapper">
               <div className="thumb">
@@ -186,7 +221,7 @@ export default function ProductDetails() {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <ProductTabList></ProductTabList>
