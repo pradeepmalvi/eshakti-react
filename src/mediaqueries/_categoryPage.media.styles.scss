@@ -43,7 +43,6 @@
           display: none;
 
           &.show {
-
             .price-filter,
             .category-names-filter,
             .size-filter,
@@ -72,10 +71,7 @@
           .views-icons {
             display: none !important;
           }
-
-          ;
         }
-
       }
     }
   }
@@ -122,7 +118,6 @@
           display: none;
 
           &.show {
-
             .price-filter,
             .category-names-filter,
             .size-filter,
@@ -136,36 +131,6 @@
     }
   }
 }
-
-// @media only screen and (max-width: 1140px) {
-//   .App {
-//     .category-page {
-//       .inner-container {
-//         .filters-area {
-//           display: none;
-
-//           &.show {
-//             height: 70vh;
-//             display: flex;
-//             justify-content: space-between;
-//             flex-wrap: wrap;
-//             overflow-y: scroll;
-
-//             .price-filter,
-//             .category-names-filter,
-//             .size-filter,
-//             .color-filter {
-//               width: 45%;
-//               margin-top: 0;
-//               margin-right: 1rem;
-//               margin-bottom: 1rem;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 @media only screen and (max-width: 1140px) {
   .App {

@@ -95,6 +95,10 @@ export default function CategoryPage() {
               Showing 1-12 of 99 Results
             </div>
 
+            {products && products.length > 0
+              ? console.log(products, "data derees")
+              : null}
+
             <div className="products">
               {products && products.length > 0
                 ? products.map((product, key) => (

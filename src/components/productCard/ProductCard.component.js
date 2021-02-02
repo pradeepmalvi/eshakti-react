@@ -5,16 +5,25 @@ import "./productCard.styles.scss";
 import { AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product = {} }) {
   const { id } = product;
   const { brand } = product;
   const { product_name } = product;
   const { product_price } = product;
   const { total_price } = product;
   const { product_thumbnail } = product;
+
+  console.log(
+    id,
+    brand,
+    product_name,
+    product_price,
+    product_thumbnail,
+    total_price
+  );
   return (
-    <Link to={`/product-details/${id}`}>
-      <div className="product_card">
+    <div className="product_card">
+      <Link to={`/product-details/${id}`}>
         <div className="product_img">
           <div
             className="img"
@@ -46,7 +55,7 @@ export default function ProductCard({ product }) {
             </span>
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

@@ -22,8 +22,8 @@ export default function ProductListing({ title, description, products }) {
       </div>
       <div className="products">
         {products.map((eachProduct, index) => (
-          <ProductCard key={index} {...eachProduct} />
-        ))}{" "}
+          <ProductCard key={index} product={eachProduct} />
+        ))}
       </div>
     </div>
   );

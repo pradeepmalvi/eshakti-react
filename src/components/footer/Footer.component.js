@@ -1,5 +1,9 @@
 import React from "react";
 import "./footer.styles.scss";
+
+// react router
+import { Link } from "react-router-dom";
+
 import { FaGreaterThan, FaVimeoV, FaPinterest } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { MdWatchLater } from "react-icons/md";
@@ -16,7 +20,6 @@ export default function Footer() {
           <ul>
             <li>
               <span className="right_arrow_icon">
-                {/* <IoIosArrowForward /> */}
                 <IoIosArrowForward />
               </span>
               <a href="#"> Fabric customisation</a>
@@ -25,19 +28,19 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Payment & Shipping</a>
+              <Link to="/payment-and-shipping">Shipping and Payment</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Returns & Refunds</a>
+              <Link to="/return-and-cancellation">Return and Refunds</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Privacy Policy</a>
+              <Link to="/privacy-policy">Privacy And Policy</Link>
             </li>
           </ul>
         </div>
@@ -48,7 +51,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Affilliate Program</a>
+              <Link to="/become-affilliate">Affilliate Program</Link>
             </li>
             <li>
               <span className="right_arrow_icon">

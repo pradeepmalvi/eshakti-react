@@ -25,6 +25,11 @@ import CategoryPage from "./components/category-page/CategoryPage.component";
 import CartPage from "./components/cartPage/CartPage";
 import ShippingInfoPage from "./components/shipping-info-page/ShippingInfoPage.component";
 import MobileMenuSidebar from "./components/mobile-menu-sidebar/MobileMenuSidebar.component";
+import ShippingAndPayment from "./components/shipping-and-payment-page/ShippingAndPayment.component";
+import ReturnAndCancellations from "./components/return-and-cancellations/ReturnAndCancellations.component";
+import PrivacyAndPolicy from "./components/privacyPolicy/PrivacyAndPolicy.component";
+import AffilliatePage from "./components/affiliate-page/AffilliatePage.component";
+
 import { AppContext } from "./context/context";
 
 // importing axios
@@ -78,11 +83,32 @@ function App() {
           ></Route>
           <Route exact path="/cart" component={CartPage}></Route>
           <Route
-            exax
+            exact
             path="/shipping-info"
             component={ShippingInfoPage}
           ></Route>
+          <Route
+            exact
+            path="/payment-and-shipping"
+            component={ShippingAndPayment}
+          ></Route>
 
+          <Route
+            exact
+            path="/return-and-cancellation"
+            component={ReturnAndCancellations}
+          ></Route>
+
+          <Route
+            exact
+            path="/privacy-policy"
+            component={PrivacyAndPolicy}
+          ></Route>
+          <Route
+            exact
+            path="/become-affilliate"
+            component={AffilliatePage}
+          ></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />
