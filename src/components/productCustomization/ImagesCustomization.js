@@ -1,6 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function ImagesCustomization({ currentCustom }) {
+export default function ImagesCustomization({ currentCustom, style }) {
+  const [top, setTop] = useState(0);
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
+  const [bottom, setBottom] = useState(0);
+  useEffect(() => {
+    style && resize(style);
+  }, [style]);
+
+  const resize = (style) => {
+    var reduceWidthPerchantage =
+      (376.8 / (style.leftWidth + style.topWidth + style.rightWidth)) * 100;
+    var left = (style.leftWidth * reduceWidthPerchantage) / 100;
+    var top = (style.topWidth * reduceWidthPerchantage) / 100;
+    var right = (style.rightWidth * reduceWidthPerchantage) / 100;
+    console.log(top, left, right);
+
+    setTop(top);
+    setLeft(left);
+    setRight(right);
+
+    var reduceWidthPerchantage =
+      (560 / (style.topHeight + style.bottomHeight)) * 100;
+    var bottom = (style.topHeight * reduceWidthPerchantage) / 100;
+    var bottomHeight = (style.bottomHeight * reduceWidthPerchantage) / 100;
+
+    setBottom(bottom);
+  };
+
   return (
     <div className="img-wrapper">
       <div
@@ -10,45 +38,56 @@ export default function ImagesCustomization({ currentCustom }) {
         <div
           className="absoluteDiv"
           style={{
-            width: "65.6px",
-            height: "228px",
-            left: "171.2px",
-            top: "0px",
+            width: `${top}px`,
+            height: "auto",
+            left: `${left}px`,
           }}
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.top.top}
+            src={
+              currentCustom &&
+              currentCustom.neck_style &&
+              currentCustom.neck_style.neck_design
+            }
             alt=""
           />
         </div>
         <div
           className="absoluteDiv"
           style={{
-            width: "171.2px",
-            height: "228px",
-            left: "0px",
-            top: "0px",
+            width: `${left}px`,
+            height: "auto",
+            top: 0,
+            left: 0,
           }}
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.leftRight.left}
+            src={
+              currentCustom &&
+              currentCustom.sleeve_style &&
+              currentCustom.sleeve_style.lhand_design
+            }
             alt=""
           />
         </div>
         <div
           className="absoluteDiv"
           style={{
-            width: "140px",
-            height: "228px",
-            left: "236.8px",
-            top: "0px",
+            width: right,
+            height: "auto",
+            top: 0,
+            left: `${left + top}px`,
           }}
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.leftRight.right}
+            src={
+              currentCustom &&
+              currentCustom.sleeve_style &&
+              currentCustom.sleeve_style.rhand_design
+            }
             alt=""
           />
         </div>
@@ -56,14 +95,18 @@ export default function ImagesCustomization({ currentCustom }) {
           className="absoluteDiv"
           style={{
             width: "376.8px",
-            height: "332px",
+            height: "auto",
             left: "0px",
-            top: "227.2px",
+            top: `${bottom}px`,
           }}
         >
           <img
             className="img img-fluid img-bg"
-            src={currentCustom.bottom.bottom}
+            src={
+              currentCustom &&
+              currentCustom.bottom_style &&
+              currentCustom.bottom_style.bottom_design
+            }
             alt=""
           />
         </div>

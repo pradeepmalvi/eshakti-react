@@ -124,7 +124,9 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          <div className="alert-danger">Hurry, Only 8 left</div>
+          <div className="alert-danger">
+            Hurry, Only {productDetail && productDetail.quantity} left
+          </div>
 
           <div className="color-attribute">
             COLOR : <b>{currentVariant && currentVariant.color_name}</b>
@@ -228,6 +230,7 @@ export default function ProductDetails() {
       <ProductCustomization
         open={isCustomizationOpen}
         close={closeCustomization}
+        currentVariant={currentVariant}
       ></ProductCustomization>
     </div>
   );

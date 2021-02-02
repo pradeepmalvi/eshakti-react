@@ -103,7 +103,7 @@ export const getProductById = (productId) => (dispatch) => {
     console.log(res.data[0], "product by id");
     dispatch({
       type: SET_PRODUCT_DETAILS,
-      payload: res.data[0],
+      payload: res.data,
     });
   });
 };
