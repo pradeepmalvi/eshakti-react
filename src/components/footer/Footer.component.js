@@ -63,7 +63,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Refer a Friend</a>
+              <a href="#">Refer a Friend</a>
             </li>
           </ul>
         </div>
@@ -80,7 +80,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> How Customisation works</a>
+              <Link to="/how-it-works">How Customisation works</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
@@ -92,13 +92,13 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Media Speaks</a>
+              <Link to="/media-speaks"> Media Speaks</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Customers Speaks</a>
+              <Link to="/customers-speaks"> Customers Speaks</Link>
             </li>
             <li>
               <span className="right_arrow_icon">

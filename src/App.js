@@ -29,6 +29,7 @@ import ShippingAndPayment from "./components/shipping-and-payment-page/ShippingA
 import ReturnAndCancellations from "./components/return-and-cancellations/ReturnAndCancellations.component";
 import PrivacyAndPolicy from "./components/privacyPolicy/PrivacyAndPolicy.component";
 import AffilliatePage from "./components/affiliate-page/AffilliatePage.component";
+import MediaSpeaks from "./components/media-speaks-page/MediaSpeaks.component";
 
 import { AppContext } from "./context/context";
 
@@ -37,6 +38,8 @@ import Axios from "./axios/axios";
 import requests from "./axios/requests";
 
 import { SET_CATEGORIES } from "./context/action.types";
+import CustomerSpeakPage from "./components/customer-speak-page/CustomerSpeakPage.component";
+import HowItWorks from "./components/how-it-works-page/HowItWorks.component";
 
 function App() {
   const dispatch = useDispatch();
@@ -109,6 +112,13 @@ function App() {
             path="/become-affilliate"
             component={AffilliatePage}
           ></Route>
+          <Route exact path="/media-speaks" component={MediaSpeaks}></Route>
+          <Route
+            exact
+            path="/customers-speaks"
+            component={CustomerSpeakPage}
+          ></Route>
+          <Route exact path="/how-it-works" component={HowItWorks}></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />

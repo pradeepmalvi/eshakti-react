@@ -6,7 +6,6 @@
   .main-title {
     text-align: center;
     color: #202020;
-    margin-bottom: 2rem;
   }
 
   .each-description {
@@ -14,20 +13,17 @@
 
     .each-description-title {
       color: #474747;
-      font-size: 0.85rem;
-      margin-bottom: 0.8rem;
       text-transform: uppercase;
       font-weight: 700;
     }
 
     .each-description-content {
-      font-size: 0.85rem;
-      line-height: 1.45;
+      font-size: 0.8rem;
+      line-height: 1.55;
 
       ul {
         div {
           display: flex;
-          padding-left: 0.7rem;
 
           span {
             display: flex;
@@ -36,8 +32,9 @@
 
           li {
             padding-left: 0.3rem;
-            line-height: 1.8;
             font-size: 0.8rem;
+            line-height: 1.55;
+            padding-bottom: 0.5rem;
           }
         }
       }

@@ -27,9 +27,9 @@ export default function PrivacyAndPolicy() {
         </div>
         <div className="each-description">
           <h1 className="main-title">TERMS OF USE</h1>
-          <h5 className="each-description-title">
+          <h4 className="each-description-title">
             User and Blogger Submissions
-          </h5>
+          </h4>
           <div className="each-description-content">
             You may post or upload content you have created, including without
             limitation, photographs, your social media handle, videos, and
@@ -69,7 +69,7 @@ export default function PrivacyAndPolicy() {
         <div className="each-description">
           <h1 className="main-title">SECURITY</h1>
 
-          <h5 className="each-description-title">Security</h5>
+          <h4 className="each-description-title">Security</h4>
           <div className="each-description-content">
             eShakti is associated with Stripe - a trusted third party credit
             card authorizing agency, to ensure the security of your credit card
