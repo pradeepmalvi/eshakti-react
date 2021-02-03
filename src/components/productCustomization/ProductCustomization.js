@@ -5,160 +5,32 @@ import { Modal } from "react-responsive-modal";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import ImagesCustomization from "./ImagesCustomization";
+import mergeImages from "merge-images";
 
-export default function ProductCustomization({ open, close, currentVariant }) {
+export default function ProductCustomization({
+  open,
+  close,
+  currentVariant,
+  saveFinalCustomisation,
+}) {
   const [style, setStyle] = useState({});
   useEffect(() => {
     currentVariant && getImgSize();
     currentVariant &&
       setCurrentCustom({
-        neck_style: currentVariant ? currentVariant.neck_style[0] : null,
-        bottom_style: currentVariant ? currentVariant.bottom_style[0] : null,
-        sleeve_style: currentVariant ? currentVariant.sleeve_style[0] : null,
+        neck_style: currentVariant ? currentVariant.default_design[0] : null,
+        sleeve_style: currentVariant ? currentVariant.default_design[1] : null,
+        bottom_style: currentVariant ? currentVariant.default_design[2] : null,
       });
+
+    setTimeout(() => {
+      currentVariant && getImgSize();
+      saveFinalCustomisation(currentCustom);
+    }, 100);
   }, [currentVariant]);
-  const [imageCustom, setImageCustom] = useState({
-    top: [
-      {
-        id: "0",
-        type: "top",
-        name: "Peter Pan",
-        img: "https://www.eshakti.com/styling%20images/Peter%20Pan.jpg",
-        top:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Peter%20Pan.jpg?v=21011909",
-      },
-      {
-        id: "1",
-        type: "top",
-        name: "Peter Pan",
-        img: "https://www.eshakti.com/styling%20images/Peter%20Pan.jpg",
-        top:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Peter%20Pan.jpg?v=21011909",
-      },
-      {
-        id: "2",
-        type: "top",
-        name: "Mandarin Collar",
-        img: "https://www.eshakti.com/styling%20images/Mandarin%20Collar.jpg",
-        top:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Mandarin%20Collar.jpg?v=21012523",
-      },
-      {
-        id: "3",
-        type: "top",
-        name: "Round Collar",
-        img: "https://www.eshakti.com/styling%20images/Round%20Collar.jpg",
-        top:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Round%20Collar.jpg?v=21012523",
-      },
-      {
-        id: "4",
-        type: "top",
-        name: "Shawl collar",
-        img: "https://www.eshakti.com/styling%20images/Shawl%20collar.jpg",
-        top:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Neckline-Shawl%20collar.jpg?v=21011910",
-      },
-    ],
-    bottom: [
-      {
-        id: "0",
-        type: "bottom",
-        name: "Foot Length Dress",
-        img: "https://www.eshakti.com/styling%20images/Floor_Length_Dress.jpg",
-        bottom:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Floor%20Length%20Dress.jpg?v=21011909",
-      },
-      {
-        id: "1",
-        type: "bottom",
-        name: "Foot Length Dress",
-        img: "https://www.eshakti.com/styling%20images/Floor_Length_Dress.jpg",
-        bottom:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Floor%20Length%20Dress.jpg?v=21011909",
-      },
-      {
-        id: "2",
-        type: "bottom",
-        name: "4 Inch Above Ankle Length",
-        img:
-          "https://www.eshakti.com/styling%20images/4-inches-above-ankle-length.jpg",
-        bottom:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-4%20Inch%20Above%20Ankle%20Length.jpg?v=21012523",
-      },
-      {
-        id: "3",
-        type: "bottom",
-        name: "Mini",
-        img: "https://www.eshakti.com/styling%20images/Mini.jpg",
-        bottom:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Mini.jpg?v=21012523",
-      },
-      {
-        id: "4",
-        type: "bottom",
-        name: "Knee length",
-        img: "https://www.eshakti.com/styling%20images/Knee%20length.jpg",
-        bottom:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-Length-Knee%20length.jpg?v=21011909",
-      },
-    ],
-    leftRight: [
-      {
-        id: "0",
-        type: "leftRight",
-        name: "Sleeveless",
-        img: "https://www.eshakti.com/styling%20images/Sleeveless.jpg",
-        left:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_L.jpg?v=21011909",
-        right:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_R.jpg?v=21011909",
-      },
-      {
-        id: "1",
-        type: "leftRight",
-        name: "Sleeveless",
-        img: "https://www.eshakti.com/styling%20images/Sleeveless.jpg",
-        left:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_L.jpg?v=21011909",
-        right:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Sleeveless_R.jpg?v=21011909",
-      },
-      {
-        id: "2",
-        type: "leftRight",
-        name: "Short length",
-        img: "https://www.eshakti.com/styling%20images/Short%20length.jpg",
-        left:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Short%20length_L.jpg?v=21012523",
-        right:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Short%20length_R.jpg?v=21012523",
-      },
-      {
-        id: "3",
-        type: "leftRight",
-        name: "Three quarter length",
-        img:
-          "https://www.eshakti.com/styling%20images/Three%20quarter%20length.jpg",
-        left:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Three%20quarter%20length_L.jpg?v=21012523",
-        right:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Three%20quarter%20length_R.jpg?v=21012523",
-      },
-      {
-        id: "4",
-        type: "leftRight",
-        name: "Long Length",
-        img: "https://www.eshakti.com/styling%20images/Long%20length.jpg",
-        left:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Long%20length_L.jpg?v=21011910",
-        right:
-          "https://www.eshakti.com/images/CL0080522/CL0080522-SleeveType-Long%20length_R.jpg?v=21011910",
-      },
-    ],
-  });
 
   const [currentCustom, setCurrentCustom] = useState();
+  const [sizes, setSizes] = useState({});
 
   const changeImage = (data) => {
     getImgSize();
@@ -238,6 +110,52 @@ export default function ProductCustomization({ open, close, currentVariant }) {
     }, speed);
   };
 
+  const saveSize = (size) => {
+    setSizes(size);
+  };
+
+  const onSave = () => {
+    saveFinalCustomisation(currentCustom);
+    compressImage();
+    onCloseModal();
+  };
+
+  const compressImage = () => {
+    mergeImages(
+      [
+        {
+          src:
+            currentCustom &&
+            currentCustom.neck_style &&
+            currentCustom.neck_style.neck_design,
+          x: sizes.left,
+          y: 0,
+        },
+        // {
+        //   src:
+        //     currentCustom &&
+        //     currentCustom.neck_style &&
+        //     currentCustom.neck_style.neck_design,
+        //   x: 32,
+        //   y: 0,
+        // },
+        // {
+        //   src:
+        //     currentCustom &&
+        //     currentCustom.neck_style &&
+        //     currentCustom.neck_style.neck_design,
+        //   x: 16,
+        //   y: 0,
+        // },
+      ],
+      {
+        width: sizes.totalWidth,
+        height: sizes.totalHeight,
+        crossOrigin: true,
+      }
+    ).then((b64) => console.log(b64));
+  };
+
   return (
     <div>
       <Modal
@@ -253,6 +171,7 @@ export default function ProductCustomization({ open, close, currentVariant }) {
             <ImagesCustomization
               currentCustom={currentCustom}
               style={style}
+              saveSize={saveSize}
             ></ImagesCustomization>
             <div className="details-wrapper">
               <h5 className="product-title">
@@ -267,16 +186,23 @@ export default function ProductCustomization({ open, close, currentVariant }) {
                 <div className="attribute-container">
                   <div className="default-attribute">
                     <div className="text-lead">As Shown</div>
-                    {currentCustom &&
-                    currentCustom.top &&
-                    currentCustom.top.id === "0" ? (
+                    {currentVariant &&
+                    currentVariant.default_design &&
+                    currentVariant.default_design.length > 0 &&
+                    currentCustom &&
+                    currentCustom.neck_style &&
+                    currentCustom.neck_style.id ===
+                      currentVariant.default_design[0].id ? (
                       <div className="default-image selected-image">
                         <div className="text-lead">Default</div>
                       </div>
                     ) : (
                       <div
                         className="default-image"
-                        onClick={changeImage.bind(this, imageCustom.top[0])}
+                        onClick={changeImage.bind(
+                          this,
+                          currentVariant && currentVariant.default_design[0]
+                        )}
                       >
                         <div className="text-lead">Default</div>
                       </div>
@@ -319,9 +245,13 @@ export default function ProductCustomization({ open, close, currentVariant }) {
                 <div className="attribute-container">
                   <div className="default-attribute">
                     <div className="text-lead">As Shown</div>
-                    {currentCustom &&
-                    currentCustom.leftRight &&
-                    currentCustom.leftRight.id === "0" ? (
+                    {currentVariant &&
+                    currentVariant.default_design &&
+                    currentVariant.default_design.length > 0 &&
+                    currentCustom &&
+                    currentCustom.sleeve_style &&
+                    currentCustom.sleeve_style.id ==
+                      currentVariant.default_design[1].id ? (
                       <div className="default-image selected-image">
                         <div className="text-lead">Default</div>
                       </div>
@@ -330,7 +260,7 @@ export default function ProductCustomization({ open, close, currentVariant }) {
                         className="default-image"
                         onClick={changeImage.bind(
                           this,
-                          imageCustom.leftRight[0]
+                          currentVariant && currentVariant.default_design[1]
                         )}
                       >
                         <div className="text-lead">Default</div>
@@ -381,16 +311,23 @@ export default function ProductCustomization({ open, close, currentVariant }) {
                 <div className="attribute-container">
                   <div className="default-attribute">
                     <div className="text-lead">As Shown</div>
-                    {currentCustom &&
-                    currentCustom.bottom &&
-                    currentCustom.bottom.id === "0" ? (
+                    {currentVariant &&
+                    currentVariant.default_design &&
+                    currentVariant.default_design.length > 0 &&
+                    currentCustom &&
+                    currentCustom.bottom_style &&
+                    currentCustom.bottom_style.id ==
+                      currentVariant.default_design[2].id ? (
                       <div className="default-image selected-image">
                         <div className="text-lead">Default</div>
                       </div>
                     ) : (
                       <div
                         className="default-image"
-                        onClick={changeImage.bind(this, imageCustom.bottom[0])}
+                        onClick={changeImage.bind(
+                          this,
+                          currentVariant && currentVariant.default_design[2]
+                        )}
                       >
                         <div className="text-lead">Default</div>
                       </div>
@@ -455,14 +392,17 @@ export default function ProductCustomization({ open, close, currentVariant }) {
             <div className="left-footer">
               <p className="text-lead">
                 Selected style options -{" "}
-                {currentCustom && currentCustom.top && currentCustom.top.name},{" "}
                 {currentCustom &&
-                  currentCustom.leftRight &&
-                  currentCustom.leftRight.name}
+                  currentCustom.neck_style &&
+                  currentCustom.neck_style.design_name}
                 ,{" "}
                 {currentCustom &&
-                  currentCustom.bottom &&
-                  currentCustom.bottom.name}
+                  currentCustom.sleeve_style &&
+                  currentCustom.sleeve_style.design_name}
+                ,{" "}
+                {currentCustom &&
+                  currentCustom.bottom_style &&
+                  currentCustom.bottom_style.design_name}
               </p>
               <div className="share">
                 <AiOutlineShareAlt /> <span> Share</span>
@@ -470,7 +410,9 @@ export default function ProductCustomization({ open, close, currentVariant }) {
             </div>
             <div className="right-footer">
               <div className="btn save-style">Save Style</div>
-              <div className="btn process-style">Select style & proceed</div>
+              <div className="btn process-style" onClick={onSave}>
+                Select style & proceed
+              </div>
             </div>
           </div>
         </div>

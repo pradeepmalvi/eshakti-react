@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
+import mergeImages from "merge-images";
 
-export default function ImagesCustomization({ currentCustom, style }) {
+export default function ImagesCustomization({
+  currentCustom,
+  style,
+  saveSize,
+}) {
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
   const [bottom, setBottom] = useState(0);
+  const [totalHeight, setTotalHeight] = useState(0);
+  const [totalWidth, setTotalWidth] = useState(0);
+
   useEffect(() => {
     style && resize(style);
-  }, [style]);
+  }, [style, currentCustom]);
 
   const resize = (style) => {
     var reduceWidthPerchantage =
@@ -24,13 +32,27 @@ export default function ImagesCustomization({ currentCustom, style }) {
     var reduceWidthPerchantage =
       (560 / (style.topHeight + style.bottomHeight)) * 100;
     var bottom = (style.topHeight * reduceWidthPerchantage) / 100;
-    var bottomHeight = (style.bottomHeight * reduceWidthPerchantage) / 100;
+
+    var Width = 376.8;
+    var Height = style.topHeight + style.bottomHeight;
 
     setBottom(bottom);
+    setTotalWidth(Width);
+    setTotalHeight(Height);
+
+    saveSize({
+      top: top,
+      left: left,
+      right: right,
+      bottom: bottom,
+      totalHeight: totalHeight,
+      totalWidth: totalWidth,
+    });
   };
 
   return (
     <div className="img-wrapper">
+      <div className="img"></div>
       <div
         className="relativeDiv mx-auto"
         style={{ width: "376.8px", height: "560px" }}

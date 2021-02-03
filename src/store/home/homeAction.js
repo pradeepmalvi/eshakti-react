@@ -89,7 +89,6 @@ export const getProductByCategory = (categoryId) => (dispatch) => {
 // getHomepageProducts
 export const getHomePageProducts = (data) => (dispatch) => {
   Axios.get(`${requests.getHomePageProducts}`).then((res) => {
-    console.log(res.data, "data for home");
     dispatch({
       type: SET_HOMEPAGE_PRODUCTS,
       payload: res.data,
@@ -100,7 +99,6 @@ export const getHomePageProducts = (data) => (dispatch) => {
 // Get product by id
 export const getProductById = (productId) => (dispatch) => {
   Axios.get(`${requests.getProductById}/${productId}`).then((res) => {
-    console.log(res.data[0], "product by id");
     dispatch({
       type: SET_PRODUCT_DETAILS,
       payload: res.data,

@@ -17,7 +17,10 @@ import { useParams } from "react-router-dom";
 export default function ProductDetails() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.home.productDetail);
-  const variant = productDetail && productDetail.variant_products[0].variants;
+  const variant =
+    productDetail &&
+    productDetail.variant_products &&
+    productDetail.variant_products[0].variants;
 
   const [isCustomizationOpen, setIsCustomization] = useState(false);
   const [currentVariant, setCurrentVariant] = useState(variant);
@@ -27,6 +30,8 @@ export default function ProductDetails() {
       currentVariant.product_size[0]
   );
   const { id } = useParams();
+  const [currentImage, setCurrentImage] = useState("");
+  const [currentCustom, setCurrentCustom] = useState({});
 
   useEffect(() => {
     setCurrentVariant(variant);
@@ -51,21 +56,34 @@ export default function ProductDetails() {
   const selectSize = (size) => {
     setSelectSize(size);
   };
+  const saveFinalCustomisation = (currentCustom) => {
+    setCurrentCustom(currentCustom);
+  };
   return (
     <div>
       <div className="product-details-container">
         <div className="img-wrapper">
           <img
-            src={currentVariant ? currentVariant.gallary_image[0] : null}
+            src={
+              currentImage
+                ? currentImage
+                : currentVariant && currentVariant.gallary_image[0]
+            }
             alt=""
           />
           <div className="thumb-wrapper">
             {currentVariant &&
-              currentVariant.gallary_image.map((image) => (
-                <div className="thumb">
-                  <img src={image} alt="" />
-                </div>
-              ))}
+              currentVariant.gallary_image.map((image, key) =>
+                key < 4 ? (
+                  <div className="thumb">
+                    <img
+                      src={image}
+                      alt=""
+                      onClick={() => setCurrentImage(image)}
+                    />
+                  </div>
+                ) : null
+              )}
           </div>
         </div>
         <div className="details-wrapper">
@@ -101,27 +119,71 @@ export default function ProductDetails() {
             {/* <div className="color-text">STYLE # COL00043454</div> */}
           </div>
           <div className="product-price">
-            <p>${productDetail && productDetail.total_price.toFixed(2)}</p>
+            <p>
+              $
+              {productDetail &&
+                productDetail.total_price &&
+                productDetail.total_price.toFixed(2)}
+            </p>
           </div>
           <div className="text-muted">Tax Included</div>
 
           <div className="attributes-wrapper">
             <div onClick={openCustomization} className="attribute-item">
-              <div className="attribute-box">NECKLINE</div>
+              <div className="attribute-box">
+                <img
+                  className="icon"
+                  src={
+                    currentCustom &&
+                    currentCustom.neck_style &&
+                    currentCustom.neck_style.design_icon
+                  }
+                  alt=""
+                />
+                {currentCustom && currentCustom.neck_style
+                  ? currentCustom.neck_style.design_name
+                  : "Neckline"}
+              </div>
               <p>Change Style</p>
             </div>
             <div onClick={openCustomization} className="attribute-item">
-              <div className="attribute-box">Sleeve type</div>
+              <div className="attribute-box">
+                <img
+                  className="icon"
+                  src={
+                    currentCustom &&
+                    currentCustom.sleeve_style &&
+                    currentCustom.sleeve_style.design_icon
+                  }
+                  alt=""
+                />
+                {currentCustom && currentCustom.sleeve_style
+                  ? currentCustom.sleeve_style.design_name
+                  : "Sleeve type"}
+              </div>
               <p>Change Style</p>
             </div>
             <div onClick={openCustomization} className="attribute-item">
-              <div className="attribute-box">length</div>
+              <div className="attribute-box">
+                <img
+                  className="icon"
+                  src={
+                    currentCustom &&
+                    currentCustom.bottom_style &&
+                    currentCustom.bottom_style.design_icon
+                  }
+                  alt=""
+                />
+                {currentCustom && currentCustom.bottom_style
+                  ? currentCustom.bottom_style.design_name
+                  : "length"}
+              </div>
               <p>Change Style</p>
             </div>
-            <div onClick={openCustomization} className="attribute-item">
+            {/* <div onClick={openCustomization} className="attribute-item">
               <div className="attribute-box">customize style</div>
               <p>Change Style</p>
-            </div>
+            </div> */}
           </div>
 
           <div className="alert-danger">
@@ -134,6 +196,7 @@ export default function ProductDetails() {
 
           <div className="color-palette-wrapper">
             {productDetail &&
+              productDetail.variant_products &&
               productDetail.variant_products.map((varient) => (
                 <div
                   onClick={changeVarient.bind(this, varient.variants)}
@@ -231,6 +294,7 @@ export default function ProductDetails() {
         open={isCustomizationOpen}
         close={closeCustomization}
         currentVariant={currentVariant}
+        saveFinalCustomisation={saveFinalCustomisation}
       ></ProductCustomization>
     </div>
   );
