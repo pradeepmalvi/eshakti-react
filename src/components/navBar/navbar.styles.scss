@@ -10,6 +10,9 @@
   /***  logo styles ***/
   .logo {
     color: #202020;
+    .logo_text {
+      margin-top: 1rem;
+    }
   }
 
   /***  link list styles ***/
@@ -31,6 +34,10 @@
       margin: 0.7rem;
       font-size: 2rem;
       cursor: pointer;
+
+      svg {
+        font-size: 1.6rem;
+      }
     }
 
     .shoping_cart {
@@ -67,9 +74,13 @@
     display: flex;
 
     .icon {
-      margin: 0.5rem;
-      display: flex;
+      margin: 0.7rem;
+      font-size: 2rem;
       cursor: pointer;
+
+      svg {
+        font-size: 1.6rem;
+      }
     }
 
     .menu {
@@ -80,6 +91,11 @@
   /***  logo styles ***/
   .logo {
     color: #202020;
+
+    .logo_text {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
   }
 
   .action_icons {
@@ -88,8 +104,11 @@
     .icon {
       margin: 0.7rem;
       font-size: 2rem;
-      display: flex !important;
       cursor: pointer;
+
+      svg {
+        font-size: 1.6rem;
+      }
     }
 
     .shoping_cart {

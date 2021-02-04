@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./how-it-works.styles.scss";
 
 // react icons
@@ -6,6 +6,10 @@ import { FiPlayCircle } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 export default function HowItWorks() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="how-it-works">
       <div className="inner-container">

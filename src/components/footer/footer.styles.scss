@@ -13,6 +13,7 @@
     .about,
     .contact {
       h4 {
+        padding-left: 0.2rem;
         font-size: 1.4rem;
         color: #414040;
         margin-bottom: 1rem;
@@ -21,13 +22,16 @@
 
       ul {
         li {
-          margin-bottom: 1rem;
+          margin-bottom: 0.7rem;
+          display: flex;
+          font-size: 0.95rem;
 
           span {
             display: inline-block;
             color: #5c5c5c;
             font-weight: 200;
             margin-right: 0.5rem;
+            font-size: 0.95rem;
 
             &.right_arrow_icon {
               color: rgb(153, 151, 151);
@@ -42,7 +46,7 @@
 
           a {
             color: #5c5c5c;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
           }
 
           .phone,

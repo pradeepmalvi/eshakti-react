@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./customer-speak-page.styles.scss";
 
 import CustomerReviewCard from "../customer-review-card/CustomerReviewCard.component";
 
 export default function CustomerSpeakPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="customer-speaks">
       <h1 className="main-title">Customer Speaks</h1>

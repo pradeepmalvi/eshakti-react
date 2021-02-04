@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./shipping-and-payment.styles.scss";
 
 import { IoMdArrowDropright } from "react-icons/io";
 
 export default function ShippingAndPayment() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="shipping-and-payment">
       <h1 className="main-title">Payment and Shipping</h1>

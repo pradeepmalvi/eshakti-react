@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./returnAndCancellations.styles.scss";
 
 // react icons
 import { IoMdArrowDropright } from "react-icons/io";
 
 export default function ReturnAndCancellations() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="return-and-cancellations">
       <h1 className="main-title">Return And Cancellations</h1>

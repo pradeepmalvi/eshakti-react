@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./affilliatePage.styles.scss";
 
 import { Link } from "react-router-dom";
 
 export default function AffilliatePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="affilliate-page">
       <h1 className="title">Become an Eshakti Affilliate</h1>
 
       <div className="content">
-        <div className="be-part-of-mission common">
+        <div className="be-part-of-mission common left-started">
           <div className="img">
             <img
               src="https://www.eshakti.com/assets/images/affiliate/affiliateprogram_01.jpg"
@@ -33,7 +37,7 @@ export default function AffilliatePage() {
             </div>
           </div>
         </div>
-        <div className="how-does-it-work common">
+        <div className="how-does-it-work common right-started">
           <div className="text-content">
             <h2 className="content-title">How does it work</h2>
             <div className="description">
@@ -56,7 +60,7 @@ export default function AffilliatePage() {
           </div>
         </div>
 
-        <div className="why-eshakti common">
+        <div className="why-eshakti common left-started">
           <div className="img">
             <img
               src="https://www.eshakti.com/assets/images/affiliate/affiliateprogram_03.jpg"

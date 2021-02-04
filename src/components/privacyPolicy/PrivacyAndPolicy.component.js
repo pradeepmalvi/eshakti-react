@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./privacy-and-policy.styles.scss";
 
 export default function PrivacyAndPolicy() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="privacy-policy">
       <h1 className="main-title">PRIVACY</h1>

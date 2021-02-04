@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./shippingInfopage.styles.scss";
 
 import { Link } from "react-router-dom";
@@ -9,6 +9,10 @@ import SelectFormElement from "../select-form-element/SelectFormElement.componen
 import { IoIosArrowBack } from "react-icons/io";
 
 export default function ShippingInfoPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="shipping-info">
       <div className="inner-container">

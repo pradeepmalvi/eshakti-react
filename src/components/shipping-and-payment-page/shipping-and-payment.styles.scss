@@ -18,8 +18,13 @@
     }
 
     .each-description-content {
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       line-height: 1.55;
+
+      .top,
+      .bottom {
+        font-size: 0.95rem;
+      }
 
       ul {
         div {
@@ -32,7 +37,7 @@
 
           li {
             padding-left: 0.3rem;
-            font-size: 0.8rem;
+            font-size: 0.95rem;
             line-height: 1.55;
             padding-bottom: 0.5rem;
           }
@@ -48,8 +53,13 @@
       th,
       td {
         border-color: #474747;
-        padding: 0.2rem;
+        padding: 0.3rem;
       }
+    }
+
+    .table-descriptio {
+      font-size: 0.95rem;
+      line-height: 1.55;
     }
   }
 }

@@ -74,7 +74,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> eShakti</a>
+              <Link to="/about-us">eShakti</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
@@ -86,13 +86,13 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Size Chart</a>
+              <Link to="/eshakti-sizes">Size Chart</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <Link to="/media-speaks"> Media Speaks</Link>
+              <Link to="/media-speaks">Media Speaks</Link>
             </li>
             <li>
               <span className="right_arrow_icon">

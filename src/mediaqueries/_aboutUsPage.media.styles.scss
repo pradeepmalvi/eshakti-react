@@ -1,0 +1,96 @@
+@media only screen and (max-width: 600px) {
+  .App {
+    .about-eshakti {
+      .content {
+        .common {
+          flex-direction: column;
+
+          .text-content {
+            .content-title {
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .App {
+    .about-eshakti {
+      padding: 1rem 2rem;
+
+      .content {
+        .common {
+          flex-direction: column;
+
+          .img {
+            text-align: center;
+
+            img {
+              width: 100% !important;
+            }
+          }
+
+          .text-content {
+            padding: 2rem 0rem;
+            width: 100% !important;
+
+            .content-title {
+              margin: auto;
+            }
+          }
+        }
+      }
+
+      .be-part-of-mission {
+        margin-bottom: 0 !important;
+      }
+      .how-does-it-work {
+        flex-direction: column-reverse !important;
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .App {
+    .affilliate-page {
+      .title {
+        padding: 1rem;
+      }
+      .content {
+        .common {
+          flex-direction: column;
+
+          .img {
+            text-align: center;
+
+            img {
+              width: 80%;
+            }
+          }
+
+          .text-content {
+            margin: 0 auto;
+            width: 80%;
+            text-align: center;
+
+            .content-title {
+              margin: auto;
+            }
+          }
+        }
+      }
+      .be-part-of-mission {
+        margin-bottom: 0 !important;
+      }
+      .how-does-it-work {
+        flex-direction: column-reverse !important;
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}

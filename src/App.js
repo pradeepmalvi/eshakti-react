@@ -30,6 +30,7 @@ import ReturnAndCancellations from "./components/return-and-cancellations/Return
 import PrivacyAndPolicy from "./components/privacyPolicy/PrivacyAndPolicy.component";
 import AffilliatePage from "./components/affiliate-page/AffilliatePage.component";
 import MediaSpeaks from "./components/media-speaks-page/MediaSpeaks.component";
+import EshaktiSizes from "./components/eshakti-sizes/EshaktiSizes.component";
 
 import { AppContext } from "./context/context";
 
@@ -40,6 +41,7 @@ import requests from "./axios/requests";
 import { SET_CATEGORIES } from "./context/action.types";
 import CustomerSpeakPage from "./components/customer-speak-page/CustomerSpeakPage.component";
 import HowItWorks from "./components/how-it-works-page/HowItWorks.component";
+import AboutUs from "./components/about-us/AboutUs.component";
 
 function App() {
   const dispatch = useDispatch();
@@ -119,6 +121,8 @@ function App() {
             component={CustomerSpeakPage}
           ></Route>
           <Route exact path="/how-it-works" component={HowItWorks}></Route>
+          <Route exact path="/about-us" component={AboutUs}></Route>
+          <Route exact path="/eshakti-sizes" component={EshaktiSizes}></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />
