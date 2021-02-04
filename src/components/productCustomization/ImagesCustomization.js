@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mergeImages from "merge-images";
 
-export default function ImagesCustomization({
-  currentCustom,
-  style,
-  saveSize,
-}) {
+export default function ImagesCustomization({ currentCustom, style }) {
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
@@ -39,15 +35,6 @@ export default function ImagesCustomization({
     setBottom(bottom);
     setTotalWidth(Width);
     setTotalHeight(Height);
-
-    saveSize({
-      top: top,
-      left: left,
-      right: right,
-      bottom: bottom,
-      totalHeight: totalHeight,
-      totalWidth: totalWidth,
-    });
   };
 
   return (

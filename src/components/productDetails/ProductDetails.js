@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductById } from "../../store/home/homeAction";
+import { getProductById, addToCart } from "../../store/home/homeAction";
 import "./productDetails.scss";
 import {
   AiOutlineStar,
@@ -10,7 +10,6 @@ import {
 } from "react-icons/ai";
 import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
-
 // react router
 import { useParams } from "react-router-dom";
 
@@ -24,7 +23,7 @@ export default function ProductDetails() {
 
   const [isCustomizationOpen, setIsCustomization] = useState(false);
   const [currentVariant, setCurrentVariant] = useState(variant);
-  const [selectedSize, setSelectSize] = useState(
+  const [size, setSize] = useState(
     currentVariant &&
       currentVariant.product_size &&
       currentVariant.product_size[0]
@@ -32,10 +31,16 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [currentImage, setCurrentImage] = useState("");
   const [currentCustom, setCurrentCustom] = useState({});
+  const [customizedImage, setCustomizedImage] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [height, setHeight] = useState("");
+  const [color_id, setColorId] = useState("");
 
   useEffect(() => {
     setCurrentVariant(variant);
-    setSelectSize(variant && variant.product_size && variant.product_size[0]);
+    setSize(variant && variant.product_size && variant.product_size[0]);
+    setHeight(variant && variant.height && variant.height[0]);
+    setColorId(variant && variant.id);
   }, [productDetail]);
 
   useEffect(() => {
@@ -52,12 +57,51 @@ export default function ProductDetails() {
   const changeVarient = (variant) => {
     setCurrentVariant(variant);
   };
-
   const selectSize = (size) => {
-    setSelectSize(size);
+    setSize(size);
   };
   const saveFinalCustomisation = (currentCustom) => {
     setCurrentCustom(currentCustom);
+  };
+  const saveFinalImage = (image) => {
+    setCustomizedImage(image);
+  };
+  const updateQunitity = (type) => {
+    if (type === "add") {
+      setQuantity(quantity + 1);
+    } else {
+      if (quantity > 1) {
+        setQuantity(quantity - 1);
+      }
+    }
+  };
+  const onAddToCart = () => {
+    var data = {
+      user_id: localStorage.getItem("es_user_id"),
+      product_id: productDetail.id,
+      sku_id: productDetail.sku_id,
+      quantity: quantity,
+      color_id: color_id,
+      height: height,
+      sleeve_id: currentCustom.sleeve_style.id
+        ? currentCustom.sleeve_style.id
+        : currentVariant.default_design[0].id,
+      bottom_id: currentCustom.bottom_style.id
+        ? currentCustom.bottom_style.id
+        : currentVariant.default_design[1].id,
+      neck_id: currentCustom.neck_style.id
+        ? currentCustom.neck_style.id
+        : currentVariant.default_design[2].id,
+      size_type: "standard",
+      size: size,
+      optional_style: {
+        "Embroidery Option": "Remove Embroidery / Embellishment",
+        "Pocket Option": "Remove Pocket",
+        "Zip Option": "Add Side Zip",
+      },
+      customized_image: customizedImage,
+    };
+    dispatch(addToCart(data));
   };
   return (
     <div>
@@ -65,7 +109,9 @@ export default function ProductDetails() {
         <div className="img-wrapper">
           <img
             src={
-              currentImage
+              customizedImage
+                ? customizedImage
+                : currentImage
                 ? currentImage
                 : currentVariant && currentVariant.gallary_image[0]
             }
@@ -212,7 +258,7 @@ export default function ProductDetails() {
           </div>
 
           <div className="color-attribute">
-            SIZE : <b>{selectedSize}</b>
+            SIZE : <b>{size}</b>
           </div>
 
           <div className="size-attribute">
@@ -225,13 +271,94 @@ export default function ProductDetails() {
               ))}
           </div>
 
+          <div className="color-attribute">SIZE CHART :</div>
+          <div className="size-block-wrapper">
+            <span className="size-block">
+              <p>XS</p>
+              <div className="size-attribute">
+                <div className="size">0</div>
+                <div className="size">2</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>S</p>
+              <div className="size-attribute">
+                <div className="size">4</div>
+                <div className="size">6</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>M</p>
+              <div className="size-attribute">
+                <div className="size">8</div>
+                <div className="size">10</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>L</p>
+              <div className="size-attribute">
+                <div className="size">12</div>
+                <div className="size">14</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>XL</p>
+              <div className="size-attribute">
+                <div className="size">16</div>
+                <div className="size">18</div>
+              </div>
+            </span>
+          </div>
+          <div className="size-block-wrapper">
+            <span className="size-block">
+              <p>1X</p>
+              <div className="size-attribute">
+                <div className="size">16w</div>
+                <div className="size">18w</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>2X</p>
+              <div className="size-attribute">
+                <div className="size">20w</div>
+                <div className="size">22w</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>3X</p>
+              <div className="size-attribute">
+                <div className="size">24w</div>
+                <div className="size">26w</div>
+              </div>
+            </span>
+            <span className="size-block">
+              <p>4X</p>
+              <div className="size-attribute">
+                <div className="size">28w</div>
+                <div className="size">30w</div>
+              </div>
+            </span>
+            {/* <span className="size-block">
+              <p>5X</p>
+              <div className="size-attribute">
+                <div className="size">32w</div>
+                <div className="size">34w</div>
+              </div>
+            </span> */}
+          </div>
+
           <div className="height-attribute">
-            <select name="" id="" className="size">
+            <select
+              name="height"
+              value={height}
+              className="size"
+              onChange={(e) => setHeight(e.target.value)}
+            >
               <option value="">Height</option>
               {currentVariant &&
                 currentVariant.height &&
                 currentVariant.height.map((height) => (
-                  <option value="">{height}</option>
+                  <option value={height}>{height}</option>
                 ))}
             </select>
           </div>
@@ -251,11 +378,20 @@ export default function ProductDetails() {
           </div>
           <div className="quantity-addtocart">
             <div className="quantity-wrapper">
-              <div className="minus">-</div>
-              <div className="quantity">1</div>
-              <div className="plus">+</div>
+              <div
+                className="minus"
+                onClick={updateQunitity.bind(this, "less")}
+              >
+                -
+              </div>
+              <div className="quantity">{quantity}</div>
+              <div className="plus" onClick={updateQunitity.bind(this, "add")}>
+                +
+              </div>
             </div>
-            <div className="add-cart-btn">ADD TO CART</div>
+            <div className="add-cart-btn" onClick={onAddToCart}>
+              ADD TO CART
+            </div>
           </div>
 
           {/* <div className="details-thumb">
@@ -295,6 +431,7 @@ export default function ProductDetails() {
         close={closeCustomization}
         currentVariant={currentVariant}
         saveFinalCustomisation={saveFinalCustomisation}
+        saveFinalImage={saveFinalImage}
       ></ProductCustomization>
     </div>
   );

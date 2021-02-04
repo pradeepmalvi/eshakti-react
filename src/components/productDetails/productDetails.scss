@@ -52,7 +52,7 @@
         // background-color: rgb(255, 171, 93);
       }
     }
-    .product-price {
+    .product-price p {
       margin-top: 20px;
       font-size: 28px;
       font-weight: bold;
@@ -141,6 +141,19 @@
         cursor: pointer;
       }
     }
+    .size-block-wrapper {
+      display: flex;
+      .size-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 3px;
+        .size {
+          margin: 3px;
+        }
+      }
+    }
 
     .height-attribute {
       margin-bottom: 20px;
@@ -178,6 +191,7 @@
         }
         .quantity {
           padding: 10px 15px;
+          width: 40px;
         }
         .minus {
           padding: 10px 15px;

@@ -7,9 +7,16 @@ import {
   SET_HOMEPAGE_PRODUCTS,
   SET_PARTICULAR_PRODUCT,
   SET_PRODUCT_DETAILS,
+  SET_CART,
 } from "../types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("es_token")}`,
+  },
+};
 
 // onRegister
 export const onRegister = (data) => (dispatch) => {
@@ -53,6 +60,7 @@ export const onLogin = (data) => (dispatch) => {
 
       localStorage.setItem("es_token", res.data.token);
       localStorage.setItem("es_name", res.data.user.name);
+      localStorage.setItem("es_user_id", res.data.user.id);
       localStorage.setItem("es_login", true);
       window.location.reload();
     })
@@ -101,6 +109,32 @@ export const getProductById = (productId) => (dispatch) => {
   Axios.get(`${requests.getProductById}/${productId}`).then((res) => {
     dispatch({
       type: SET_PRODUCT_DETAILS,
+      payload: res.data,
+    });
+  });
+};
+
+// ADD TO CART
+export const addToCart = (data) => (dispatch) => {
+  Axios.post(`${requests.addToCart}`, data, config).then((res) => {
+    console.log(res.data);
+    dispatch(getCart);
+    // dispatch({
+    //   type: SET_PRODUCT_DETAILS,
+    //   payload: res.data,
+    // });
+  });
+};
+
+// GET CART
+export const getCart = (data) => (dispatch) => {
+  Axios.get(
+    `${requests.addToCart}/${localStorage.getItem("es_user_id")}`,
+    data
+  ).then((res) => {
+    console.log(res.data);
+    dispatch({
+      type: SET_CART,
       payload: res.data,
     });
   });

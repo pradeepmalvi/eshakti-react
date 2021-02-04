@@ -6,4 +6,6 @@ export default {
   getHomePageProducts: "show-home-product",
   getProduct: "products",
   getProductById: "products",
+  addToCart: "cart",
+  getCart: "cart",
 };

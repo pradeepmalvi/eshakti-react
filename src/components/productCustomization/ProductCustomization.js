@@ -12,8 +12,10 @@ export default function ProductCustomization({
   close,
   currentVariant,
   saveFinalCustomisation,
+  saveFinalImage,
 }) {
   const [style, setStyle] = useState({});
+
   useEffect(() => {
     currentVariant && getImgSize();
     currentVariant &&
@@ -30,7 +32,6 @@ export default function ProductCustomization({
   }, [currentVariant]);
 
   const [currentCustom, setCurrentCustom] = useState();
-  const [sizes, setSizes] = useState({});
 
   const changeImage = (data) => {
     getImgSize();
@@ -110,10 +111,6 @@ export default function ProductCustomization({
     }, speed);
   };
 
-  const saveSize = (size) => {
-    setSizes(size);
-  };
-
   const onSave = () => {
     saveFinalCustomisation(currentCustom);
     compressImage();
@@ -128,32 +125,43 @@ export default function ProductCustomization({
             currentCustom &&
             currentCustom.neck_style &&
             currentCustom.neck_style.neck_design,
-          x: sizes.left,
+          x: style.leftWidth,
           y: 0,
         },
-        // {
-        //   src:
-        //     currentCustom &&
-        //     currentCustom.neck_style &&
-        //     currentCustom.neck_style.neck_design,
-        //   x: 32,
-        //   y: 0,
-        // },
-        // {
-        //   src:
-        //     currentCustom &&
-        //     currentCustom.neck_style &&
-        //     currentCustom.neck_style.neck_design,
-        //   x: 16,
-        //   y: 0,
-        // },
+        {
+          src:
+            currentCustom &&
+            currentCustom.sleeve_style &&
+            currentCustom.sleeve_style.lhand_design,
+          x: 0,
+          y: 0,
+        },
+        {
+          src:
+            currentCustom &&
+            currentCustom.sleeve_style &&
+            currentCustom.sleeve_style.rhand_design,
+          x: style.leftWidth + style.topWidth,
+          y: 0,
+        },
+        {
+          src:
+            currentCustom &&
+            currentCustom.bottom_style &&
+            currentCustom.bottom_style.bottom_design,
+          x: 0,
+          y: style.topHeight,
+        },
       ],
       {
-        width: sizes.totalWidth,
-        height: sizes.totalHeight,
+        width: style.leftWidth + style.topWidth + style.rightWidth,
+        height: style.topHeight + style.bottomHeight,
         crossOrigin: true,
       }
-    ).then((b64) => console.log(b64));
+    ).then((b64) => {
+      console.log(b64);
+      saveFinalImage(b64);
+    });
   };
 
   return (
@@ -171,7 +179,6 @@ export default function ProductCustomization({
             <ImagesCustomization
               currentCustom={currentCustom}
               style={style}
-              saveSize={saveSize}
             ></ImagesCustomization>
             <div className="details-wrapper">
               <h5 className="product-title">
