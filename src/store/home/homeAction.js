@@ -24,7 +24,7 @@ export const onRegister = (data) => (dispatch) => {
     .then((res) => {
       toast("Registered Successfully", {
         type: toast.TYPE.SUCCESS,
-        autoClose: 10000,
+        autoClose: 5000,
       });
       dispatch({
         type: SET_USER_DETAILS,
@@ -40,7 +40,7 @@ export const onRegister = (data) => (dispatch) => {
     .catch((res) => {
       toast(res.response.data.error, {
         type: toast.TYPE.ERROR,
-        autoClose: 10000,
+        autoClose: 5000,
       });
     });
 };
@@ -51,7 +51,7 @@ export const onLogin = (data) => (dispatch) => {
     .then((res) => {
       toast("Logged in Successfully", {
         type: toast.TYPE.SUCCESS,
-        autoClose: 10000,
+        autoClose: 5000,
       });
       dispatch({
         type: SET_USER_DETAILS,
@@ -68,7 +68,7 @@ export const onLogin = (data) => (dispatch) => {
       if (res.response) {
         toast(res.response.data.error, {
           type: toast.TYPE.ERROR,
-          autoClose: 10000,
+          autoClose: 5000,
         });
       }
     });
@@ -118,7 +118,11 @@ export const getProductById = (productId) => (dispatch) => {
 export const addToCart = (data) => (dispatch) => {
   Axios.post(`${requests.addToCart}`, data, config).then((res) => {
     console.log(res.data);
-    dispatch(getCart);
+    toast("Product added to cart successfully", {
+      type: toast.TYPE.SUCCESS,
+      autoClose: 5000,
+    });
+    // dispatch(getCart);
     // dispatch({
     //   type: SET_PRODUCT_DETAILS,
     //   payload: res.data,
@@ -130,7 +134,8 @@ export const addToCart = (data) => (dispatch) => {
 export const getCart = (data) => (dispatch) => {
   Axios.get(
     `${requests.addToCart}/${localStorage.getItem("es_user_id")}`,
-    data
+
+    config
   ).then((res) => {
     console.log(res.data);
     dispatch({

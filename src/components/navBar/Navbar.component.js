@@ -84,10 +84,10 @@ export default function Navbar() {
       </div>
 
       <div className="action_icons">
-        <span className="shoping_cart icon" onClick={() => {}}>
+        <Link to="/cart" className="shoping_cart icon link" onClick={() => {}}>
           <AiOutlineShoppingCart />
           <span className="cart_items">3</span>
-        </span>
+        </Link>
 
         <span className="search icon">
           <AiOutlineSearch />

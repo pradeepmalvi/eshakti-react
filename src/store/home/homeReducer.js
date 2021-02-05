@@ -3,6 +3,7 @@ import {
   SET_PRODUCT_BY_CATEGORY,
   SET_HOMEPAGE_PRODUCTS,
   SET_PRODUCT_DETAILS,
+  SET_CART,
 } from "../types";
 
 const initalState = [];
@@ -29,6 +30,12 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         productDetail: action.payload,
+      };
+
+    case SET_CART:
+      return {
+        ...state,
+        cart: action.payload,
       };
 
     default:

@@ -12,9 +12,14 @@ import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
 // react router
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import Login from "../login/Login.component";
+import SignUp from "../signup/SignUp";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
   const productDetail = useSelector((state) => state.home.productDetail);
   const variant =
     productDetail &&
@@ -47,6 +52,12 @@ export default function ProductDetails() {
     dispatch(getProductById(id));
   }, []);
 
+  const onOpenLoginModal = () => setOpenLogin(true);
+  const onCloseLoginModal = () => setOpenLogin(false);
+
+  const onOpenRegisterModal = () => setOpenRegister(true);
+  const onCloseRegisterModal = () => setOpenRegister(false);
+
   const openCustomization = () => {
     setIsCustomization(true);
   };
@@ -76,6 +87,13 @@ export default function ProductDetails() {
     }
   };
   const onAddToCart = () => {
+    if (!localStorage.getItem("es_user_id")) {
+      toast("Please Login!", {
+        type: toast.TYPE.ERROR,
+        autoClose: 5000,
+      });
+      onOpenLoginModal();
+    }
     var data = {
       user_id: localStorage.getItem("es_user_id"),
       product_id: productDetail.id,
@@ -105,6 +123,13 @@ export default function ProductDetails() {
   };
   return (
     <div>
+      <ToastContainer></ToastContainer>
+      <Login
+        open={openLogin}
+        openRegister={onOpenRegisterModal}
+        onCloseModal={onCloseLoginModal}
+      />
+      <SignUp open={openRegister} onCloseModal={onCloseRegisterModal} />
       <div className="product-details-container">
         <div className="img-wrapper">
           <img

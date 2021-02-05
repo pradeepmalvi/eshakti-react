@@ -28,7 +28,7 @@ export default function ProductCustomization({
     setTimeout(() => {
       currentVariant && getImgSize();
       saveFinalCustomisation(currentCustom);
-    }, 100);
+    }, 500);
   }, [currentVariant]);
 
   const [currentCustom, setCurrentCustom] = useState();
@@ -214,6 +214,10 @@ export default function ProductCustomization({
                         <div className="text-lead">Default</div>
                       </div>
                     )}
+                    <p className="text-lead">
+                      {currentVariant &&
+                        currentVariant.default_design[0].design_name}
+                    </p>
                   </div>
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Neckline</div>
@@ -273,6 +277,10 @@ export default function ProductCustomization({
                         <div className="text-lead">Default</div>
                       </div>
                     )}
+                    <p className="text-lead">
+                      {currentVariant &&
+                        currentVariant.default_design[1].design_name}
+                    </p>
                   </div>
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Sleeve Type</div>
@@ -339,6 +347,10 @@ export default function ProductCustomization({
                         <div className="text-lead">Default</div>
                       </div>
                     )}
+                    <p className="text-lead">
+                      {currentVariant &&
+                        currentVariant.default_design[2].design_name}
+                    </p>
                   </div>
                   <div className="customize-slider-container">
                     <div className="text-lead">Click to change Sleeve Type</div>
