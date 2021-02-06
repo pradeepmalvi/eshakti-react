@@ -41,317 +41,319 @@ export default function EshaktiSizes() {
           <h4 className="each-description-title">
             Women's Size Chart (actual body measurements in inches)
           </h4>
-          <table class="table desktop-size-chart" cellSpacing={0}>
-            <tbody>
-              <tr>
-                <td rowspan="2" width="41" height="15">
-                  SIZE
-                </td>
-                <td colspan="2" height="15" align="center">
-                  XS
-                </td>
-                <td colspan="2" height="15" align="center">
-                  S
-                </td>
-                <td colspan="2" height="15" align="center">
-                  M
-                </td>
-                <td colspan="2" height="15" align="center">
-                  L
-                </td>
-                <td colspan="2" height="15" align="center">
-                  XL
-                </td>
-                <td colspan="2" height="15" align="center">
-                  1X
-                </td>
-                <td colspan="2" height="15" align="center">
-                  2X
-                </td>
-                <td colspan="2" height="15" align="center">
-                  3X
-                </td>
-                <td colspan="2" height="15" align="center">
-                  4X
-                </td>
-                <td colspan="2" height="15" align="center">
-                  5X
-                </td>
-                <td width="41" height="15" align="center">
-                  6X
-                </td>
-              </tr>
-              <tr>
-                <td width="41" height="29" align="center">
-                  0
-                </td>
-                <td width="41" height="29" align="center">
-                  2
-                </td>
-                <td width="41" height="29" align="center">
-                  4
-                </td>
-                <td width="41" height="29" align="center">
-                  6
-                </td>
-                <td width="41" height="29" align="center">
-                  8
-                </td>
-                <td width="41" height="29" align="center">
-                  10
-                </td>
-                <td width="41" height="29" align="center">
-                  12
-                </td>
-                <td width="41" height="29" align="center">
-                  14
-                </td>
-                <td width="41" height="29" align="center">
-                  16
-                </td>
-                <td width="41" height="29" align="center">
-                  18
-                </td>
-                <td width="41" height="29" align="center">
-                  16W
-                </td>
-                <td width="41" height="29" align="center">
-                  18W
-                </td>
-                <td width="41" height="29" align="center">
-                  20W
-                </td>
-                <td width="41" height="29" align="center">
-                  22W
-                </td>
-                <td width="41" height="29" align="center">
-                  24W
-                </td>
-                <td width="41" height="29" align="center">
-                  26W
-                </td>
-                <td width="41" height="29" align="center">
-                  28W
-                </td>
-                <td width="41" height="29" align="center">
-                  30W
-                </td>
-                <td width="41" height="29" align="center">
-                  32W
-                </td>
-                <td width="41" height="29" align="center">
-                  34W
-                </td>
-                <td width="41" height="29" align="center">
-                  36W
-                </td>
-              </tr>
-              <tr>
-                <td class="newborder3 pl-1" width="41" height="25">
-                  Bust
-                </td>
-                <td width="41" height="25" align="center">
-                  32
-                </td>
-                <td width="41" height="25" align="center">
-                  33
-                </td>
-                <td width="41" height="25" align="center">
-                  34
-                </td>
-                <td width="41" height="25" align="center">
-                  35
-                </td>
-                <td width="41" height="25" align="center">
-                  36
-                </td>
-                <td width="41" height="25" align="center">
-                  37
-                </td>
-                <td width="41" height="25" align="center">
-                  38.5
-                </td>
-                <td width="41" height="25" align="center">
-                  40
-                </td>
-                <td width="41" height="25" align="center">
-                  41.5
-                </td>
-                <td width="41" height="25" align="center">
-                  43.5
-                </td>
-                <td width="41" height="25" align="center">
-                  43
-                </td>
-                <td width="41" height="25" align="center">
-                  45
-                </td>
-                <td width="41" height="25" align="center">
-                  47
-                </td>
-                <td width="41" height="25" align="center">
-                  49
-                </td>
-                <td width="41" height="25" align="center">
-                  51
-                </td>
-                <td width="41" height="25" align="center">
-                  53
-                </td>
-                <td width="41" height="25" align="center">
-                  55
-                </td>
-                <td width="41" height="25" align="center">
-                  57
-                </td>
-                <td width="41" height="25" align="center">
-                  60
-                </td>
-                <td width="41" height="25" align="center">
-                  63
-                </td>
-                <td width="41" height="25" align="center">
-                  66
-                </td>
-              </tr>
-              <tr>
-                <td class="newborder3 pl-1" width="41" height="31">
-                  Waist
-                </td>
-                <td width="41" height="31" align="center">
-                  25
-                </td>
-                <td width="41" height="31" align="center">
-                  26
-                </td>
-                <td width="41" height="31" align="center">
-                  27
-                </td>
-                <td width="41" height="31" align="center">
-                  28
-                </td>
-                <td width="41" height="31" align="center">
-                  29
-                </td>
-                <td width="41" height="31" align="center">
-                  30
-                </td>
-                <td width="41" height="31" align="center">
-                  31.5
-                </td>
-                <td width="41" height="31" align="center">
-                  33
-                </td>
-                <td width="41" height="31" align="center">
-                  34.5
-                </td>
-                <td width="41" height="31" align="center">
-                  36.5
-                </td>
-                <td width="41" height="31" align="center">
-                  36
-                </td>
-                <td width="41" height="31" align="center">
-                  38
-                </td>
-                <td width="41" height="31" align="center">
-                  40
-                </td>
-                <td width="41" height="31" align="center">
-                  42
-                </td>
-                <td width="41" height="31" align="center">
-                  44
-                </td>
-                <td width="41" height="31" align="center">
-                  46
-                </td>
-                <td width="41" height="31" align="center">
-                  48
-                </td>
-                <td width="41" height="31" align="center">
-                  50
-                </td>
-                <td width="41" height="31" align="center">
-                  53
-                </td>
-                <td width="41" height="31" align="center">
-                  56
-                </td>
-                <td width="41" height="31" align="center">
-                  59
-                </td>
-              </tr>
-              <tr>
-                <td class="newborder3 pl-1" width="41" height="30">
-                  Hip
-                </td>
-                <td width="41" height="30" align="center">
-                  35
-                </td>
-                <td width="41" height="30" align="center">
-                  36
-                </td>
-                <td width="41" height="30" align="center">
-                  37
-                </td>
-                <td width="41" height="30" align="center">
-                  38
-                </td>
-                <td width="41" height="30" align="center">
-                  39
-                </td>
-                <td width="41" height="30" align="center">
-                  40
-                </td>
-                <td width="41" height="30" align="center">
-                  41.5
-                </td>
-                <td width="41" height="30" align="center">
-                  43
-                </td>
-                <td width="41" height="30" align="center">
-                  44.5
-                </td>
-                <td width="41" height="30" align="center">
-                  46.5
-                </td>
-                <td width="41" height="30" align="center">
-                  46
-                </td>
-                <td width="41" height="30" align="center">
-                  48
-                </td>
-                <td width="41" height="30" align="center">
-                  50
-                </td>
-                <td width="41" height="30" align="center">
-                  52
-                </td>
-                <td width="41" height="30" align="center">
-                  54
-                </td>
-                <td width="41" height="30" align="center">
-                  56
-                </td>
-                <td width="41" height="30" align="center">
-                  58
-                </td>
-                <td width="41" height="30" align="center">
-                  60
-                </td>
-                <td width="41" height="30" align="center">
-                  63
-                </td>
-                <td width="41" height="30" align="center">
-                  66
-                </td>
-                <td width="41" height="30" align="center">
-                  69
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="table">
+            <table class="table desktop-size-chart" cellSpacing={0}>
+              <tbody>
+                <tr>
+                  <td rowspan="2" width="41" height="15">
+                    SIZE
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    XS
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    S
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    M
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    L
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    XL
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    1X
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    2X
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    3X
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    4X
+                  </td>
+                  <td colspan="2" height="15" align="center">
+                    5X
+                  </td>
+                  <td width="41" height="15" align="center">
+                    6X
+                  </td>
+                </tr>
+                <tr>
+                  <td width="41" height="29" align="center">
+                    0
+                  </td>
+                  <td width="41" height="29" align="center">
+                    2
+                  </td>
+                  <td width="41" height="29" align="center">
+                    4
+                  </td>
+                  <td width="41" height="29" align="center">
+                    6
+                  </td>
+                  <td width="41" height="29" align="center">
+                    8
+                  </td>
+                  <td width="41" height="29" align="center">
+                    10
+                  </td>
+                  <td width="41" height="29" align="center">
+                    12
+                  </td>
+                  <td width="41" height="29" align="center">
+                    14
+                  </td>
+                  <td width="41" height="29" align="center">
+                    16
+                  </td>
+                  <td width="41" height="29" align="center">
+                    18
+                  </td>
+                  <td width="41" height="29" align="center">
+                    16W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    18W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    20W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    22W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    24W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    26W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    28W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    30W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    32W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    34W
+                  </td>
+                  <td width="41" height="29" align="center">
+                    36W
+                  </td>
+                </tr>
+                <tr>
+                  <td class="newborder3 pl-1" width="41" height="25">
+                    Bust
+                  </td>
+                  <td width="41" height="25" align="center">
+                    32
+                  </td>
+                  <td width="41" height="25" align="center">
+                    33
+                  </td>
+                  <td width="41" height="25" align="center">
+                    34
+                  </td>
+                  <td width="41" height="25" align="center">
+                    35
+                  </td>
+                  <td width="41" height="25" align="center">
+                    36
+                  </td>
+                  <td width="41" height="25" align="center">
+                    37
+                  </td>
+                  <td width="41" height="25" align="center">
+                    38.5
+                  </td>
+                  <td width="41" height="25" align="center">
+                    40
+                  </td>
+                  <td width="41" height="25" align="center">
+                    41.5
+                  </td>
+                  <td width="41" height="25" align="center">
+                    43.5
+                  </td>
+                  <td width="41" height="25" align="center">
+                    43
+                  </td>
+                  <td width="41" height="25" align="center">
+                    45
+                  </td>
+                  <td width="41" height="25" align="center">
+                    47
+                  </td>
+                  <td width="41" height="25" align="center">
+                    49
+                  </td>
+                  <td width="41" height="25" align="center">
+                    51
+                  </td>
+                  <td width="41" height="25" align="center">
+                    53
+                  </td>
+                  <td width="41" height="25" align="center">
+                    55
+                  </td>
+                  <td width="41" height="25" align="center">
+                    57
+                  </td>
+                  <td width="41" height="25" align="center">
+                    60
+                  </td>
+                  <td width="41" height="25" align="center">
+                    63
+                  </td>
+                  <td width="41" height="25" align="center">
+                    66
+                  </td>
+                </tr>
+                <tr>
+                  <td class="newborder3 pl-1" width="41" height="31">
+                    Waist
+                  </td>
+                  <td width="41" height="31" align="center">
+                    25
+                  </td>
+                  <td width="41" height="31" align="center">
+                    26
+                  </td>
+                  <td width="41" height="31" align="center">
+                    27
+                  </td>
+                  <td width="41" height="31" align="center">
+                    28
+                  </td>
+                  <td width="41" height="31" align="center">
+                    29
+                  </td>
+                  <td width="41" height="31" align="center">
+                    30
+                  </td>
+                  <td width="41" height="31" align="center">
+                    31.5
+                  </td>
+                  <td width="41" height="31" align="center">
+                    33
+                  </td>
+                  <td width="41" height="31" align="center">
+                    34.5
+                  </td>
+                  <td width="41" height="31" align="center">
+                    36.5
+                  </td>
+                  <td width="41" height="31" align="center">
+                    36
+                  </td>
+                  <td width="41" height="31" align="center">
+                    38
+                  </td>
+                  <td width="41" height="31" align="center">
+                    40
+                  </td>
+                  <td width="41" height="31" align="center">
+                    42
+                  </td>
+                  <td width="41" height="31" align="center">
+                    44
+                  </td>
+                  <td width="41" height="31" align="center">
+                    46
+                  </td>
+                  <td width="41" height="31" align="center">
+                    48
+                  </td>
+                  <td width="41" height="31" align="center">
+                    50
+                  </td>
+                  <td width="41" height="31" align="center">
+                    53
+                  </td>
+                  <td width="41" height="31" align="center">
+                    56
+                  </td>
+                  <td width="41" height="31" align="center">
+                    59
+                  </td>
+                </tr>
+                <tr>
+                  <td class="newborder3 pl-1" width="41" height="30">
+                    Hip
+                  </td>
+                  <td width="41" height="30" align="center">
+                    35
+                  </td>
+                  <td width="41" height="30" align="center">
+                    36
+                  </td>
+                  <td width="41" height="30" align="center">
+                    37
+                  </td>
+                  <td width="41" height="30" align="center">
+                    38
+                  </td>
+                  <td width="41" height="30" align="center">
+                    39
+                  </td>
+                  <td width="41" height="30" align="center">
+                    40
+                  </td>
+                  <td width="41" height="30" align="center">
+                    41.5
+                  </td>
+                  <td width="41" height="30" align="center">
+                    43
+                  </td>
+                  <td width="41" height="30" align="center">
+                    44.5
+                  </td>
+                  <td width="41" height="30" align="center">
+                    46.5
+                  </td>
+                  <td width="41" height="30" align="center">
+                    46
+                  </td>
+                  <td width="41" height="30" align="center">
+                    48
+                  </td>
+                  <td width="41" height="30" align="center">
+                    50
+                  </td>
+                  <td width="41" height="30" align="center">
+                    52
+                  </td>
+                  <td width="41" height="30" align="center">
+                    54
+                  </td>
+                  <td width="41" height="30" align="center">
+                    56
+                  </td>
+                  <td width="41" height="30" align="center">
+                    58
+                  </td>
+                  <td width="41" height="30" align="center">
+                    60
+                  </td>
+                  <td width="41" height="30" align="center">
+                    63
+                  </td>
+                  <td width="41" height="30" align="center">
+                    66
+                  </td>
+                  <td width="41" height="30" align="center">
+                    69
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div className="providing-your-measurement">
           <h4 className="each-description-title">

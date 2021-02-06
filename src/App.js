@@ -42,6 +42,8 @@ import { SET_CATEGORIES } from "./context/action.types";
 import CustomerSpeakPage from "./components/customer-speak-page/CustomerSpeakPage.component";
 import HowItWorks from "./components/how-it-works-page/HowItWorks.component";
 import AboutUs from "./components/about-us/AboutUs.component";
+import WholeSale from "./components/wholesale-page/WholeSale.component";
+import HowToMeasure from "./components/how-to-measure-page/HowToMeasure.component";
 
 function App() {
   const dispatch = useDispatch();
@@ -123,6 +125,8 @@ function App() {
           <Route exact path="/how-it-works" component={HowItWorks}></Route>
           <Route exact path="/about-us" component={AboutUs}></Route>
           <Route exact path="/eshakti-sizes" component={EshaktiSizes}></Route>
+          <Route exact path="/whole-sale" component={WholeSale}></Route>
+          <Route exact path="/how-to-measure" component={HowToMeasure}></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />

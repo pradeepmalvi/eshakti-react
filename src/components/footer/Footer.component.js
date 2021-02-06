@@ -22,7 +22,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> Fabric customisation</a>
+              <a href="#">Fabric customisation</a>
             </li>
             <li>
               <span className="right_arrow_icon">
@@ -57,7 +57,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#">Wholesale</a>
+              <Link to="/whole-sale">Wholesale</Link>
             </li>
             <li>
               <span className="right_arrow_icon">
@@ -104,7 +104,7 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#"> How to Measure</a>
+              <Link to="/how-to-measure"> How to Measure</Link>
             </li>
           </ul>
         </div>

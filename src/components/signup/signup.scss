@@ -4,11 +4,13 @@
   .inner-container-signup {
     width: 50vw;
 
-    .title {
+    .title-text {
+      margin: 0;
       padding: 1rem;
       background: #333333;
       color: #fff;
     }
+
     .main-wrap {
       display: flex;
     }

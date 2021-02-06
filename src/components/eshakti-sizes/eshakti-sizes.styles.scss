@@ -3,13 +3,16 @@
   padding: 1rem 4.5rem;
   max-width: 1360px;
 
-  table {
-    width: 1100px;
-    border: 1px solid #2e2e2e;
-
-    th,
-    td {
+  .table {
+    overflow-x: auto;
+    table {
+      width: 1100px;
       border: 1px solid #2e2e2e;
+
+      th,
+      td {
+        border: 1px solid #2e2e2e;
+      }
     }
   }
 
