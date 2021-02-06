@@ -18,18 +18,22 @@ export default function ProductCustomization({
 
   useEffect(() => {
     currentVariant && getImgSize();
-    currentVariant &&
-      setCurrentCustom({
-        neck_style: currentVariant ? currentVariant.default_design[0] : null,
-        sleeve_style: currentVariant ? currentVariant.default_design[1] : null,
-        bottom_style: currentVariant ? currentVariant.default_design[2] : null,
-      });
 
     setTimeout(() => {
       currentVariant && getImgSize();
       saveFinalCustomisation(currentCustom);
+      currentVariant &&
+        setCurrentCustom({
+          neck_style: currentVariant ? currentVariant.default_design[0] : null,
+          sleeve_style: currentVariant
+            ? currentVariant.default_design[1]
+            : null,
+          bottom_style: currentVariant
+            ? currentVariant.default_design[2]
+            : null,
+        });
     }, 500);
-  }, [currentVariant]);
+  }, [open]);
 
   const [currentCustom, setCurrentCustom] = useState();
 

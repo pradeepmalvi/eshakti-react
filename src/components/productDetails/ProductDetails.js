@@ -7,6 +7,8 @@ import {
   AiOutlineHeart,
   AiOutlineMail,
   AiOutlineSync,
+  AiFillHeart,
+  AiFillStar,
 } from "react-icons/ai";
 import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
@@ -46,6 +48,13 @@ export default function ProductDetails() {
     setSize(variant && variant.product_size && variant.product_size[0]);
     setHeight(variant && variant.height && variant.height[0]);
     setColorId(variant && variant.id);
+    setTimeout(() => {
+      setCurrentCustom({
+        neck_style: currentVariant ? currentVariant.default_design[0] : null,
+        sleeve_style: currentVariant ? currentVariant.default_design[1] : null,
+        bottom_style: currentVariant ? currentVariant.default_design[2] : null,
+      });
+    }, 200);
   }, [productDetail]);
 
   useEffect(() => {
@@ -77,7 +86,7 @@ export default function ProductDetails() {
   const saveFinalImage = (image) => {
     setCustomizedImage(image);
   };
-  const updateQunitity = (type) => {
+  const updateQuantity = (type) => {
     if (type === "add") {
       setQuantity(quantity + 1);
     } else {
@@ -167,16 +176,16 @@ export default function ProductDetails() {
             <div className="product-review">
               <span className="rating">
                 <span className="each_star">
-                  <AiOutlineStar />
+                  <AiFillStar />
                 </span>
                 <span className="each_star">
-                  <AiOutlineStar />
+                  <AiFillStar />
                 </span>
                 <span className="each_star">
-                  <AiOutlineStar />
+                  <AiFillStar />
                 </span>
                 <span className="each_star">
-                  <AiOutlineStar />
+                  <AiFillStar />
                 </span>
                 <span className="each_star">
                   <AiOutlineStar />
@@ -187,7 +196,9 @@ export default function ProductDetails() {
             <div className="stock-text">
               {productDetail && productDetail.stock}
             </div>
-            {/* <div className="color-text">STYLE # COL00043454</div> */}
+            <div className="color-text">
+              STYLE # {productDetail && productDetail.sku_id}
+            </div>
           </div>
           <div className="product-price">
             <p>
@@ -405,12 +416,12 @@ export default function ProductDetails() {
             <div className="quantity-wrapper">
               <div
                 className="minus"
-                onClick={updateQunitity.bind(this, "less")}
+                onClick={updateQuantity.bind(this, "less")}
               >
                 -
               </div>
               <div className="quantity">{quantity}</div>
-              <div className="plus" onClick={updateQunitity.bind(this, "add")}>
+              <div className="plus" onClick={updateQuantity.bind(this, "add")}>
                 +
               </div>
             </div>
@@ -450,7 +461,10 @@ export default function ProductDetails() {
           </div> */}
         </div>
       </div>
-      <ProductTabList></ProductTabList>
+      <ProductTabList
+        productDetail={productDetail && productDetail.long_descript}
+        feature_description={productDetail && productDetail.feature_description}
+      ></ProductTabList>
       <ProductCustomization
         open={isCustomizationOpen}
         close={closeCustomization}

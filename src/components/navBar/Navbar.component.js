@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../../store/home/homeAction";
 import "./navbar.styles.scss";
-
-import { useSelector } from "react-redux";
 
 import UseWindowSize from "../../hooks/useWindowSize";
 
@@ -19,10 +19,17 @@ import {
 } from "react-icons/ai";
 
 export default function Navbar() {
+  const cart = useSelector((state) => state.home.cart);
+  const dispatch = useDispatch();
+
   const { dispatchAppState } = useContext(AppContext);
   const categories = useSelector((state) => state.home.productCategory);
   const { width } = UseWindowSize();
   const navChangeWidth = 1322;
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
 
   return width > navChangeWidth ? (
     <div className="navbar-bigger">
@@ -86,7 +93,7 @@ export default function Navbar() {
       <div className="action_icons">
         <Link to="/cart" className="shoping_cart icon link" onClick={() => {}}>
           <AiOutlineShoppingCart />
-          <span className="cart_items">3</span>
+          <span className="cart_items">{cart ? cart.length : 0}</span>
         </Link>
 
         <span className="search icon">

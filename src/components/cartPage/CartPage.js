@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../../store/home/homeAction";
+import { getCart, updateCart, removeCart } from "../../store/home/homeAction";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import "./cartPage.scss";
 
 import { AiOutlineHeart, AiOutlineInfoCircle } from "react-icons/ai";
-import { BsX } from "react-icons/bs";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function CartPage() {
   const cart = useSelector((state) => state.home.cart);
@@ -15,91 +17,120 @@ export default function CartPage() {
     dispatch(getCart());
   }, []);
 
+  const updateQunitity = (type, cart_id) => {
+    let quantity;
+    if (type === "add") {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart_id === cart[i].cart_id) {
+          quantity = cart[i].quantity + 1;
+        }
+      }
+    } else {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart_id === cart[i].cart_id) {
+          if (cart[i].quantity > 1) {
+            quantity = cart[i].quantity - 1;
+          }
+        }
+      }
+    }
+    let data = {
+      quantity: quantity,
+    };
+    dispatch(updateCart(data, cart_id));
+  };
+
+  const cartGrandTotal = () => {
+    let total = 0;
+    if (cart) {
+      for (let i = 0; i < cart.length; i++) {
+        total = total + cart[i].price;
+      }
+    }
+    return total;
+  };
   return (
     <div className="cart-container">
+      <ToastContainer></ToastContainer>
       <div className="cart-wrapper">
         <div className="cart-group-wrapper">
-          {cart &&
-            cart.map((product) => (
-              <div className="cart-item">
-                <div className="cart-image">
-                  <img src={product.customized_image} alt="" />
-                </div>
-                <div className="cart-content">
-                  <div className="product-price">${product.price}</div>
-                  <p className="product-title ">{product.product_name}</p>
-                  <p className="style-attribute">STYLE # CL0078433</p>
+          {cart ? (
+            cart.length > 0 ? (
+              cart.map((product) => (
+                <div className="cart-item">
+                  <div className="cart-image">
+                    <img src={product.customized_image} alt="" />
+                  </div>
+                  <div className="cart-content">
+                    <div className="product-price">${product.price}</div>
+                    <p className="product-title ">{product.product_name}</p>
+                    <p className="style-attribute">STYLE # {product.sku_id}</p>
 
-                  <div className="attributes-types">
-                    <div className="color">black 1</div>
-                    <div className="size">
-                      <select name="" id="">
-                        <option value="">M</option>
-                      </select>
+                    <div className="attributes-types">
+                      <div className="quantity">
+                        <div className="quantity-wrapper">
+                          <div
+                            className="minus"
+                            onClick={updateQunitity.bind(
+                              this,
+                              "less",
+                              product.cart_id
+                            )}
+                          >
+                            -
+                          </div>
+                          <div className="quantity">{product.quantity}</div>
+                          <div
+                            className="plus"
+                            onClick={updateQunitity.bind(
+                              this,
+                              "add",
+                              product.cart_id
+                            )}
+                          >
+                            +
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="size">{product.size}</div>
+
+                      <div className="color">{product.color_name}</div>
                     </div>
-
-                    <div className="quantity">
-                      <select name="" id="">
-                        <option value="">Qty 1</option>
-                      </select>
+                    <div className="save-later">
+                      <AiOutlineHeart /> Save for later
+                    </div>
+                    <div
+                      className="close"
+                      onClick={() => dispatch(removeCart(product.cart_id))}
+                    >
+                      <AiOutlineClose></AiOutlineClose>
                     </div>
                   </div>
-                  <div className="save-later">
-                    <AiOutlineHeart /> Save for later
-                  </div>
-                  <div className="close">
-                    <BsX></BsX>
-                  </div>
                 </div>
+              ))
+            ) : (
+              <div className="empty-cart">
+                Your cart is empty!
+                <br /> Let's add some products in the cart. <br /> <br />
+                <Link to="/" className="checkout-btn">
+                  CONTINUE SHOPPING
+                </Link>
               </div>
-            ))}
+            )
+          ) : null}
 
-          <div className="cart-item">
-            <div className="cart-image">
-              <img
-                src="https://i.ibb.co/wYQh1bN/Screen-Shot-2021-01-18-at-11-01-09-PM.png"
-                alt=""
-              />
+          {cart && cart.length > 0 ? (
+            <div className="cart-item-total">
+              <span>Sub Total</span> <span>${cartGrandTotal()}</span>
             </div>
-            <div className="cart-content">
-              <div className="product-price">$22.95</div>
-              <p className="product-title ">
-                Self-Button Front Cotton Jersey Empire Dress
-              </p>
-              <p className="style-attribute">STYLE # CL0078433</p>
-
-              <div className="attributes-types">
-                <div className="color">black 1</div>
-                <div className="size">
-                  <select name="" id="">
-                    <option value="">M</option>
-                  </select>
-                </div>
-
-                <div className="quantity">
-                  <select name="" id="">
-                    <option value="">Qty 1</option>
-                  </select>
-                </div>
-              </div>
-              <div className="save-later">
-                <AiOutlineHeart /> Save for later
-              </div>
-            </div>
-            <div className="close">
-              <BsX></BsX>
-            </div>
-          </div>
-
-          <div className="cart-item-total">
-            <span>Sub Total</span> <span>$41.35</span>
-          </div>
+          ) : null}
         </div>
         <div className="cart-total-wrapper">
           <div className="cart-total">
             <div className="total-header">TOTAL</div>
             <div className="subtotal">
-              <span>Sub Total</span> <span>$41.35</span>
+              <span>Sub Total</span> <span>${cartGrandTotal()}</span>
             </div>
             <div className="subtotal">
               <span>Delivery</span>{" "}
@@ -112,7 +143,9 @@ export default function CartPage() {
                 <option value=""> Standard Delivery (Free)</option>
               </select>
             </div>
-            <div className="checkout-btn">PROCEED TO CHECKOUT</div>
+            <Link to="/shipping-info" className="checkout-btn">
+              PROCEED TO CHECKOUT{" "}
+            </Link>{" "}
             WE ACCEPT:
             <div className="payment-methods">
               <div className="card">

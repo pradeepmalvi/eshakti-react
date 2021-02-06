@@ -23,6 +23,10 @@
           top: 0;
           right: 5px;
           font-weight: 600;
+          svg {
+            font-size: 20px;
+            cursor: pointer;
+          }
         }
 
         .cart-image {
@@ -53,9 +57,13 @@
             color: #767676;
             padding: 20px 0;
             .color {
-              padding-right: 20px;
+              padding-left: 20px;
+              display: flex;
+              align-items: center;
             }
             .size {
+              display: flex;
+              align-items: center;
               border-left: 2px solid #efefef;
               border-right: 2px solid #efefef;
               padding: 0 20px;
@@ -67,7 +75,7 @@
               }
             }
             .quantity {
-              padding: 0 20px;
+              padding-right: 20px;
               select {
                 font-weight: 600;
                 color: #767676;
@@ -89,6 +97,23 @@
               margin-right: 5px;
             }
           }
+          .quantity-wrapper {
+            display: flex;
+            border: 2px solid #f3f3f3;
+
+            .plus {
+              padding: 10px 15px;
+              cursor: pointer;
+            }
+            .quantity {
+              padding: 10px 15px;
+              width: 40px;
+            }
+            .minus {
+              padding: 10px 15px;
+              cursor: pointer;
+            }
+          }
         }
       }
       .cart-item-total {
@@ -97,6 +122,7 @@
         font-weight: bold;
         display: flex;
         span {
+          font-size: 20px;
           padding: 0 20px;
         }
       }
@@ -133,6 +159,7 @@
         }
       }
       .checkout-btn {
+        display: block;
         padding: 10px;
         background-color: #45d3a0;
         font-weight: 500;
@@ -178,6 +205,20 @@
           font-size: 14px;
         }
       }
+    }
+  }
+  .empty-cart {
+    padding: 60px 40px;
+    text-align: center;
+    font-size: 20px;
+    .checkout-btn {
+      display: inline;
+      padding: 10px;
+      background-color: #45d3a0;
+      font-weight: 500;
+      color: #fff;
+      text-align: center;
+      margin: 30px 0;
     }
   }
 }

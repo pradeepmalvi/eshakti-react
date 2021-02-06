@@ -116,31 +116,43 @@ export const getProductById = (productId) => (dispatch) => {
 
 // ADD TO CART
 export const addToCart = (data) => (dispatch) => {
-  Axios.post(`${requests.addToCart}`, data, config).then((res) => {
-    console.log(res.data);
+  Axios.post(`${requests.cart}`, data, config).then((res) => {
     toast("Product added to cart successfully", {
       type: toast.TYPE.SUCCESS,
       autoClose: 5000,
     });
-    // dispatch(getCart);
-    // dispatch({
-    //   type: SET_PRODUCT_DETAILS,
-    //   payload: res.data,
-    // });
+    dispatch(getCart());
   });
 };
 
 // GET CART
 export const getCart = (data) => (dispatch) => {
   Axios.get(
-    `${requests.addToCart}/${localStorage.getItem("es_user_id")}`,
+    `${requests.cart}/${localStorage.getItem("es_user_id")}`,
 
     config
   ).then((res) => {
-    console.log(res.data);
     dispatch({
       type: SET_CART,
       payload: res.data,
     });
+  });
+};
+
+// UPDATE CART
+export const updateCart = (data, cart_id) => (dispatch) => {
+  Axios.put(`${requests.cart}/${cart_id}`, data, config).then((res) => {
+    dispatch(getCart());
+  });
+};
+
+// REMOVE CART
+export const removeCart = (id) => (dispatch) => {
+  Axios.delete(`${requests.cart}/${id}`, config).then((res) => {
+    toast("Product deleted", {
+      type: toast.TYPE.SUCCESS,
+      autoClose: 5000,
+    });
+    dispatch(getCart());
   });
 };
