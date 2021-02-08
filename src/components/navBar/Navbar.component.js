@@ -56,10 +56,12 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="action_icons">
-        <span className="shoping_cart icon">
-          <AiOutlineShoppingCart />
-          <span className="cart_items">3</span>
-        </span>
+        <Link to="/cart" className="link">
+          <span className="shoping_cart icon">
+            <AiOutlineShoppingCart />
+            <span className="cart_items">3</span>
+          </span>
+        </Link>
         <span className="whishlist icon">
           <AiOutlineHeart />
         </span>
