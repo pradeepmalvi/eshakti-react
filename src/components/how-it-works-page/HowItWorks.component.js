@@ -25,7 +25,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="bottom-content">
-          <div className="favourite-design">
+          <div className="favourite-design common-left">
             <div className="left">
               <img
                 src="https://www.eshakti.com/assets/images/how-works/how_it_works_page_01.jpg"
@@ -45,7 +45,7 @@ export default function HowItWorks() {
               </div>
             </div>
           </div>
-          <div className="your-measurements">
+          <div className="your-measurements common-right">
             <div className="left">
               <h2 className="area-title">1. Pick your favourite design</h2>
               <p className="area-desc">
@@ -65,7 +65,7 @@ export default function HowItWorks() {
               />
             </div>
           </div>
-          <div className="customise-design">
+          <div className="customise-design common-left">
             <div className="left">
               <img
                 src="https://www.eshakti.com/assets/images/how-works/how_it_works_page_03.jpg"
@@ -85,7 +85,7 @@ export default function HowItWorks() {
               </div>
             </div>
           </div>
-          <div className="customized-clothing">
+          <div className="customized-clothing common-right">
             <div className="left">
               <h2 className="area-title">1. Pick your favourite design</h2>
               <p className="area-desc">
@@ -105,7 +105,7 @@ export default function HowItWorks() {
               />
             </div>
           </div>
-          <div className="fabulous-fit">
+          <div className="fabulous-fit common-left">
             <div className="left">
               <img
                 src="https://www.eshakti.com/assets/images/how-works/how_it_works_page_05.jpg"
@@ -125,7 +125,7 @@ export default function HowItWorks() {
               </div>
             </div>
           </div>
-          <div className="what-customers-says">
+          <div className="what-customers-says common-right">
             <div className="left">
               <h2 className="area-title">1. Pick your favourite design</h2>
               <p className="area-desc">

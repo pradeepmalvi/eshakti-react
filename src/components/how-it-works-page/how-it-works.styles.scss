@@ -1,5 +1,5 @@
 .how-it-works {
-  width: 1360px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 4rem 4.5rem 2rem 4.5rem;
 
@@ -14,15 +14,17 @@
     align-items: center;
 
     .play-icon {
-      font-size: 4rem;
       color: rgb(238, 235, 235);
       cursor: pointer;
+
+      svg {
+        font-size: 4rem;
+      }
     }
   }
 
   .bottom-content {
     margin: 0 auto;
-    width: 80%;
 
     // items that are started with left side images
     .favourite-design,

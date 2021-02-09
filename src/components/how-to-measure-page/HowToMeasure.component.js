@@ -13,7 +13,7 @@ export default function HowToMeasure() {
           <img src="https://www.eshakti.com/images/MHTM_bust.jpg" alt="" />
         </div>
         <div className="right">
-          <h3>How to measure Bust</h3>
+          <h3 className="area-title">How to measure Bust</h3>
           <p>
             Bust Wearing your usual bra, with arms relaxed at your sides,
             measure your bust at the fullest point, keeping the tape parallel to
@@ -25,7 +25,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure Calf</h3>
+          <h3 className="area-title">How to measure Calf</h3>
           <p>Measure around the fullest part of one calf.</p>
         </div>
         <div className="right">
@@ -37,7 +37,7 @@ export default function HowToMeasure() {
           <img src="https://www.eshakti.com/images/MHTM_Chest.jpg" alt="" />
         </div>
         <div className="right">
-          <h3>How to measure Chest</h3>
+          <h3 className="area-title">How to measure Chest</h3>
           <p>
             Measure all the way around your torso immediately above your bust.
           </p>
@@ -45,7 +45,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to Measure Hip?</h3>
+          <h3 className="area-title">How to Measure Hip?</h3>
           <p>
             Standing with heels together, measure around your body at the
             broadest part of your hips (approximately 8 inches below natural
@@ -62,7 +62,7 @@ export default function HowToMeasure() {
           <img src="https://www.eshakti.com/images/MHTM_below-hip.jpg" alt="" />
         </div>
         <div className="right">
-          <h3>How to measure Hip at Crotch</h3>
+          <h3 className="area-title">How to measure Hip at Crotch</h3>
           <p>
             Measure all the way around your body at your low hip, where it meets
             the thighs.
@@ -71,7 +71,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure Outseam</h3>
+          <h3 className="area-title">How to measure Outseam</h3>
           <p>
             This is essential for well fitting pants. Measure straight from the
             wearing waistline to the ankle.
@@ -89,7 +89,7 @@ export default function HowToMeasure() {
           />
         </div>
         <div className="right">
-          <h3>How to measure Shoulder</h3>
+          <h3 className="area-title">How to measure Shoulder</h3>
           <p>
             This is one that may be easier with the help of a friend. Measure
             across your upper back from the tip of one shoulder to the tip of
@@ -99,7 +99,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure Thigh</h3>
+          <h3 className="area-title">How to measure Thigh</h3>
           <p>
             Measure around the fullest part of one thigh. And yes, you get to
             choose which thigh.
@@ -114,7 +114,7 @@ export default function HowToMeasure() {
           <img src="https://www.eshakti.com/images/MHTM_underbust.jpg" alt="" />
         </div>
         <div className="right">
-          <h3>How to measure Under Bust</h3>
+          <h3 className="area-title">How to measure Under Bust</h3>
           <p>
             Measure all the way around your torso immediately beneath your bust.
           </p>
@@ -122,7 +122,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure Upper Arm</h3>
+          <h3 className="area-title">How to measure Upper Arm</h3>
           <p>
             Place the tape measure around the widest part of your upper arm,
             your bicep. Then bend your arm slightly at the elbow. We want to be
@@ -138,7 +138,7 @@ export default function HowToMeasure() {
           <img src="https://www.eshakti.com/images/MHTM_Waist.jpg" alt="" />
         </div>
         <div className="right">
-          <h3>How to measure Waist</h3>
+          <h3 className="area-title">How to measure Waist</h3>
           <p>
             Measure around the narrowest part of the natural waistline. To find
             your natural waistline, bend to one side. There will usually be a
@@ -153,7 +153,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure Wearing Waist</h3>
+          <h3 className="area-title">How to measure Wearing Waist</h3>
           <p>
             Measure all the way around your waist where you actually wear your
             pants and jeans.
@@ -171,7 +171,7 @@ export default function HowToMeasure() {
           <img src="https://www.eshakti.com/images/MHTM_Waist.jpg" alt="" />
         </div>
         <div className="right">
-          <h3>How to measure Waist</h3>
+          <h3 className="area-title">How to measure Waist</h3>
           <p>
             Measure around the narrowest part of the natural waistline. To find
             your natural waistline, bend to one side. There will usually be a
@@ -186,7 +186,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure Wearing Waist</h3>
+          <h3 className="area-title">How to measure Wearing Waist</h3>
           <p>
             Measure all the way around your waist where you actually wear your
             pants and jeans.
@@ -207,7 +207,7 @@ export default function HowToMeasure() {
           />
         </div>
         <div className="right">
-          <h3>How to measure HPS to Knee</h3>
+          <h3 className="area-title">How to measure HPS to Knee</h3>
           <p>
             Start from where your shoulder meets your neck and measure down
             following along the curve of your front to your natural waistline
@@ -218,7 +218,7 @@ export default function HowToMeasure() {
       </div>
       <div className="each-measurement-right">
         <div className="left">
-          <h3>How to measure HPS to Waist</h3>
+          <h3 className="area-title">How to measure HPS to Waist</h3>
           <p>
             For best results, tie a ribbon (or string or skinny belt) at your
             natural waist (the narrowest part of the waistline) to mark it. Then

@@ -12,7 +12,7 @@ export default function WholeSale() {
     <div className="whole-sale">
       <div className="title-text">
         <p>Retailers/Resellers</p>
-        <h1>A Big opprtunity to grow your business</h1>
+        <h1 className="title">A Big opprtunity to grow your business</h1>
       </div>
 
       <div className="content">
@@ -81,7 +81,7 @@ export default function WholeSale() {
 
         <div className="enquiry-form">
           <div className="title-area">
-            <h3>eShakti B2B Inquiry Form</h3>
+            <h3 className="title-text">eShakti B2B Inquiry Form</h3>
             <p>
               Thank you for your interest in eShakti. May we request you to fill
               up a few details. Our representative will be in touch with you

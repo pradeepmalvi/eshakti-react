@@ -1,0 +1,60 @@
+@media only screen and (max-width: 660px) {
+  .inner-container-login {
+    .title {
+      .title-text {
+        font-size: 1.2rem;
+      }
+    }
+
+    .area-title {
+      font-size: 1.2rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .content {
+      flex-direction: column;
+
+      .left,
+      .right {
+        width: 100% !important;
+      }
+
+      .right {
+        .area-title {
+          display: none;
+        }
+        .discription {
+          display: none;
+        }
+
+        .create-account-btn {
+          background: #fff;
+          color: #7de0af !important;
+          font-size: 1.1rem !important;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
+  .inner-container-signup {
+    .content {
+      padding-top: 1rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .title {
+      .title-text {
+        font-size: 1.2rem;
+      }
+    }
+
+    .area-title {
+      font-size: 1.2rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .main-wrap {
+      flex-direction: column;
+    }
+  }
+}
