@@ -7,4 +7,5 @@ export default {
   getProduct: "products",
   getProductById: "products",
   cart: "cart",
+  order: "order",
 };

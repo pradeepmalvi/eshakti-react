@@ -189,8 +189,8 @@
         display: flex;
         align-items: center;
       }
-      label {
-        margin-left: 10px;
+      input {
+        margin-right: 10px;
       }
       input:checked ~ .checkmark {
         background-color: #f25c50;
@@ -250,4 +250,3 @@
     }
   }
 }
-

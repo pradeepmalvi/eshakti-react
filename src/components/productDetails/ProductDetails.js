@@ -300,11 +300,20 @@ export default function ProductDetails() {
           <div className="size-attribute">
             {currentVariant &&
               currentVariant.product_size &&
-              currentVariant.product_size.map((size) => (
-                <div className="size" onClick={selectSize.bind(this, size)}>
-                  {size}
-                </div>
-              ))}
+              currentVariant.product_size.map((sizes) =>
+                sizes === size ? (
+                  <div
+                    className="size selected"
+                    onClick={selectSize.bind(this, sizes)}
+                  >
+                    {sizes}
+                  </div>
+                ) : (
+                  <div className="size" onClick={selectSize.bind(this, sizes)}>
+                    {sizes}
+                  </div>
+                )
+              )}
           </div>
 
           <div className="color-attribute">SIZE CHART :</div>

@@ -156,3 +156,10 @@ export const removeCart = (id) => (dispatch) => {
     dispatch(getCart());
   });
 };
+
+// Place order
+export const placeOrder = (data) => (dispatch) => {
+  Axios.delete(`${requests.order}`, data, config).then((res) => {
+    console.log(res);
+  });
+};

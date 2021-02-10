@@ -1,4 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getCart,
+  updateCart,
+  removeCart,
+  placeOrder,
+} from "../../store/home/homeAction";
 import "./shippingInfopage.styles.scss";
 
 import { Link } from "react-router-dom";
@@ -9,9 +16,88 @@ import SelectFormElement from "../select-form-element/SelectFormElement.componen
 import { IoIosArrowBack } from "react-icons/io";
 
 export default function ShippingInfoPage() {
+  const [name, setname] = useState("");
+  const [phone, setphone] = useState("");
+  const [alternate_phone, setalternate_phone] = useState("");
+  const [address, setaddress] = useState("");
+  const [address_type, setaddress_type] = useState("");
+  const [city, setcity] = useState("");
+  const [country, setcountry] = useState("");
+  const [state, setstate] = useState("");
+  const [zip_code, setzip_code] = useState("");
+  const [landmark, setlandmark] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const cart = useSelector((state) => state.home.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
+
+  const updateQunitity = (type, cart_id) => {
+    let quantity;
+    if (type === "add") {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart_id === cart[i].cart_id) {
+          quantity = cart[i].quantity + 1;
+        }
+      }
+    } else {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart_id === cart[i].cart_id) {
+          if (cart[i].quantity > 1) {
+            quantity = cart[i].quantity - 1;
+          }
+        }
+      }
+    }
+    let data = {
+      quantity: quantity,
+    };
+    dispatch(updateCart(data, cart_id));
+  };
+
+  const cartGrandTotal = () => {
+    let total = 0;
+    if (cart) {
+      for (let i = 0; i < cart.length; i++) {
+        total = total + cart[i].price;
+      }
+    }
+    return total;
+  };
+
+  const onPlaceOrder = (e) => {
+    e.preventDefault();
+    let data = {
+      totPrice: 1234,
+      user_id: 1,
+      shipping_charge: 45,
+      customization_charge: 89,
+      cart_id: [40],
+      shipping_address: {
+        name: name,
+        phone: phone,
+        alternate_phone: alternate_phone,
+        address: address,
+        address_type: address_type,
+        city: city,
+        country: country,
+        state: state,
+        zip_code: zip_code,
+        landmark: landmark,
+      },
+      payment: {
+        mode: "COD",
+        status: "Unpaid",
+      },
+    };
+    dispatch(placeOrder(data));
+  };
 
   return (
     <div className="shipping-info">
@@ -26,11 +112,14 @@ export default function ShippingInfoPage() {
             </div>
           </div>
           <div className="info-form">
-            <form>
+            <form onSubmit={onPlaceOrder}>
               <FormInput
                 type={"text"}
-                placeholder={"Enter Your Email or Phone Number"}
-                name={"emailOrPhone"}
+                placeholder={"Enter Phone Number"}
+                name={"phone"}
+                value={phone}
+                onChange={(e) => setphone(e.target.name)}
+                required
               />
               <div className="mid-title">
                 <h2 className="title-text">Shipping Address</h2>
@@ -39,23 +128,29 @@ export default function ShippingInfoPage() {
               <div className="inline-form-shipping-address">
                 <FormInput
                   type={"text"}
-                  placeholder={"First Name"}
+                  placeholder="Full Name"
                   className={"firstName"}
-                  name={"firstName"}
+                  name="name"
+                  value={name}
+                  onChange={(e) => setname(e.target.name)}
+                  required
                 />
-                <FormInput
+                {/* <FormInput
                   type={"text"}
                   placeholder={"Last Name"}
                   className="lastName"
                   name={"lastName"}
-                />
+                /> */}
               </div>
 
               <FormInput
                 type={"text"}
                 placeholder={"Apartment, Suit, etc"}
                 className="residency"
-                name={"residency"}
+                name="address"
+                value={address}
+                onChange={(e) => setaddress(e.target.name)}
+                required
               />
               <FormInput
                 type={"text"}
@@ -108,13 +203,16 @@ export default function ShippingInfoPage() {
         </div>
         <div className="right">
           <div className="cart-products">
-            <CartProductCard />
-            <CartProductCard />
+            {cart && cart.length > 0
+              ? cart.map((product) => <CartProductCard product={product} />)
+              : " "}
+
+            {/* <CartProductCard /> */}
           </div>
           <div className="cost-amounts">
             <div className="sub-total">
               <span className="text">Sub Total</span>
-              <span className="value">85.35$</span>
+              <span className="value">${cartGrandTotal()}</span>
             </div>
             <div className="shipping">
               <span className="text">Shipping</span>
@@ -122,11 +220,11 @@ export default function ShippingInfoPage() {
             </div>
             <div className="tax">
               <span className="text">Taxes (estimated)</span>
-              <span className="value">4.0$</span>
+              <span className="value">$0</span>
             </div>
             <div className="total">
               <span className="text">Total</span>
-              <span className="value">89.32$</span>
+              <span className="value">${cartGrandTotal()}</span>
             </div>
           </div>
         </div>

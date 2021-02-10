@@ -397,16 +397,22 @@ export default function ProductCustomization({
               <div className="other-option-wrapper">
                 <div className="other-option-header">OTHER OPTIONS (FREE)</div>
                 <div className="checkbox-group">
-                  <input type="checkbox" />
-                  <label htmlFor="">Remove Pocket</label>
+                  <label>
+                    <input type="checkbox" value="" />
+                    Remove Pocket
+                  </label>
                 </div>
                 <div className="checkbox-group">
-                  <input type="checkbox" />
-                  <label htmlFor="">Remove Embroidery / Embellishment</label>
+                  <label>
+                    <input type="checkbox" value="" />
+                    Remove Embroidery / Embellishment
+                  </label>
                 </div>
                 <div className="checkbox-group">
-                  <input type="checkbox" />
-                  <label htmlFor="">Add Side Zip</label>
+                  <label>
+                    <input type="checkbox" value="" />
+                    Add Side Zip
+                  </label>
                 </div>
               </div>
             </div>
