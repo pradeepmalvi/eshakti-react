@@ -1,16 +1,15 @@
-.mid_banner {
-  padding: 4rem 0;
+.sale_banner {
+  padding: 3.5rem 4.5rem;
 
-  .banner_img {
+  .inner_container {
     position: relative;
     margin: 0 auto;
-    width: 80vw;
-    height: 50vh;
-    background: url("../../assets/images/02.png");
+    max-width: 1360px;
+    height: 65vh;
+    background-image: url("../../assets/images/img-12.png");
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
 
     .button {
       position: absolute;

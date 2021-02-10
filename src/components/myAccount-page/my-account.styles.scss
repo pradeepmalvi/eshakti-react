@@ -1,35 +1,41 @@
 .my-account {
-  margin: 0 auto;
-  max-width: 1360px;
-  padding: 2.5rem 4.5rem;
   display: flex;
+  padding: 2.5rem 4.5rem;
 
   .inner-container {
+    margin: 0 auto;
+    max-width: 1360px;
     display: flex;
     width: 100%;
 
     .navigation {
       padding-right: 2rem;
       width: 30%;
+
       .navigation-title {
         font-size: 1.3rem;
         margin-top: 0;
       }
 
-      .nav-list {
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
+      .nav-list-container {
+        overflow-x: scroll;
 
-        .link {
-          position: relative;
-          font-weight: 500;
-          margin-bottom: 1rem;
-          padding-bottom: 1rem;
-          border-bottom: 1px solid #c4c4c4;
+        .nav-list {
+          margin-top: 2rem;
+          display: flex;
+          flex-direction: column;
+          width: 700px;
 
-          &:hover {
-            font-weight: 600;
+          .link {
+            position: relative;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #c4c4c4;
+
+            &:hover {
+              font-weight: 600;
+            }
           }
         }
       }
@@ -63,7 +69,7 @@
             input,
             select {
               padding: 0.5rem;
-              margin-right: 1rem;
+              // margin-right: 1rem;
               border: 1px solid #c4c4c4;
               margin-top: 0.3rem;
               background: #ffff;
@@ -73,6 +79,14 @@
               display: flex;
               flex-direction: column;
               width: 50%;
+            }
+
+            .common:first-child {
+              padding-right: 1rem;
+            }
+
+            .common:second-child {
+              padding-left: 1rem;
             }
           }
 
@@ -90,7 +104,7 @@
             }
 
             input {
-              width: 98.2%;
+              width: 100%;
               padding: 0.5rem;
               margin-right: 1rem;
               border: 1px solid #c4c4c4;
@@ -116,7 +130,7 @@
         .each-order {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
           border: 1px solid #adadad;
           padding: 1rem;
           border-radius: 1rem;
@@ -130,7 +144,12 @@
               height: 100px;
               object-fit: cover;
             }
+          }
 
+          .details {
+            display: flex;
+            justify-content: space-around;
+            flex-grow: 1;
             .common-details {
               margin-left: 1rem;
               display: flex;
@@ -140,6 +159,10 @@
               .name {
                 font-weight: 500;
                 margin-bottom: 0.3rem;
+              }
+
+              .order-name {
+                font-size: 0.9rem;
               }
 
               .orderId {

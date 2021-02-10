@@ -2,6 +2,7 @@ import React from "react";
 import "./my-account.styles.scss";
 
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import OrderDetailsPage from "../order-details-page/OrderDetailsPage.component";
 
 export default function MyAccount() {
   let { path, url } = useRouteMatch();
@@ -12,23 +13,25 @@ export default function MyAccount() {
       <div className="inner-container">
         <div className="navigation">
           <h4 className="navigation-title">My Account</h4>
-          <div className="nav-list">
-            <Link to={`/my-account/profile`} className="link">
-              Profile
-            </Link>
-            <Link to={`/my-account/my-orders`} className="link">
-              My Orders
-            </Link>
-            <Link to={`/my-account/manage-address`} className="link">
-              Manage Address
-            </Link>
+          <div className="nav-list-container">
+            <div className="nav-list">
+              <Link to={`${url}/profile`} className="link">
+                Profile
+              </Link>
+              <Link to={`${url}/my-orders`} className="link">
+                My Orders
+              </Link>
+              <Link to={`${url}/manage-address`} className="link">
+                Manage Address
+              </Link>
+            </div>
           </div>
         </div>
         <div className="info-side">
           <Switch>
             <Route
               exact
-              path="/my-account/profile"
+              path={`${path}/profile`}
               render={() => (
                 <>
                   <div className="personal-info-slot">
@@ -68,7 +71,7 @@ export default function MyAccount() {
 
             <Route
               exact
-              path="/my-account/my-orders"
+              path={`${path}`}
               render={() => (
                 <>
                   <div className="my-orders-slot">
@@ -82,67 +85,28 @@ export default function MyAccount() {
                             alt=""
                           />
                         </div>
+                      </div>
+                      <div className="details">
                         <div className="common-details">
-                          <div className="name">Addidas Shirts</div>
+                          <div className="name common-title-text">
+                            Name & Order ID
+                          </div>
+                          <div className="order-name">Addidas Shirts</div>
                           <div className="orderId">#2929</div>
                         </div>
-                      </div>
-                      <div className="order-date">
-                        <span className="ordered-title-text">Ordered On</span>
-                        <span className="value-text"> 23/2/2021</span>
-                      </div>
-                      <div className="price">
-                        {" "}
-                        <span className="price-title-text">Price</span>
-                        <div className="value-text">44$</div>
-                      </div>
-                    </div>
-                    <div className="each-order">
-                      <div className="img-and-common-details">
-                        <div className="order-img">
-                          <img
-                            width={150}
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCFvT5KiIRBpnM2L6FAAaSioCofkvQML1IIA&usqp=CAU"
-                            alt=""
-                          />
+                        <div className="order-date">
+                          <span className="ordered-title-text common-title-text">
+                            Ordered On
+                          </span>
+                          <span className="value-text"> 23/2/2021</span>
                         </div>
-                        <div className="common-details">
-                          <div className="name">Addidas Shirts</div>
-                          <div className="orderId">#2929</div>
+                        <div className="price">
+                          {" "}
+                          <span className="price-title-text common-title-text">
+                            Price
+                          </span>
+                          <div className="value-text">44$</div>
                         </div>
-                      </div>
-                      <div className="order-date">
-                        <span className="ordered-title-text">Ordered On</span>
-                        <span className="value-text"> 23/2/2021</span>
-                      </div>
-                      <div className="price">
-                        {" "}
-                        <span className="price-title-text">Price</span>
-                        <div className="value-text">44$</div>
-                      </div>
-                    </div>
-                    <div className="each-order">
-                      <div className="img-and-common-details">
-                        <div className="order-img">
-                          <img
-                            width={150}
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCFvT5KiIRBpnM2L6FAAaSioCofkvQML1IIA&usqp=CAU"
-                            alt=""
-                          />
-                        </div>
-                        <div className="common-details">
-                          <div className="name">Addidas Shirts</div>
-                          <div className="orderId">#2929</div>
-                        </div>
-                      </div>
-                      <div className="order-date">
-                        <span className="ordered-title-text">Ordered On</span>
-                        <span className="value-text"> 23/2/2021</span>
-                      </div>
-                      <div className="price">
-                        {" "}
-                        <span className="price-title-text">Price</span>
-                        <div className="value-text">44$</div>
                       </div>
                     </div>
                   </div>
@@ -152,7 +116,7 @@ export default function MyAccount() {
 
             <Route
               exact
-              path="/my-account/"
+              path={`${path}/manage-address`}
               render={() => (
                 <>
                   <div className="manage-address">
@@ -292,6 +256,12 @@ export default function MyAccount() {
                   </div>
                 </>
               )}
+            />
+
+            <Route
+              exact
+              path="/my-account/order-details"
+              render={() => <OrderDetailsPage />}
             />
           </Switch>
 

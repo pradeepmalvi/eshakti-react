@@ -1,9 +1,9 @@
 .our_qualities {
-  padding: 3.5rem 0;
   border-bottom: 1px solid rgb(207, 207, 207);
+  padding: 2.5rem 4.5rem;
 
   .inner_container {
-    width: 80vw;
+    max-width: 1360px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

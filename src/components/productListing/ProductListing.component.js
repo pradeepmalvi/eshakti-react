@@ -16,14 +16,16 @@ import ProductCard from "../productCard/ProductCard.component";
 export default function ProductListing({ title, description, products }) {
   return (
     <div className="product_listing">
-      <div className="heading_text">
-        <h2 className="title">{title}</h2>
-        <div className="description">{ReactHtmlParser(description)}</div>
-      </div>
-      <div className="products">
-        {products.map((eachProduct, index) => (
-          <ProductCard key={index} product={eachProduct} />
-        ))}
+      <div className="inner-container">
+        <div className="heading_text">
+          <h2 className="title">{title}</h2>
+          <div className="description">{ReactHtmlParser(description)}</div>
+        </div>
+        <div className="products">
+          {products.map((eachProduct, index) => (
+            <ProductCard key={index} product={eachProduct} />
+          ))}
+        </div>
       </div>
     </div>
   );

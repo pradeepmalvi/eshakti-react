@@ -128,7 +128,7 @@ function App() {
           <Route exact path="/eshakti-sizes" component={EshaktiSizes}></Route>
           <Route exact path="/whole-sale" component={WholeSale}></Route>
           <Route exact path="/how-to-measure" component={HowToMeasure}></Route>
-          <Route exact path="/my-account" component={MyAccount}></Route>
+          <Route exact path="/my-account" render={() => <MyAccount />}></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />

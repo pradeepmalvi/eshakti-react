@@ -138,7 +138,11 @@
 
 @media only screen and (max-width: 768px) {
   .App {
-    .footer {
+    .sale_banner,
+    .product_listing,
+    .footer,
+    .mid_banner,
+    .our_qualities {
       padding-left: 2rem;
       padding-right: 2rem;
     }

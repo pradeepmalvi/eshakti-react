@@ -57,6 +57,12 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .category-page {
+    padding: 3.5rem 2rem !important;
+  }
+}
+
 @media only screen and (max-width: 782px) {
   .category-page {
     .inner-container {
@@ -218,7 +224,7 @@
   .App {
     .category-page {
       .inner-container {
-        grid-template-columns: 35% 50%;
+        grid-template-columns: 35% 65%;
 
         .product-listing {
           .products {

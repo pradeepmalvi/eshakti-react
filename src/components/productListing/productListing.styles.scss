@@ -1,9 +1,9 @@
 .product_listing {
-  padding: 4rem 0rem;
+  padding: 3.5rem 4.5rem;
 
   .products {
     margin: 0 auto;
-    width: 80vw;
+    max-width: 1360px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

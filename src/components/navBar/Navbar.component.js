@@ -33,41 +33,43 @@ export default function Navbar() {
 
   return width > navChangeWidth ? (
     <div className="navbar-bigger">
-      <div className="logo">
-        <Link to="/" className="link">
-          <h2 className="logo_text">logoipsum</h2>
-        </Link>
-      </div>
-      <div className="navlinks">
-        <ul>
-          {categories
-            ? categories.length > 0
-              ? categories.map((eachObj, key) => (
-                  <Link
-                    key={key}
-                    className="nav-link"
-                    to={`/category-page/${eachObj.id}`}
-                  >
-                    <li>{eachObj.main_menu}</li>
-                  </Link>
-                ))
-              : null
-            : null}
-        </ul>
-      </div>
-      <div className="action_icons">
-        <Link to="/cart" className="link">
-          <span className="shoping_cart icon">
-            <AiOutlineShoppingCart />
-            <span className="cart_items">3</span>
+      <div className="navbar-inner-container">
+        <div className="logo">
+          <Link to="/" className="link">
+            <h2 className="logo_text">logoipsum</h2>
+          </Link>
+        </div>
+        <div className="navlinks">
+          <ul>
+            {categories
+              ? categories.length > 0
+                ? categories.map((eachObj, key) => (
+                    <Link
+                      key={key}
+                      className="nav-link"
+                      to={`/category-page/${eachObj.id}`}
+                    >
+                      <li>{eachObj.main_menu}</li>
+                    </Link>
+                  ))
+                : null
+              : null}
+          </ul>
+        </div>
+        <div className="action_icons">
+          <Link to="/cart" className="link">
+            <span className="shoping_cart icon">
+              <AiOutlineShoppingCart />
+              <span className="cart_items">3</span>
+            </span>
+          </Link>
+          <span className="whishlist icon">
+            <AiOutlineHeart />
           </span>
-        </Link>
-        <span className="whishlist icon">
-          <AiOutlineHeart />
-        </span>
-        <span className="search icon">
-          <AiOutlineSearch />
-        </span>
+          <span className="search icon">
+            <AiOutlineSearch />
+          </span>
+        </div>
       </div>
     </div>
   ) : (
