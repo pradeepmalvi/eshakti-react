@@ -1,19 +1,27 @@
 @media only screen and (max-width: 470px) {
   .App {
     .top_nav {
-      .left_items {
-        .currency_selector {
-          display: none;
-        }
-      }
+      .inner-container-topbar {
+        .left_items {
+          .currency_selector {
+            display: none;
+          }
 
-      .right_items {
-        .my_account,
-        .login {
-          padding: 0 0.5rem;
-          .text {
-            font-size: 0.9rem;
-            font-weight: 500;
+          .email_address {
+            .icon {
+              margin-left: 0;
+            }
+          }
+        }
+
+        .right_items {
+          .my_account,
+          .login {
+            padding: 0 0.5rem;
+            .text {
+              font-size: 0.9rem;
+              font-weight: 500;
+            }
           }
         }
       }
@@ -142,9 +150,14 @@
     .product_listing,
     .footer,
     .mid_banner,
-    .our_qualities {
-      padding-left: 2rem;
-      padding-right: 2rem;
+    .our_qualities,
+    .navbar-smaller {
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
+    }
+
+    .top_nav {
+      padding: 0 2rem;
     }
   }
 }
@@ -169,30 +182,32 @@
 @media only screen and (max-width: 992px) {
   .App {
     .top_nav {
-      .left_items {
-        .email_address,
-        .phone {
-          padding: 1rem 0.2rem;
+      .inner-container-topbar {
+        .left_items {
+          .email_address,
+          .phone {
+            padding: 1rem 0.2rem;
 
-          .text {
-            display: none;
-            padding-right: 0.6rem;
+            .text {
+              display: none;
+              padding-right: 0.6rem;
+            }
           }
         }
-      }
 
-      .right_items {
-        .my_account,
-        .login {
-          .icon {
-            display: none;
+        .right_items {
+          .my_account,
+          .login {
+            .icon {
+              display: none;
+            }
           }
         }
       }
     }
 
     .navbar-smaller {
-      padding: 1rem 1rem !important;
+      padding: 1rem 4.5rem;
     }
   }
 }
@@ -200,9 +215,15 @@
 @media only screen and (max-width: 1170px) {
   .App {
     .top_nav {
-      .right_items {
-        .social_media_icons {
-          display: none;
+      .inner-container-topbar {
+        .right_items {
+          .social_media_icons {
+            display: none;
+          }
+
+          .login {
+            padding-right: 0;
+          }
         }
       }
     }
@@ -221,6 +242,47 @@
         .payment {
           width: 50%;
           margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .App {
+    .top_nav {
+      .inner-container-topbar {
+        .left_items {
+          .phone,
+          .email_address,
+          .currency_selector {
+            .text {
+              font-size: 0.85rem;
+            }
+
+            span {
+              font-size: 0.85rem;
+            }
+          }
+        }
+
+        .right_items {
+          .my_account,
+          .login {
+            .link {
+              span {
+                font-size: 0.85rem;
+              }
+            }
+
+            span {
+              font-size: 0.85rem;
+            }
+          }
+
+          .login {
+            padding-right: 0;
+          }
         }
       }
     }

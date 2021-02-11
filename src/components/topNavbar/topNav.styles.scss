@@ -4,60 +4,75 @@
 /****** top-nav parent styles ******/
 .top_nav {
   border-bottom: 1px solid #fdfdfd;
+  padding: 0 4.5rem;
   // @include flex(space-between, center);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  /**** left-items & right-items styles ****/
-  .left_items,
-  .right_items {
+  .inner-container-topbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    /**** currency-selector, email, phone, my-account, login, social-icons styles ****/
-    .currency_selector,
-    .email_address,
-    .phone,
-    .my_account,
-    .login,
-    .social_media_icons {
-      padding: 1rem;
-      // @include flex(null, center);
+    /**** left-items & right-items styles ****/
+    .left_items,
+    .right_items {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: #202020;
-      cursor: pointer;
 
-      .icon {
+      /**** currency-selector, email, phone, my-account, login, social-icons styles ****/
+      .currency_selector,
+      .email_address,
+      .phone,
+      .my_account,
+      .login,
+      .social_media_icons {
+        padding: 1rem;
+        // @include flex(null, center);
         display: flex;
-        margin: 0rem 0.5rem;
-        font-size: 1.3rem;
-      }
-    }
-
-    /*** border for right side on some of left items styles***/
-    .currency_selector,
-    .email_address {
-      border-bottom: 1px solid #fdfdfd;
-    }
-
-    /*** social media icons styles ***/
-    .social_media_icons {
-      .icon {
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.6rem;
+        font-weight: 300;
         color: #202020;
-        font-size: 1.2rem;
         cursor: pointer;
-      }
-    }
 
-    /*** left item ***/
-    .my_account,
-    .login,
-    .social_media_icons {
-      border-left: 1px solid #fdfdfd;
+        .icon {
+          display: flex;
+          margin: 0rem 0.5rem;
+          font-size: 1.3rem;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .currency_selector {
+        padding-left: 0;
+      }
+
+      .social_media_icons {
+        padding-right: 0;
+      }
+
+      /*** border for right side on some of left items styles***/
+      .currency_selector,
+      .email_address {
+        border-bottom: 1px solid #fdfdfd;
+      }
+
+      /*** social media icons styles ***/
+      .social_media_icons {
+        .icon {
+          color: #202020;
+          font-size: 1.2rem;
+          cursor: pointer;
+        }
+      }
+
+      /*** left item ***/
+      .my_account,
+      .login,
+      .social_media_icons {
+        border-left: 1px solid #fdfdfd;
+      }
     }
   }
 }

@@ -2,9 +2,12 @@
   .my-account {
     & > .inner-container {
       .navigation {
-        .nav-list {
-          width: 480px;
+        .nav-list-container {
           overflow-x: scroll;
+
+          .nav-list {
+            width: 480px;
+          }
         }
       }
 
@@ -167,12 +170,17 @@
         padding-left: 0 !important;
       }
 
-      .nav-list {
-        flex-direction: row !important;
+      .nav-list-container {
+        overflow-x: scroll;
 
-        .link {
-          margin-right: 1rem;
-          border: none !important;
+        .nav-list {
+          flex-direction: row !important;
+          width: 700px;
+
+          .link {
+            margin-right: 1rem;
+            border: none !important;
+          }
         }
       }
 

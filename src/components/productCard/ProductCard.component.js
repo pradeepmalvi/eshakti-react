@@ -27,21 +27,33 @@ export default function ProductCard({ product = {} }) {
         <div className="product_img">
           <div
             className="img"
-            style={{
-              backgroundImage: `url(${
-                product_thumbnail &&
-                product_thumbnail.length > 0 &&
-                product_thumbnail[0]
-              })`,
-            }}
-          ></div>
+            // style={{
+            //   backgroundImage: `url(${
+            //     (product_thumbnail &&
+            //       product_thumbnail.length > 0 &&
+            //       product_thumbnail[0]) ||
+            //     "https://img1.eshakti.com/clothimages/CL0081518MP.jpg"
+            //   })`,
+            // }}
+          >
+            <img
+              className="img"
+              src={
+                (product_thumbnail &&
+                  product_thumbnail.length > 0 &&
+                  product_thumbnail[0]) ||
+                "https://img1.eshakti.com/clothimages/CL0081518MP.jpg"
+              }
+              alt=""
+            />
+          </div>
         </div>
-        <div className="brand">{brand}</div>
-        <div className="product_name">{product_name}</div>
+        <div className="brand">{brand || "brand name"}</div>
+        <div className="product_name">{product_name || "product name"}</div>
         <div className="price_and_rating">
           <div className="price">
-            <span className="prev_price">{product_price}$</span>
-            <span className="current_price">{total_price}$</span>
+            <span className="prev_price">{product_price || 444}$</span>
+            <span className="current_price">{total_price || 333}$</span>
           </div>
           <span className="rating">
             <span className="each_star">

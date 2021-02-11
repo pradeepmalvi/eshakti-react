@@ -45,6 +45,7 @@ import AboutUs from "./components/about-us/AboutUs.component";
 import WholeSale from "./components/wholesale-page/WholeSale.component";
 import HowToMeasure from "./components/how-to-measure-page/HowToMeasure.component";
 import MyAccount from "./components/myAccount-page/MyAccount.component";
+import Wishlist from "./components/whishlist/Wishlist.component";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,9 +75,7 @@ function App() {
         <Router>
           <TopNav />
           <Navbar />
-
           <MobileMenuSidebar />
-
           {/* Routes */}
           <Route exact path="/" component={Home}></Route>
           <Route
@@ -100,13 +99,11 @@ function App() {
             path="/payment-and-shipping"
             component={ShippingAndPayment}
           ></Route>
-
           <Route
             exact
             path="/return-and-cancellation"
             component={ReturnAndCancellations}
           ></Route>
-
           <Route
             exact
             path="/privacy-policy"
@@ -128,7 +125,8 @@ function App() {
           <Route exact path="/eshakti-sizes" component={EshaktiSizes}></Route>
           <Route exact path="/whole-sale" component={WholeSale}></Route>
           <Route exact path="/how-to-measure" component={HowToMeasure}></Route>
-          <Route exact path="/my-account" render={() => <MyAccount />}></Route>
+          <Route exact path="/my-account" component={MyAccount}></Route>
+          <Route exact path="/wishlist" component={Wishlist}></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />

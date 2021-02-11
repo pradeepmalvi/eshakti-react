@@ -18,13 +18,12 @@
       }
 
       .nav-list-container {
-        overflow-x: scroll;
+        // overflow-x: scroll;
 
         .nav-list {
           margin-top: 2rem;
           display: flex;
           flex-direction: column;
-          width: 700px;
 
           .link {
             position: relative;

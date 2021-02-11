@@ -1,0 +1,33 @@
+.wishlist {
+  padding: 3.5rem 4.5rem;
+
+  .inner-container {
+    max-width: 1360px;
+    margin: 0 auto;
+
+    .wishlist-title {
+      text-align: center;
+    }
+
+    .listing {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      .item {
+        width: 23%;
+
+        .product_card {
+          margin-bottom: 2rem;
+        }
+      }
+
+      //   &::after {
+      //     content: "";
+      //     flex: auto;
+      //   }
+    }
+  }
+}

@@ -15,23 +15,24 @@ export default function MyAccount() {
           <h4 className="navigation-title">My Account</h4>
           <div className="nav-list-container">
             <div className="nav-list">
-              <Link to={`${url}/profile`} className="link">
+              <Link to={`my-account/profile`} className="link">
                 Profile
               </Link>
-              <Link to={`${url}/my-orders`} className="link">
+              <Link to={`my-account/my-orders`} className="link">
                 My Orders
               </Link>
-              <Link to={`${url}/manage-address`} className="link">
+              <Link to={`my-account/manage-address`} className="link">
                 Manage Address
               </Link>
             </div>
           </div>
         </div>
         <div className="info-side">
+          {console.log("getting there")}
           <Switch>
             <Route
               exact
-              path={`${path}/profile`}
+              path={`my-account/profile`}
               render={() => (
                 <>
                   <div className="personal-info-slot">
@@ -71,7 +72,7 @@ export default function MyAccount() {
 
             <Route
               exact
-              path={`${path}`}
+              path={`/my-account/my-orders`}
               render={() => (
                 <>
                   <div className="my-orders-slot">
@@ -116,7 +117,7 @@ export default function MyAccount() {
 
             <Route
               exact
-              path={`${path}/manage-address`}
+              path={`my-account/manage-address`}
               render={() => (
                 <>
                   <div className="manage-address">
