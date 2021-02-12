@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductCategory,
   getHomePageProducts,
+  getPages,
 } from "./store/home/homeAction";
 
 // responsive styles
@@ -56,6 +57,8 @@ function App() {
     nav_links: [],
   });
 
+  console.log(state);
+
   useEffect(() => {
     // Axios.get("/product-categories").then((res) => {
     //   dispatchAppState({
@@ -66,6 +69,7 @@ function App() {
 
     dispatch(getProductCategory());
     dispatch(getHomePageProducts());
+    dispatch(getPages());
   }, []);
 
   return (

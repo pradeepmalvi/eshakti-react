@@ -8,6 +8,7 @@ import {
   SET_PARTICULAR_PRODUCT,
   SET_PRODUCT_DETAILS,
   SET_CART,
+  SET_PAGES,
 } from "../types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -161,5 +162,15 @@ export const removeCart = (id) => (dispatch) => {
 export const placeOrder = (data) => (dispatch) => {
   Axios.delete(`${requests.order}`, data, config).then((res) => {
     console.log(res);
+  });
+};
+
+// get static pages
+export const getPages = (data) => (dispatch) => {
+  Axios.get(`${requests.getPages}`).then((res) => {
+    dispatch({
+      type: SET_PAGES,
+      payload: res.data,
+    });
   });
 };

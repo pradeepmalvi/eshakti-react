@@ -46,6 +46,14 @@
 
       .currency_selector {
         padding-left: 0;
+
+        .selector {
+          border: none;
+          font-size: 0.9rem;
+          background-color: #ffff;
+          font-weight: 100;
+          color: #202020;
+        }
       }
 
       .social_media_icons {

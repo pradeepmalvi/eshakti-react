@@ -131,7 +131,8 @@
     }
     .size-attribute {
       margin-bottom: 20px;
-      .size {
+      .size,
+      .size-chart-btn {
         margin-right: 10px;
         font-size: 12px;
         padding: 5px 10px;
@@ -143,6 +144,10 @@
       .selected {
         background: #000;
         color: #fff;
+      }
+
+      .size-chart-btn {
+        background-color: #fff;
       }
     }
     .size-block-wrapper {
@@ -161,53 +166,71 @@
 
     .height-attribute {
       margin-bottom: 20px;
+
+      .height {
+        color: #202020;
+        margin-bottom: 1.5rem;
+
+        .text {
+          font-size: 0.8rem;
+          text-transform: uppercase;
+        }
+      }
+
       .size {
         padding: 5px 10px;
         background-color: #f3f3f3;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
         border: none;
         font-family: unset;
+        font-size: 0.9rem;
       }
     }
-    .fav-inquiry-wrapper {
+    .purchasing-actions-wrapper {
       font-size: 12px;
       display: flex;
       margin-bottom: 20px;
+
       .icon {
         display: flex;
         align-items: center;
         margin-right: 20px;
         justify-content: space-between;
+        border: 2px solid #f3f3f3;
+        padding: 0 1rem;
+        cursor: pointer;
       }
+
       p {
         margin-left: 5px;
       }
-    }
-    .quantity-addtocart {
-      display: flex;
-      .quantity-wrapper {
-        display: flex;
-        border: 2px solid #f3f3f3;
 
-        .plus {
-          padding: 10px 15px;
+      .quantity-addtocart {
+        display: flex;
+        .quantity-wrapper {
+          display: flex;
+          border: 2px solid #f3f3f3;
+
+          .plus {
+            padding: 10px 15px;
+            cursor: pointer;
+          }
+          .quantity {
+            padding: 10px 15px;
+            width: 40px;
+          }
+          .minus {
+            padding: 10px 15px;
+            cursor: pointer;
+          }
+        }
+        .add-cart-btn {
+          margin-left: 20px;
+          padding: 12px 2rem;
+          background-color: #111111;
+          color: #fff;
           cursor: pointer;
         }
-        .quantity {
-          padding: 10px 15px;
-          width: 40px;
-        }
-        .minus {
-          padding: 10px 15px;
-          cursor: pointer;
-        }
-      }
-      .add-cart-btn {
-        margin-left: 20px;
-        padding: 12px 60px;
-        background-color: #111111;
-        color: #fff;
-        cursor: pointer;
       }
     }
   }

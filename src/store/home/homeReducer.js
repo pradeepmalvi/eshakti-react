@@ -4,6 +4,7 @@ import {
   SET_HOMEPAGE_PRODUCTS,
   SET_PRODUCT_DETAILS,
   SET_CART,
+  SET_PAGES,
 } from "../types";
 
 const initalState = [];
@@ -36,6 +37,12 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         cart: action.payload,
+      };
+
+    case SET_PAGES:
+      return {
+        ...state,
+        StaticPages: action.payload.pages,
       };
 
     default:

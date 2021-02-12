@@ -3,7 +3,7 @@ import "./wishlist.styles.scss";
 
 import ProductCard from "../productCard/ProductCard.component";
 
-import { BsHeart } from "react-icons/bs";
+import { BsHeartFill } from "react-icons/bs";
 
 export default function Wishlist() {
   return (
@@ -13,27 +13,51 @@ export default function Wishlist() {
 
         <div className="listing">
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
           <div className="item">
+            <span className="heartIcon">
+              <BsHeartFill />
+            </span>
             <ProductCard />
           </div>
         </div>

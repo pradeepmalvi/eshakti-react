@@ -86,8 +86,6 @@ export default function CategoryPage() {
                 <div className="views-icons">
                   <img src={icon1} alt="img" />
                   <img src={icon2} alt="img" />
-                  <img src={icon3} alt="img" />
-                  <img src={icon4} alt="img" />
                 </div>
               </div>
             </div>

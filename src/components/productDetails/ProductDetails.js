@@ -314,9 +314,13 @@ export default function ProductDetails() {
                   </div>
                 )
               )}
+
+            <div className="size-chart-btn" onClick={() => ""}>
+              Size Chart
+            </div>
           </div>
 
-          <div className="color-attribute">SIZE CHART :</div>
+          {/* <div className="color-attribute">SIZE CHART :</div>
           <div className="size-block-wrapper">
             <span className="size-block">
               <p>XS</p>
@@ -382,17 +386,23 @@ export default function ProductDetails() {
                 <div className="size">28w</div>
                 <div className="size">30w</div>
               </div>
-            </span>
-            {/* <span className="size-block">
+            </span> */}
+          {/* <span className="size-block">
               <p>5X</p>
               <div className="size-attribute">
                 <div className="size">32w</div>
                 <div className="size">34w</div>
               </div>
             </span> */}
-          </div>
+          {/* </div> */}
 
           <div className="height-attribute">
+            <div className="height">
+              <span className="text">
+                Height: {<b>{height}</b> || <b>choose height</b>}
+              </span>
+            </div>
+
             <select
               name="height"
               value={height}
@@ -408,34 +418,38 @@ export default function ProductDetails() {
             </select>
           </div>
 
-          <div className="fav-inquiry-wrapper">
+          <div className="purchasing-actions-wrapper">
             <div className="icon">
               <AiOutlineHeart></AiOutlineHeart>
               <p> Add to Wishlist</p>
             </div>
-            <div className="icon">
+            {/* <div className="icon">
               <AiOutlineSync></AiOutlineSync>
               <p> Delivery & Returns</p>
             </div>
             <div className="icon">
               <AiOutlineMail></AiOutlineMail> <p>Enquiry</p>
-            </div>
-          </div>
-          <div className="quantity-addtocart">
-            <div className="quantity-wrapper">
-              <div
-                className="minus"
-                onClick={updateQuantity.bind(this, "less")}
-              >
-                -
+            </div> */}
+
+            <div className="quantity-addtocart">
+              <div className="quantity-wrapper">
+                <div
+                  className="minus"
+                  onClick={updateQuantity.bind(this, "less")}
+                >
+                  -
+                </div>
+                <div className="quantity">{quantity}</div>
+                <div
+                  className="plus"
+                  onClick={updateQuantity.bind(this, "add")}
+                >
+                  +
+                </div>
               </div>
-              <div className="quantity">{quantity}</div>
-              <div className="plus" onClick={updateQuantity.bind(this, "add")}>
-                +
+              <div className="add-cart-btn" onClick={onAddToCart}>
+                ADD TO CART
               </div>
-            </div>
-            <div className="add-cart-btn" onClick={onAddToCart}>
-              ADD TO CART
             </div>
           </div>
 

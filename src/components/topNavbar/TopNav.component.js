@@ -39,11 +39,9 @@ export default function TopNav() {
       <div className="inner-container-topbar">
         <div className="left_items">
           <div className="currency_selector">
-            <span className="currency_name">USD</span>
-            <span className="currency_sign">($)</span>
-            <span className="icon">
-              <BiCaretDown />
-            </span>
+            <select name="" id="" className="selector">
+              <option value="#">USD ($)</option>
+            </select>
           </div>
           <div className="email_address">
             <span className="icon">

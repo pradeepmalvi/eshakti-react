@@ -8,4 +8,5 @@ export default {
   getProductById: "products",
   cart: "cart",
   order: "order",
+  getPages: "get-pages",
 };

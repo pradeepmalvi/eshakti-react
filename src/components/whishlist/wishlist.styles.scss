@@ -7,6 +7,7 @@
 
     .wishlist-title {
       text-align: center;
+      color: #202020;
     }
 
     .listing {
@@ -14,20 +15,36 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: space-between;
 
       .item {
         width: 23%;
+        position: relative;
+        margin-bottom: 2rem;
+        // flex-basis: 200px;
+
+        .heartIcon {
+          position: absolute;
+          display: flex;
+          cursor: pointer;
+
+          svg {
+            font-size: 1.5rem;
+            color: #ff7575;
+          }
+        }
 
         .product_card {
-          margin-bottom: 2rem;
+          .img {
+            width: 100%;
+            height: auto;
+
+            img {
+              object-fit: cover;
+            }
+          }
         }
       }
-
-      //   &::after {
-      //     content: "";
-      //     flex: auto;
-      //   }
     }
   }
 }
