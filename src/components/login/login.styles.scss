@@ -59,21 +59,23 @@
 
       .right {
         padding-left: 1rem;
+
         .area-title {
-          font-size: 1.4rem;
+          font-size: 1.5rem;
           color: #2c2c2c;
           margin-bottom: 1.5rem;
           text-transform: uppercase;
+          margin-bottom: 1rem;
         }
 
         .heading-text {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           color: #bbbbbb;
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .points {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           color: #bbbbbb;
           font-weight: 500;
           padding-left: 1.1rem;
@@ -81,6 +83,10 @@
           li {
             margin-bottom: 1rem;
             list-style: disc;
+
+            &:last-child {
+              margin-bottom: 1rem;
+            }
           }
         }
 

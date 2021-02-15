@@ -22,12 +22,6 @@ export default function Footer() {
               <span className="right_arrow_icon">
                 <IoIosArrowForward />
               </span>
-              <a href="#">Fabric customisation</a>
-            </li>
-            <li>
-              <span className="right_arrow_icon">
-                <IoIosArrowForward />
-              </span>
               <Link to="/payment-and-shipping">Shipping and Payment</Link>
             </li>
             <li>
@@ -125,7 +119,7 @@ export default function Footer() {
             </li>
 
             <li className="social_icons">
-              <span className="facebook_icon">
+              <span className="social_icon">
                 <FiFacebook />
               </span>
               <span className="social_icon">

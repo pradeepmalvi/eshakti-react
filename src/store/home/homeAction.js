@@ -168,6 +168,7 @@ export const placeOrder = (data) => (dispatch) => {
 // get static pages
 export const getPages = (data) => (dispatch) => {
   Axios.get(`${requests.getPages}`).then((res) => {
+    console.log(res);
     dispatch({
       type: SET_PAGES,
       payload: res.data,

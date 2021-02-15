@@ -72,6 +72,15 @@
             margin-left: 0.2rem;
             border: 1px solid #dad8d8;
             color: #9e9c9c;
+            cursor: pointer;
+
+            &:hover {
+              padding: 0.8rem;
+              background-color: #15e0ba;
+              color: #fff;
+              font-size: 1.1rem;
+              border-radius: 0.3rem;
+            }
           }
         }
       }
@@ -92,6 +101,7 @@
           background-color: #15e0ba;
           border: none;
           padding: 1rem;
+          cursor: pointer;
 
           span {
             display: flex;

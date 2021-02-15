@@ -97,6 +97,12 @@
     .about-us {
       padding: 1rem 2rem;
       .content {
+        .left,
+        .right {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
         .what-eshakti-means {
           .page-desc {
             width: 100%;

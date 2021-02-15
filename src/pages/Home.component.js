@@ -17,7 +17,7 @@ import BottomBar from "../components/bottom-bar/BottomBar.component";
 
 export default function Home() {
   const homepageProducts = useSelector((state) => state.home.homePageProducts);
-  console.log(homepageProducts, "data");
+  console.log(homepageProducts, "datacame up");
   return (
     <div className="home">
       <HeroSection />

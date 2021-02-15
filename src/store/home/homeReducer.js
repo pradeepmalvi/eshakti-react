@@ -40,9 +40,11 @@ const homeReducer = (state = initalState, action) => {
       };
 
     case SET_PAGES:
+      console.log(action);
+
       return {
         ...state,
-        StaticPages: action.payload.pages,
+        staticPages: action.payload.pages,
       };
 
     default:

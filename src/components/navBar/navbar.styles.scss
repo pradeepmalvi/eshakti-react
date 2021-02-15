@@ -3,6 +3,7 @@
   padding: 1rem 4.5rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
   .navbar-inner-container {
     max-width: 1360px;
     margin: 0 auto;
@@ -23,6 +24,8 @@
       ul {
         display: flex;
         font-weight: 400;
+        flex-wrap: wrap;
+        justify-content: center;
 
         li {
           font-size: 1.1rem;
@@ -33,6 +36,7 @@
     }
 
     .action_icons {
+      display: flex;
       .search {
         margin-right: 0 !important;
       }
