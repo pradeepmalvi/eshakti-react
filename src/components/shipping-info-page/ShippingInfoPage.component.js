@@ -16,20 +16,22 @@ import { Link } from "react-router-dom";
 import CartProductCard from "../cart-product-card/CartProductCard.component";
 import FormInput from "../form-input/FormInput.component";
 import SelectFormElement from "../select-form-element/SelectFormElement.component";
+import { ToastContainer, toast } from "react-toastify";
 
 import { IoIosArrowBack } from "react-icons/io";
 
 export default function ShippingInfoPage() {
-  const [name, setname] = useState("");
-  const [phone, setphone] = useState("");
-  const [alternate_phone, setalternate_phone] = useState("");
-  const [address, setaddress] = useState("");
-  const [address_type, setaddress_type] = useState("");
-  const [city, setcity] = useState("");
-  const [country, setcountry] = useState("");
-  const [state, setstate] = useState("");
-  const [zip_code, setzip_code] = useState("");
-  const [landmark, setlandmark] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [alternate_phone, setAlternate_phone] = useState("");
+  const [address, setAddress] = useState("");
+  const [address_type, setAddress_type] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [zip_code, setZip_code] = useState("");
+  const [landmark, setLandmark] = useState("");
+  const [shipping_id, setShipping_id] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -88,12 +90,33 @@ export default function ShippingInfoPage() {
 
   const onPlaceOrder = (e) => {
     e.preventDefault();
+    let cart_id = [];
+    if (!cart.length > 0) {
+      toast("Your cart is empty!", {
+        type: toast.TYPE.ERROR,
+        autoClose: 10000,
+      });
+      return false;
+    }
+    for (let i = 0; i < cart.length; i++) {
+      cart_id.push(cart[i].cart_id);
+    }
+
+    let shipping_charge = 0;
+
+    for (let i = 0; i < shippingChargesList.length; i++) {
+      if (shipping_id == shippingChargesList[i].id) {
+        console.log(shippingChargesList[i]);
+        shipping_charge = shippingChargesList[i].cost;
+      }
+    }
+
     let data = {
-      totPrice: 1234,
-      user_id: 1,
-      shipping_charge: 45,
-      customization_charge: 89,
-      cart_id: [40],
+      totPrice: cartGrandTotal(),
+      user_id: localStorage.getItem("es_user_id"),
+      shipping_charge: shipping_charge,
+      customization_charge: 0,
+      cart_id: cart_id,
       shipping_address: {
         name: name,
         phone: phone,
@@ -111,21 +134,23 @@ export default function ShippingInfoPage() {
         status: "Unpaid",
       },
     };
+
     dispatch(placeOrder(data));
   };
 
   const selectCountry = (e) => {
-    setcountry(e.target.value);
+    setCountry(e.target.value);
     dispatch(getStateList(e.target.value));
   };
   const selectState = (e) => {
-    setstate(e.target.value);
+    setState(e.target.value);
     dispatch(getCityList(e.target.value));
   };
   const selectCity = (e) => {
-    setcity(e.target.value);
+    setCity(e.target.value);
   };
   const selectPincode = (e) => {
+    setZip_code(e.target.value);
     let data = {
       country_id: country,
       state_id: state,
@@ -134,8 +159,12 @@ export default function ShippingInfoPage() {
     };
     dispatch(getShippingChargesList(data));
   };
+  const selectCharges = (e) => {
+    setShipping_id(e.target.value);
+  };
   return (
     <div className="shipping-info">
+      <ToastContainer></ToastContainer>
       <div className="inner-container">
         <div className="left">
           <div className="top-title-area">
@@ -153,7 +182,10 @@ export default function ShippingInfoPage() {
                 placeholder={"Enter Phone Number"}
                 name={"phone"}
                 value={phone}
-                onChange={(e) => setphone(e.target.name)}
+                onChange={(e) => {
+                  var text = e.target.value.replace(/[^0-9+]/gi, "");
+                  setPhone(text);
+                }}
                 required
               />
               <div className="mid-title">
@@ -162,12 +194,12 @@ export default function ShippingInfoPage() {
 
               <div className="inline-form-shipping-address">
                 <FormInput
-                  type={"text"}
+                  type="text"
                   placeholder="Full Name"
                   className={"firstName"}
                   name="name"
                   value={name}
-                  onChange={(e) => setname(e.target.name)}
+                  onChange={(e) => setName(e.target.value)}
                   required
                 />
                 {/* <FormInput
@@ -184,7 +216,7 @@ export default function ShippingInfoPage() {
                 className="residency"
                 name="address"
                 value={address}
-                onChange={(e) => setaddress(e.target.name)}
+                onChange={(e) => setAddress(e.target.value)}
                 required
               />
               {/* <FormInput
@@ -194,8 +226,8 @@ export default function ShippingInfoPage() {
                 name={"city"}
               /> */}
               <div className="inline-form-field">
-                <select onChange={selectCountry}>
-                  <option value="austrelia">Select Country</option>
+                <select onChange={selectCountry} required>
+                  <option>Select Country</option>
                   {countryList &&
                     countryList.map((country, key) => (
                       <option key={key} value={country.id}>
@@ -203,8 +235,8 @@ export default function ShippingInfoPage() {
                       </option>
                     ))}
                 </select>
-                <select onChange={selectState}>
-                  <option value="austrelia">Select State</option>
+                <select onChange={selectState} required>
+                  <option>Select State</option>
                   {stateList &&
                     stateList.map((state, key) => (
                       <option key={key} value={state.id}>
@@ -213,9 +245,9 @@ export default function ShippingInfoPage() {
                     ))}
                 </select>
               </div>
-              <div className="inline-form-field">
+              <div className="inline-form-field" required>
                 <select onChange={selectCity}>
-                  <option value="austrelia">Select City</option>
+                  <option>Select City</option>
                   {cityList &&
                     cityList.map((city, key) => (
                       <option key={key} value={city.id}>
@@ -228,12 +260,14 @@ export default function ShippingInfoPage() {
                   type={"text"}
                   className="pincode"
                   placeholder="PIN"
+                  value={zip_code}
                   onChange={selectPincode}
+                  required
                 />
               </div>
               <div className="inline-form-field">
-                <select onChange={selectCity}>
-                  <option value="austrelia">Select Charges</option>
+                <select onChange={selectCharges} required>
+                  <option>Select Charges</option>
                   {shippingChargesList &&
                     shippingChargesList.map((method, key) => (
                       <option key={key} value={method.id}>

@@ -169,8 +169,14 @@ export const removeCart = (id) => (dispatch) => {
 
 // Place order
 export const placeOrder = (data) => (dispatch) => {
-  Axios.delete(`${requests.order}`, data, config).then((res) => {
-    console.log(res);
+  Axios.post(`${requests.order}`, data, config).then((res) => {
+    toast("Order Placed Successfully!", {
+      type: toast.TYPE.SUCCESS,
+      autoClose: 5000,
+    });
+    setTimeout(() => {
+      window.location.href = "/my-account";
+    }, 1000);
   });
 };
 
@@ -232,7 +238,7 @@ export const getOrdersList = (userId) => (dispatch) => {
     console.log(res, "response reciving");
     dispatch({
       type: SET_ORDERS_LIST,
-      payload: res.data,
+      payload: res.data.order_history,
     });
   });
 };
