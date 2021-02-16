@@ -50,7 +50,7 @@ export default function MobileMenuSidebar() {
                     </Link>
                     {activeId === eachObj.id ? (
                       <ul className="sub-menu swing-in-top-fwd">
-                        {eachObj.sub_menu.map((subMenu) => (
+                        {eachObj.sub_menu.map((subMenu, key) => (
                           <Link
                             key={key}
                             className="sub-link"

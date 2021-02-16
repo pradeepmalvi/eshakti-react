@@ -13,6 +13,7 @@ import {
   SET_STATE,
   SET_CITY,
   SET_SHIPPING_CHARGES,
+  SET_ORDERS_LIST,
 } from "../types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -58,6 +59,7 @@ export const onLogin = (data) => (dispatch) => {
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
       });
+
       dispatch({
         type: SET_USER_DETAILS,
         payload: res.data.user,
@@ -67,8 +69,11 @@ export const onLogin = (data) => (dispatch) => {
       localStorage.setItem("es_name", res.data.user.name);
       localStorage.setItem("es_user_id", res.data.user.id);
       localStorage.setItem("es_login", true);
+      localStorage.setItem("es_user_details", JSON.stringify(res.data.user));
+
       window.location.reload();
     })
+
     .catch((res) => {
       if (res.response) {
         toast(res.response.data.error, {
@@ -217,6 +222,17 @@ export const getShippingChargesList = (data) => (dispatch) => {
     dispatch({
       type: SET_SHIPPING_CHARGES,
       payload: res.data.shipping_method,
+    });
+  });
+};
+
+// get orders list
+export const getOrdersList = (userId) => (dispatch) => {
+  Axios.get(`${requests.getOrdersList}/${userId}`, config).then((res) => {
+    console.log(res, "response reciving");
+    dispatch({
+      type: SET_ORDERS_LIST,
+      payload: res.data,
     });
   });
 };

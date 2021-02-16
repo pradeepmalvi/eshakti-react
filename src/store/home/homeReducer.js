@@ -9,6 +9,8 @@ import {
   SET_STATE,
   SET_CITY,
   SET_SHIPPING_CHARGES,
+  SET_USER_DETAILS,
+  SET_ORDERS_LIST,
 } from "../types";
 
 const initalState = [];
@@ -71,6 +73,19 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         shippingChargesList: action.payload,
+      };
+
+    case SET_USER_DETAILS:
+      return {
+        ...state,
+        signedInUser: action.payload,
+      };
+
+    case SET_ORDERS_LIST:
+      console.log(action.payload, "getting in");
+      return {
+        ...state,
+        userOrdersList: action.payload,
       };
 
     default:

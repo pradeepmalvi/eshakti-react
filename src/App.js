@@ -65,7 +65,7 @@ function App() {
     //     payload: res.data.product_categories,
     //   });
     // });
-
+    console.log(localStorage);
     dispatch(getProductCategory());
     dispatch(getHomePageProducts());
   }, []);
