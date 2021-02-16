@@ -6,3 +6,7 @@ export const SET_PARTICULAR_PRODUCT = "SET_PARTICULAR_PRODUCT";
 export const SET_PRODUCT_DETAILS = "SET_PRODUCT_DETAILS";
 export const SET_CART = "SET_CART";
 export const SET_PAGES = "SET_PAGES";
+export const SET_COUNTRY = "SET_COUNTRY";
+export const SET_STATE = "SET_STATE";
+export const SET_CITY = "SET_CITY";
+export const SET_SHIPPING_CHARGES = "SET_SHIPPING_CHARGES";

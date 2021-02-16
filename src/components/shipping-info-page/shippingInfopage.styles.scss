@@ -24,12 +24,13 @@
 
       .info-form {
         .form-input {
-          margin-bottom: 1.4rem;
-
           input {
             border: 1px solid #ccc;
             font-size: 1rem;
             font-weight: 100;
+          }
+          .residency {
+            margin-bottom: 20px;
           }
         }
         .inline-form-shipping-address {
@@ -40,7 +41,6 @@
             margin-bottom: 1.5rem;
 
             &:nth-child(1) {
-              margin-right: 0.6rem;
             }
 
             &:nth-child(2) {
@@ -63,6 +63,7 @@
 
         .inline-form-field {
           display: flex;
+          margin-bottom: 20px;
 
           .select-form-element {
             flex-grow: 1;

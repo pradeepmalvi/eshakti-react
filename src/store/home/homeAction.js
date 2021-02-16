@@ -9,6 +9,10 @@ import {
   SET_PRODUCT_DETAILS,
   SET_CART,
   SET_PAGES,
+  SET_COUNTRY,
+  SET_STATE,
+  SET_CITY,
+  SET_SHIPPING_CHARGES,
 } from "../types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -172,6 +176,47 @@ export const getPages = (data) => (dispatch) => {
     dispatch({
       type: SET_PAGES,
       payload: res.data,
+    });
+  });
+};
+
+// Get country
+export const getCountryList = () => (dispatch) => {
+  Axios.get(`${requests.getCountry}`).then((res) => {
+    console.log(res.data);
+    dispatch({
+      type: SET_COUNTRY,
+      payload: res.data,
+    });
+  });
+};
+
+// Get state
+export const getStateList = (id) => (dispatch) => {
+  Axios.get(`${requests.getState}/${id}`).then((res) => {
+    dispatch({
+      type: SET_STATE,
+      payload: res.data,
+    });
+  });
+};
+
+// Get city
+export const getCityList = (id) => (dispatch) => {
+  Axios.get(`${requests.getCity}/${id}`).then((res) => {
+    dispatch({
+      type: SET_CITY,
+      payload: res.data,
+    });
+  });
+};
+
+// Get shipping charges
+export const getShippingChargesList = (data) => (dispatch) => {
+  Axios.post(`${requests.getShippingCharges}`, data).then((res) => {
+    dispatch({
+      type: SET_SHIPPING_CHARGES,
+      payload: res.data.shipping_method,
     });
   });
 };

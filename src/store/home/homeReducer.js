@@ -5,6 +5,10 @@ import {
   SET_PRODUCT_DETAILS,
   SET_CART,
   SET_PAGES,
+  SET_COUNTRY,
+  SET_STATE,
+  SET_CITY,
+  SET_SHIPPING_CHARGES,
 } from "../types";
 
 const initalState = [];
@@ -40,11 +44,33 @@ const homeReducer = (state = initalState, action) => {
       };
 
     case SET_PAGES:
-      console.log(action);
-
       return {
         ...state,
         staticPages: action.payload.pages,
+      };
+
+    case SET_COUNTRY:
+      return {
+        ...state,
+        countryList: action.payload,
+      };
+
+    case SET_STATE:
+      return {
+        ...state,
+        stateList: action.payload,
+      };
+
+    case SET_CITY:
+      return {
+        ...state,
+        cityList: action.payload,
+      };
+
+    case SET_SHIPPING_CHARGES:
+      return {
+        ...state,
+        shippingChargesList: action.payload,
       };
 
     default:

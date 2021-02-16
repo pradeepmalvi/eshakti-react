@@ -9,4 +9,8 @@ export default {
   cart: "cart",
   order: "order",
   getPages: "get-pages",
+  getCountry: "countries-list",
+  getState: "states-list",
+  getCity: "cities-list",
+  getShippingCharges: "selling-zone-with-charge",
 };

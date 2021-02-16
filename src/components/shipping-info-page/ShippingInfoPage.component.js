@@ -5,6 +5,10 @@ import {
   updateCart,
   removeCart,
   placeOrder,
+  getCountryList,
+  getStateList,
+  getCityList,
+  getShippingChargesList,
 } from "../../store/home/homeAction";
 import "./shippingInfopage.styles.scss";
 
@@ -32,10 +36,21 @@ export default function ShippingInfoPage() {
   }, []);
 
   const cart = useSelector((state) => state.home.cart);
+  const countryList = useSelector((state) => state.home.countryList);
+
+  const stateList = useSelector((state) => state.home.stateList);
+  const cityList = useSelector((state) => state.home.cityList);
+  const shippingChargesList = useSelector(
+    (state) => state.home.shippingChargesList
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCart());
+    dispatch(getCountryList());
+
+    // dispatch(getCityList());
+    dispatch(getShippingChargesList());
   }, []);
 
   const updateQunitity = (type, cart_id) => {
@@ -99,6 +114,26 @@ export default function ShippingInfoPage() {
     dispatch(placeOrder(data));
   };
 
+  const selectCountry = (e) => {
+    setcountry(e.target.value);
+    dispatch(getStateList(e.target.value));
+  };
+  const selectState = (e) => {
+    setstate(e.target.value);
+    dispatch(getCityList(e.target.value));
+  };
+  const selectCity = (e) => {
+    setcity(e.target.value);
+  };
+  const selectPincode = (e) => {
+    let data = {
+      country_id: country,
+      state_id: state,
+      city_id: city,
+      postal_code: e.target.value,
+    };
+    dispatch(getShippingChargesList(data));
+  };
   return (
     <div className="shipping-info">
       <div className="inner-container">
@@ -152,32 +187,61 @@ export default function ShippingInfoPage() {
                 onChange={(e) => setaddress(e.target.name)}
                 required
               />
-              <FormInput
+              {/* <FormInput
                 type={"text"}
                 placeholder={"City"}
                 className={"city"}
                 name={"city"}
-              />
-
+              /> */}
               <div className="inline-form-field">
-                <SelectFormElement name={"country"}>
-                  <option value="austrelia">Austrelia</option>
-                  <option value="austrelia">Austrelia</option>
-                  <option value="austrelia">Austrelia</option>
-                </SelectFormElement>
-                <SelectFormElement name={"state"}>
-                  <option value="austrelia">Melbourne</option>
-                  <option value="austrelia">Austrelia</option>
-                  <option value="austrelia">Austrelia</option>
-                </SelectFormElement>
+                <select onChange={selectCountry}>
+                  <option value="austrelia">Select Country</option>
+                  {countryList &&
+                    countryList.map((country, key) => (
+                      <option key={key} value={country.id}>
+                        {country.name}
+                      </option>
+                    ))}
+                </select>
+                <select onChange={selectState}>
+                  <option value="austrelia">Select State</option>
+                  {stateList &&
+                    stateList.map((state, key) => (
+                      <option key={key} value={state.id}>
+                        {state.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="inline-form-field">
+                <select onChange={selectCity}>
+                  <option value="austrelia">Select City</option>
+                  {cityList &&
+                    cityList.map((city, key) => (
+                      <option key={key} value={city.id}>
+                        {city.name}
+                      </option>
+                    ))}
+                </select>
 
                 <FormInput
                   type={"text"}
                   className="pincode"
                   placeholder="PIN"
+                  onChange={selectPincode}
                 />
               </div>
-
+              <div className="inline-form-field">
+                <select onChange={selectCity}>
+                  <option value="austrelia">Select Charges</option>
+                  {shippingChargesList &&
+                    shippingChargesList.map((method, key) => (
+                      <option key={key} value={method.id}>
+                        {method.label}
+                      </option>
+                    ))}{" "}
+                </select>
+              </div>
               <div className="save-info">
                 <FormInput type={"checkbox"} className="save-info-checkbox" />
                 <p>Save this information for next time</p>
