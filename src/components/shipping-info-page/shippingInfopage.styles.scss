@@ -1,13 +1,14 @@
 .shipping-info {
+  padding: 2rem 4.5rem;
   & > .inner-container {
     margin: 0 auto;
-    width: 80vw;
+    max-width: 1360px;
     display: flex;
 
     .left {
       width: 50%;
-      padding: 3rem 1.5rem 1.5rem 1.5rem;
       border-right: 1px solid #d1d1d1;
+      padding-right: 1rem;
 
       .top-title-area {
         display: flex;
@@ -15,9 +16,10 @@
 
         .title {
           font-size: 1.1rem;
-          color: #333333;
+          color: #202020;
           text-transform: capitalize;
           margin-bottom: 1rem;
+          margin-top: 0;
           font-weight: 700;
         }
       }
@@ -53,8 +55,9 @@
           margin-top: 1rem;
 
           .title-text {
+            margin-top: 0;
             font-size: 1.1rem;
-            color: #333333;
+            color: #202020;
             text-transform: capitalize;
             margin-bottom: 1rem;
             font-weight: 700;
@@ -91,12 +94,19 @@
             }
 
             &:nth-child(2) {
-              margin-right: 1rem;
+              margin-right: 0rem;
             }
           }
 
           input {
             padding: 1.05rem;
+          }
+
+          &.select-charges {
+            select {
+              margin-right: 0;
+              width: 100%;
+            }
           }
         }
 
@@ -151,7 +161,7 @@
     }
 
     .right {
-      padding: 3rem 1.5rem 1.5rem 1.5rem;
+      padding-left: 1rem;
       width: 50%;
 
       .cart-products {

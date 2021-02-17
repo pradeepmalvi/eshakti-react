@@ -83,6 +83,7 @@ const homeReducer = (state = initalState, action) => {
 
     case SET_ORDERS_LIST:
       console.log(action.payload, "getting in");
+
       return {
         ...state,
         userOrdersList: action.payload,

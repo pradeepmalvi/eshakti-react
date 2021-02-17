@@ -242,3 +242,8 @@ export const getOrdersList = (userId) => (dispatch) => {
     });
   });
 };
+
+// update user details
+// export const updateUserDetails = (userId) => (dispatch) => {
+//   Axios.get(`${requests}`)
+// }

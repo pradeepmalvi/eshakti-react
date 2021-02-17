@@ -265,7 +265,7 @@ export default function ShippingInfoPage() {
                   required
                 />
               </div>
-              <div className="inline-form-field">
+              <div className="inline-form-field select-charges">
                 <select onChange={selectCharges} required>
                   <option>Select Charges</option>
                   {shippingChargesList &&

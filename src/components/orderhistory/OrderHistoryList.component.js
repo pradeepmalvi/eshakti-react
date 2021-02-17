@@ -5,6 +5,7 @@ import { getOrdersList } from "../../store/home/homeAction";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function OrderHistoryList() {
+  // using action dispatcher and selector to get and set state
   const dispatch = useDispatch();
   const userOrdersList = useSelector((state) => state.home.userOrdersList);
 

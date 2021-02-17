@@ -14,4 +14,5 @@ export default {
   getCity: "cities-list",
   getShippingCharges: "selling-zone-with-charge",
   getOrdersList: "order",
+  updateUserDetails: "user-details",
 };
