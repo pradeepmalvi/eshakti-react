@@ -10,8 +10,6 @@ import { useParams } from "react-router-dom";
 // local icons
 import icon1 from "../../assets/icons/01.png";
 import icon2 from "../../assets/icons/02.png";
-import icon3 from "../../assets/icons/03.png";
-import icon4 from "../../assets/icons/04.png";
 
 // react icons
 import { FiChevronDown } from "react-icons/fi";
@@ -22,12 +20,7 @@ import PriceFilter from "../priceFilter/PriceFilter.component";
 import SizeFilter from "../sizeFilter/SizeFilter.component";
 import ColorFilter from "../colorFilter/ColorFilter.component";
 
-// react icons
-import { FaDiceFour } from "react-icons/fa";
-
 // importing axios
-import Axios from "../../axios/axios";
-import requests from "../../axios/requests";
 
 export default function CategoryPage() {
   const dispatch = useDispatch();
@@ -36,15 +29,7 @@ export default function CategoryPage() {
 
   const { id } = useParams();
 
-  async function fetchCategoryData(categoryId) {
-    Axios.get(`${requests.getProductByCategory}/${categoryId}`).then((res) =>
-      // setProducts(res.data)
-      console.log(res.data)
-    );
-  }
-
   useEffect(() => {
-    // fetchCategoryData(id);
     dispatch(getProductByCategory(id));
   }, [id]);
 

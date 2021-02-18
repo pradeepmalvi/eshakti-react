@@ -11,3 +11,4 @@ export const SET_STATE = "SET_STATE";
 export const SET_CITY = "SET_CITY";
 export const SET_SHIPPING_CHARGES = "SET_SHIPPING_CHARGES";
 export const SET_ORDERS_LIST = "SET_ORDERS_LIST";
+export const SET_USER_PROFILE_IMG = "SET_USER_PROFILE_IMG";

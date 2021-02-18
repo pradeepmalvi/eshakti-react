@@ -62,6 +62,7 @@ const SignUp = ({ open, onCloseModal }) => {
 
     dispatch(onRegister(data));
   };
+
   return (
     <Modal open={open} onClose={onCloseModal} center>
       <ToastContainer />

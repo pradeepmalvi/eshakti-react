@@ -15,4 +15,7 @@ export default {
   getShippingCharges: "selling-zone-with-charge",
   getOrdersList: "order",
   updateUserDetails: "user-details",
+  getAccountDetails: "get-account-detail",
+  uploadProfilePicture: "upload-profile-picture",
+  getUserDetails: "get-account-detail",
 };

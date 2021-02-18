@@ -1,11 +1,9 @@
 import Axios from "../../axios/axios";
 import requests from "../../axios/requests";
 import {
-  SET_USER_DETAILS,
   SET_PRODUCT_CATEGORY,
   SET_PRODUCT_BY_CATEGORY,
   SET_HOMEPAGE_PRODUCTS,
-  SET_PARTICULAR_PRODUCT,
   SET_PRODUCT_DETAILS,
   SET_CART,
   SET_PAGES,
@@ -14,8 +12,10 @@ import {
   SET_CITY,
   SET_SHIPPING_CHARGES,
   SET_ORDERS_LIST,
+  SET_USER_PROFILE_IMG,
+  SET_USER_DETAILS,
 } from "../types";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const config = {
@@ -32,6 +32,9 @@ export const onRegister = (data) => (dispatch) => {
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
       });
+
+      console.log(res);
+
       dispatch({
         type: SET_USER_DETAILS,
         payload: res.data.success,
@@ -43,6 +46,7 @@ export const onRegister = (data) => (dispatch) => {
 
       window.location.reload();
     })
+
     .catch((res) => {
       toast(res.response.data.error, {
         type: toast.TYPE.ERROR,
@@ -139,7 +143,6 @@ export const addToCart = (data) => (dispatch) => {
 export const getCart = (data) => (dispatch) => {
   Axios.get(
     `${requests.cart}/${localStorage.getItem("es_user_id")}`,
-
     config
   ).then((res) => {
     dispatch({
@@ -243,7 +246,20 @@ export const getOrdersList = (userId) => (dispatch) => {
   });
 };
 
-// update user details
-// export const updateUserDetails = (userId) => (dispatch) => {
-//   Axios.get(`${requests}`)
-// }
+export const updateProfilePic = (data) => (dispatch) => {
+  Axios.post(`${requests.uploadProfilePicture}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("es_token")}`,
+    },
+  }).then((res) => {
+    dispatch({ type: SET_USER_PROFILE_IMG, payload: res.data.pic });
+  });
+};
+
+// // get user details
+export const getUserDetails = (userId) => (dispatch) => {
+  Axios.get(`${requests.getUserDetails}/${userId}`, config).then((res) => {
+    dispatch({ type: SET_USER_DETAILS, payload: res.data });
+  });
+};

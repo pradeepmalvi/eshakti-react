@@ -21,7 +21,7 @@ export default function MyAccount() {
           <h4 className="navigation-title">My Account</h4>
           <div className="nav-list-container">
             <div className="nav-list">
-              <Link to={`my-account/profile`} className="link">
+              <Link to={`my-account/`} className="link">
                 Profile
               </Link>
               <Link to={`my-account/my-orders`} className="link">
@@ -35,11 +35,7 @@ export default function MyAccount() {
         </div>
         <div className="info-side">
           <Switch>
-            <Route
-              exact
-              path={`/my-account/profile`}
-              render={() => <UserProfile />}
-            />
+            <Route exact path={`/my-account/`} render={() => <UserProfile />} />
 
             <Route
               exact
@@ -49,7 +45,7 @@ export default function MyAccount() {
 
             <Route
               exact
-              path={`/my-account/`}
+              path={`/my-account/manage-address`}
               render={() => <ManageAddress />}
             />
             <Route

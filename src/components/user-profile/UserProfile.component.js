@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./userProfile.styles.scss";
+
+import { useDispatch, useSelector } from "react-redux";
+import { updateProfilePic, getUserDetails } from "../../store/home/homeAction";
+
+import ImageUploader from "react-images-upload";
+import Axios from "axios";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
@@ -7,7 +12,30 @@ export default function UserProfile() {
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
 
-  async function getUserDetails() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  async function getupdatedUserDetails() {
+    const userId = await localStorage.getItem("es_user_id");
+    dispatch(getUserDetails(userId));
+  }
+
+  console.log(state, "here it is");
+  // onchange method to get picture from your system and set in to state
+  const onDrop = (picture) => {
+    const files = picture;
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append("image", file);
+    });
+
+    formData.append("id", localStorage.getItem("es_user_id"));
+    dispatch(updateProfilePic(formData));
+    getupdatedUserDetails();
+  };
+
+  async function getStoredUserDetails() {
     try {
       let userDetails = await JSON.parse(
         localStorage.getItem("es_user_details")
@@ -25,21 +53,36 @@ export default function UserProfile() {
   }
 
   useEffect(() => {
-    getUserDetails();
+    getStoredUserDetails();
+    getupdatedUserDetails();
   }, []);
 
   return (
     <>
       <div className="personal-info-slot">
         <div className="profile-img">
-          <img
-            src="https://randomuser.me/api/portraits/men/79.jpg"
-            width={100}
-            height={100}
-            alt=""
-          />
+          {state.home.signedInUser && (
+            <img
+              src={
+                state.home.userProfileImg ||
+                `http://eshakti.ewtlive.in/dashboard/${state.home.signedInUser.user.profile_pic}`
+              }
+              width={100}
+              height={100}
+              alt=""
+            />
+          )}
 
-          <button className="change-profile-pic-btn">change profile pic</button>
+          {/* <button className="change-profile-pic-btn">change profile pic</button> */}
+          <ImageUploader
+            withIcon={false}
+            label={false}
+            onChange={onDrop}
+            buttonClassName="change-profile-pic-btn"
+            buttonText={"Update Image"}
+            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            maxFileSize={5242880}
+          />
         </div>
 
         <form>

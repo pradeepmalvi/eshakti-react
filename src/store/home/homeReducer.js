@@ -11,6 +11,7 @@ import {
   SET_SHIPPING_CHARGES,
   SET_USER_DETAILS,
   SET_ORDERS_LIST,
+  SET_USER_PROFILE_IMG,
 } from "../types";
 
 const initalState = [];
@@ -87,6 +88,12 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         userOrdersList: action.payload,
+      };
+
+    case SET_USER_PROFILE_IMG:
+      return {
+        ...state,
+        userProfileImg: action.payload,
       };
 
     default:

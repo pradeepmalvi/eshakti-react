@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
 export default function ManageAddress() {
   const [shippingAddress, setShippingAddress] = useState({});
 
+  let userId = localStorage.getItem("es_user_id");
+
+  async function fetchUserDetails() {
+    userId = await JSON.parse(userId);
+  }
+
   useEffect(() => {}, []);
+
   return (
     <div className="manage-address">
       <div className="shipping-address">
