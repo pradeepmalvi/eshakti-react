@@ -12,6 +12,8 @@ import {
   SET_USER_DETAILS,
   SET_ORDERS_LIST,
   SET_USER_PROFILE_IMG,
+  SET_FILTERS,
+  SET_WISHLIST,
 } from "../types";
 
 const initalState = [];
@@ -26,7 +28,7 @@ const homeReducer = (state = initalState, action) => {
     case SET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
-        productByCategory: action.payload,
+        productByCategory: action.payload.product,
       };
 
     case SET_HOMEPAGE_PRODUCTS:
@@ -83,8 +85,6 @@ const homeReducer = (state = initalState, action) => {
       };
 
     case SET_ORDERS_LIST:
-      console.log(action.payload, "getting in");
-
       return {
         ...state,
         userOrdersList: action.payload,
@@ -94,6 +94,18 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         userProfileImg: action.payload,
+      };
+
+    case SET_FILTERS:
+      return {
+        ...state,
+        categoryFilters: action.payload,
+      };
+
+    case SET_WISHLIST:
+      return {
+        ...state,
+        userWishList: action.payload,
       };
 
     default:

@@ -64,7 +64,9 @@ export default function Navbar() {
             </span>
           </Link>
           <span className="whishlist icon">
-            <AiOutlineHeart />
+            <Link className="link" to="/wishlist">
+              <AiOutlineHeart />
+            </Link>
           </span>
           <span className="search icon">
             <AiOutlineSearch />
@@ -84,7 +86,9 @@ export default function Navbar() {
           <AiOutlineMenu />
         </span>
         <span className="whishlist icon">
-          <AiOutlineHeart />
+          <Link className="link" to="/wishlist">
+            <AiOutlineHeart />
+          </Link>
         </span>
       </div>
 

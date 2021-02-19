@@ -19,7 +19,6 @@ export default function ImagesCustomization({ currentCustom, style }) {
     var left = (style.leftWidth * reduceWidthPerchantage) / 100;
     var top = (style.topWidth * reduceWidthPerchantage) / 100;
     var right = (style.rightWidth * reduceWidthPerchantage) / 100;
-    console.log(top, left, right);
 
     setTop(top);
     setLeft(left);

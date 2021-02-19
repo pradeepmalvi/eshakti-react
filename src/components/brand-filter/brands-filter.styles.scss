@@ -1,50 +1,36 @@
-.color-filter {
-  margin-top: 2rem;
+.brand-names-filter {
   border-bottom: 1px solid #b6b6b6;
 
   .title {
     font-size: 1.2rem;
-    color: #333333;
+    color: #242424;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1.5rem;
     font-weight: 500;
   }
 
-  .color-list {
+  .list {
     display: flex;
     flex-direction: column;
     color: #333333;
     margin-bottom: 2rem;
 
-    .each-color {
+    .list-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 1rem;
 
-      .color {
+      .eachValue {
         display: flex;
-        align-items: center;
 
         input {
           margin-right: 0.5rem;
           width: 1.2rem;
           height: 1.2rem;
         }
-
-        img {
-          margin-right: 0.5rem;
-          width: 1.2rem;
-          height: 1.2rem;
-          border-radius: 0.2rem;
-        }
-
-        .color-name {
+        span {
           display: flex;
-          width: 1.2rem;
-          height: 1.2rem;
-          border-radius: 0.2rem;
         }
       }
 

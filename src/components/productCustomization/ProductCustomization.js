@@ -163,7 +163,6 @@ export default function ProductCustomization({
         crossOrigin: true,
       }
     ).then((b64) => {
-      console.log(b64);
       saveFinalImage(b64);
     });
   };

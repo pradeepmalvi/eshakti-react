@@ -14,6 +14,8 @@ import {
   SET_ORDERS_LIST,
   SET_USER_PROFILE_IMG,
   SET_USER_DETAILS,
+  SET_FILTERS,
+  SET_WISHLIST,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,8 +34,6 @@ export const onRegister = (data) => (dispatch) => {
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
       });
-
-      console.log(res);
 
       dispatch({
         type: SET_USER_DETAILS,
@@ -186,7 +186,6 @@ export const placeOrder = (data) => (dispatch) => {
 // get static pages
 export const getPages = (data) => (dispatch) => {
   Axios.get(`${requests.getPages}`).then((res) => {
-    console.log(res);
     dispatch({
       type: SET_PAGES,
       payload: res.data,
@@ -197,7 +196,6 @@ export const getPages = (data) => (dispatch) => {
 // Get country
 export const getCountryList = () => (dispatch) => {
   Axios.get(`${requests.getCountry}`).then((res) => {
-    console.log(res.data);
     dispatch({
       type: SET_COUNTRY,
       payload: res.data,
@@ -238,7 +236,6 @@ export const getShippingChargesList = (data) => (dispatch) => {
 // get orders list
 export const getOrdersList = (userId) => (dispatch) => {
   Axios.get(`${requests.getOrdersList}/${userId}`, config).then((res) => {
-    console.log(res, "response reciving");
     dispatch({
       type: SET_ORDERS_LIST,
       payload: res.data.order_history,
@@ -246,6 +243,7 @@ export const getOrdersList = (userId) => (dispatch) => {
   });
 };
 
+// update profile pic
 export const updateProfilePic = (data) => (dispatch) => {
   Axios.post(`${requests.uploadProfilePicture}`, data, {
     headers: {
@@ -261,5 +259,21 @@ export const updateProfilePic = (data) => (dispatch) => {
 export const getUserDetails = (userId) => (dispatch) => {
   Axios.get(`${requests.getUserDetails}/${userId}`, config).then((res) => {
     dispatch({ type: SET_USER_DETAILS, payload: res.data });
+  });
+};
+// get filters data
+export const getfiltersData = (categoryId) => (dispatch) => {
+  Axios.get(`${requests.getFiltersDetails}/${categoryId}`, config).then(
+    (res) => {
+      dispatch({ type: SET_FILTERS, payload: res.data });
+    }
+  );
+};
+
+// get wishlist
+export const getWishList = (userId) => (dispatch) => {
+  Axios.get(`${requests.getWishList}/${userId}`, config).then((res) => {
+    console.log(res, "wishlist");
+    dispatch({ type: SET_WISHLIST, payload: res.data });
   });
 };

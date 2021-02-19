@@ -1,5 +1,6 @@
 .wishlist {
   padding: 3.5rem 4.5rem;
+  min-height: 70vh;
 
   .inner-container {
     max-width: 1360px;
@@ -44,6 +45,11 @@
             }
           }
         }
+      }
+
+      .no-items {
+        margin: 2rem auto;
+        color: #c7c7c7;
       }
     }
   }

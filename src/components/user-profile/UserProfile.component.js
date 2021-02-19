@@ -20,7 +20,6 @@ export default function UserProfile() {
     dispatch(getUserDetails(userId));
   }
 
-  console.log(state, "here it is");
   // onchange method to get picture from your system and set in to state
   const onDrop = (picture) => {
     const files = picture;

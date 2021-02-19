@@ -35,7 +35,6 @@ export default function HowItWorks() {
       (each) => each.page_group.toLowerCase() === "about"
     );
 
-    console.log(filtered);
     // find ou data for affilate program page
     howItWorks = filtered[0].page.filter(
       (each) => each.page_name === "How Customization Works"

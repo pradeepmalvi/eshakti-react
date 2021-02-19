@@ -11,8 +11,6 @@ export default function OrderHistoryList() {
 
   const userId = localStorage.getItem("es_user_id");
 
-  console.log(userOrdersList);
-
   useEffect(() => {
     dispatch(getOrdersList(userId));
   }, []);

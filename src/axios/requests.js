@@ -18,4 +18,6 @@ export default {
   getAccountDetails: "get-account-detail",
   uploadProfilePicture: "upload-profile-picture",
   getUserDetails: "get-account-detail",
+  getFiltersDetails: "filter-data",
+  getWishList: "get-wishlist",
 };
