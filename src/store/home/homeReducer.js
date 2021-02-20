@@ -13,7 +13,8 @@ import {
   SET_ORDERS_LIST,
   SET_USER_PROFILE_IMG,
   SET_FILTERS,
-  SET_WISHLIST,
+  GET_WISHLIST,
+  ADD_TO_WISHLIST,
 } from "../types";
 
 const initalState = [];
@@ -102,12 +103,17 @@ const homeReducer = (state = initalState, action) => {
         categoryFilters: action.payload,
       };
 
-    case SET_WISHLIST:
+    case GET_WISHLIST:
       return {
         ...state,
         userWishList: action.payload,
       };
 
+    case ADD_TO_WISHLIST:
+      return {
+        ...state,
+        localTempWishlistItem: action.payload,
+      };
     default:
       return state;
   }

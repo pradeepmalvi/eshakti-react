@@ -2,7 +2,7 @@ import React from "react";
 import "./productCard.styles.scss";
 
 // import react icons
-import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({ product = {} }) {
@@ -13,16 +13,21 @@ export default function ProductCard({ product = {} }) {
   const { total_price } = product;
   const { product_thumbnail } = product;
 
-  console.log(
-    id,
-    brand,
-    product_name,
-    product_price,
-    product_thumbnail,
-    total_price
-  );
+  const handleClick = (product_id) => {
+    console.log(product_id);
+  };
+
   return (
     <div className="product_card">
+      <span
+        className={"icon"}
+        onClick={() => {
+          handleClick(id);
+        }}
+      >
+        <AiOutlineHeart />
+      </span>
+
       <Link to={`/product-details/${id}`}>
         <div className="product_img">
           <div

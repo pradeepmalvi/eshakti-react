@@ -20,4 +20,5 @@ export default {
   getUserDetails: "get-account-detail",
   getFiltersDetails: "filter-data",
   getWishList: "get-wishlist",
+  addToWishList: "add-to-wishlist",
 };

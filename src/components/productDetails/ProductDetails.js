@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductById, addToCart } from "../../store/home/homeAction";
+import {
+  getProductById,
+  addToCart,
+  addToWishlist,
+} from "../../store/home/homeAction";
 import "./productDetails.scss";
 import {
   AiOutlineStar,
@@ -10,11 +14,16 @@ import {
   AiFillHeart,
   AiFillStar,
 } from "react-icons/ai";
+
 import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
+
 // react router
 import { useParams } from "react-router-dom";
+
+// toastify
 import { ToastContainer, toast } from "react-toastify";
+
 import Login from "../login/Login.component";
 import SignUp from "../signup/SignUp";
 
@@ -23,6 +32,10 @@ export default function ProductDetails() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
   const productDetail = useSelector((state) => state.home.productDetail);
+  const tempWishlistStatus = useSelector(
+    (state) => state.home.localTempWishlistItem
+  );
+
   const variant =
     productDetail &&
     productDetail.variant_products &&
@@ -279,8 +292,9 @@ export default function ProductDetails() {
           <div className="color-palette-wrapper">
             {productDetail &&
               productDetail.variant_products &&
-              productDetail.variant_products.map((varient) => (
+              productDetail.variant_products.map((varient, index) => (
                 <div
+                  key={index}
                   onClick={changeVarient.bind(this, varient.variants)}
                   className="color"
                   style={{
@@ -300,9 +314,10 @@ export default function ProductDetails() {
           <div className="size-attribute">
             {currentVariant &&
               currentVariant.product_size &&
-              currentVariant.product_size.map((sizes) =>
+              currentVariant.product_size.map((sizes, index) =>
                 sizes === size ? (
                   <div
+                    key={index}
                     className="size selected"
                     onClick={selectSize.bind(this, sizes)}
                   >
@@ -319,82 +334,6 @@ export default function ProductDetails() {
               Size Chart
             </div>
           </div>
-
-          {/* <div className="color-attribute">SIZE CHART :</div>
-          <div className="size-block-wrapper">
-            <span className="size-block">
-              <p>XS</p>
-              <div className="size-attribute">
-                <div className="size">0</div>
-                <div className="size">2</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>S</p>
-              <div className="size-attribute">
-                <div className="size">4</div>
-                <div className="size">6</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>M</p>
-              <div className="size-attribute">
-                <div className="size">8</div>
-                <div className="size">10</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>L</p>
-              <div className="size-attribute">
-                <div className="size">12</div>
-                <div className="size">14</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>XL</p>
-              <div className="size-attribute">
-                <div className="size">16</div>
-                <div className="size">18</div>
-              </div>
-            </span>
-          </div>
-          <div className="size-block-wrapper">
-            <span className="size-block">
-              <p>1X</p>
-              <div className="size-attribute">
-                <div className="size">16w</div>
-                <div className="size">18w</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>2X</p>
-              <div className="size-attribute">
-                <div className="size">20w</div>
-                <div className="size">22w</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>3X</p>
-              <div className="size-attribute">
-                <div className="size">24w</div>
-                <div className="size">26w</div>
-              </div>
-            </span>
-            <span className="size-block">
-              <p>4X</p>
-              <div className="size-attribute">
-                <div className="size">28w</div>
-                <div className="size">30w</div>
-              </div>
-            </span> */}
-          {/* <span className="size-block">
-              <p>5X</p>
-              <div className="size-attribute">
-                <div className="size">32w</div>
-                <div className="size">34w</div>
-              </div>
-            </span> */}
-          {/* </div> */}
 
           <div className="height-attribute">
             <div className="height">
@@ -419,17 +358,28 @@ export default function ProductDetails() {
           </div>
 
           <div className="purchasing-actions-wrapper">
-            <div className="icon">
-              <AiOutlineHeart></AiOutlineHeart>
-              <p> Add to Wishlist</p>
-            </div>
-            {/* <div className="icon">
-              <AiOutlineSync></AiOutlineSync>
-              <p> Delivery & Returns</p>
-            </div>
-            <div className="icon">
-              <AiOutlineMail></AiOutlineMail> <p>Enquiry</p>
-            </div> */}
+            {tempWishlistStatus ? (
+              <div className="icon">Added to wishlist</div>
+            ) : (
+              <div
+                className="icon"
+                onClick={() => {
+                  if (localStorage.getItem("es_login")) {
+                    dispatch(
+                      addToWishlist({
+                        user_id: localStorage.getItem("es_user_id"),
+                        product_id: productDetail.id,
+                      })
+                    );
+                  } else {
+                    toast.dark("Please Login first");
+                  }
+                }}
+              >
+                <AiOutlineHeart></AiOutlineHeart>
+                <p>Add to Wishlist</p>
+              </div>
+            )}
 
             <div className="quantity-addtocart">
               <div className="quantity-wrapper">
@@ -452,36 +402,6 @@ export default function ProductDetails() {
               </div>
             </div>
           </div>
-
-          {/* <div className="details-thumb">
-            <h5> Matching Masks</h5>
-            <div className="thumb-wrapper">
-              <div className="thumb">
-                <img
-                  src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="thumb">
-                <img
-                  src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="thumb">
-                <img
-                  src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="thumb">
-                <img
-                  src="https://img1.eshakti.com/clothimages/CL0064234MP.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       <ProductTabList

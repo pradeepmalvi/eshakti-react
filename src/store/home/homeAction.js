@@ -15,7 +15,8 @@ import {
   SET_USER_PROFILE_IMG,
   SET_USER_DETAILS,
   SET_FILTERS,
-  SET_WISHLIST,
+  GET_WISHLIST,
+  ADD_TO_WISHLIST,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -274,6 +275,17 @@ export const getfiltersData = (categoryId) => (dispatch) => {
 export const getWishList = (userId) => (dispatch) => {
   Axios.get(`${requests.getWishList}/${userId}`, config).then((res) => {
     console.log(res, "wishlist");
-    dispatch({ type: SET_WISHLIST, payload: res.data });
+    dispatch({ type: GET_WISHLIST, payload: res.data });
+  });
+};
+
+// add to wishlist
+export const addToWishlist = (data) => (dispatch) => {
+  Axios.post(`${requests.addToWishList}`, data, config).then((res) => {
+    // console.log(res.data.status);
+    dispatch({
+      type: ADD_TO_WISHLIST,
+      payload: { itemId: data.product_id, status: res.data.status },
+    });
   });
 };
