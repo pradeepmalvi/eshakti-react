@@ -1,0 +1,32 @@
+@media only screen and (max-width: 968px) {
+  .cart-wrapper {
+    flex-direction: column;
+
+    .cart-group-wrapper {
+      width: 100% !important;
+    }
+
+    .cart-total-wrapper {
+      width: 100% !important;
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cart-container {
+    padding: 2rem 2rem !important;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .cart-container {
+    .empty-cart {
+      font-size: 1.3rem !important;
+
+      .checkout-btn {
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+}

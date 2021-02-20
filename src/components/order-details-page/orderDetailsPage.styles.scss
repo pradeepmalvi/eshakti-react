@@ -1,0 +1,70 @@
+.order-details {
+  .top-bar {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .order-id,
+    .date {
+      font-weight: 600;
+      color: #202020;
+    }
+
+    .download-invoice {
+      button {
+        border: none;
+        background-color: #93f19b;
+        color: #f1f1f1;
+        border-radius: 0.5rem;
+        padding: 0.8rem;
+        span {
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+  .order-details-content {
+    display: flex;
+
+    .user-details {
+      h4 {
+        margin-top: 0;
+      }
+    }
+
+    .left {
+      .user-details,
+      .address-details,
+      .payment-details {
+        ul > li {
+          letter-spacing: 1px;
+
+          span {
+            font-size: 0.85rem;
+
+            &.key {
+              font-weight: 400;
+            }
+
+            &.value {
+              color: #444444;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      border-left: 1px solid #cccccc;
+      padding-left: 1rem;
+
+      .cart-product-card {
+        border: 1px solid #cccccc;
+        border-radius: 0.5rem;
+        padding: 1rem;
+      }
+    }
+  }
+}
