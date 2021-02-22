@@ -282,10 +282,11 @@ export const getWishList = (userId) => (dispatch) => {
 // add to wishlist
 export const addToWishlist = (data) => (dispatch) => {
   Axios.post(`${requests.addToWishList}`, data, config).then((res) => {
-    // console.log(res.data.status);
-    dispatch({
-      type: ADD_TO_WISHLIST,
-      payload: { itemId: data.product_id, status: res.data.status },
-    });
+    if (res.status === 200) {
+      dispatch({
+        type: ADD_TO_WISHLIST,
+        payload: { itemId: data.product_id, status: res.data.status },
+      });
+    }
   });
 };

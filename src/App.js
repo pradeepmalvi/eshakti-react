@@ -10,6 +10,9 @@ import {
 // responsive styles
 import "./mediaqueries/main.scss";
 
+// toastify
+import { ToastContainer } from "react-toastify";
+
 // context
 import { appReducer } from "./context/reducers/appReducer";
 
@@ -72,6 +75,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer></ToastContainer>
       {/* homepage of our app */}
       <AppContext.Provider value={{ appState, dispatchAppState }}>
         <Router>

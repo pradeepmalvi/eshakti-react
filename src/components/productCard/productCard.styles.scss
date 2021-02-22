@@ -48,14 +48,47 @@
     }
   }
 
-  .icon {
-    position: absolute;
+  .icon,
+  .share-icon {
     display: flex;
     cursor: pointer;
 
     svg {
       font-size: 1.5rem;
       color: #ff7575;
+    }
+  }
+
+  .share-icon {
+    right: 0;
+
+    &:hover .social-icons {
+      display: flex;
+      height: auto;
+      opacity: 1;
+    }
+  }
+
+  .share-and-wish {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .social-icons {
+      transition: 0.6s opacity;
+      opacity: 0;
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 1.5rem;
+      height: 0;
+
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
     }
   }
 }
