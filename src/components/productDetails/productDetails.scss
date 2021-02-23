@@ -233,11 +233,20 @@
         }
       }
     }
+
+    .feedback-popup-trigger {
+      font-size: 0.9rem;
+      border-bottom: 1px solid #202020;
+      padding-bottom: 0.2rem;
+      display: inline-block;
+      cursor: pointer;
+    }
   }
 }
 .img-thumb-wrapper {
   padding-top: 10px;
 }
+
 .thumb-wrapper {
   display: flex;
   justify-content: space-between;

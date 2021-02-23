@@ -26,6 +26,7 @@ import DefaultFilter from "../defaultFilter/DefaultFilter.component";
 
 // importing axios
 export default function CategoryPage() {
+  const [gridView, setGridView] = useState("grid-view-three");
   const dispatch = useDispatch();
   const products = useSelector((state) => state.home.productByCategory);
   const [showFilter, setShowFilter] = useState("");
@@ -94,8 +95,16 @@ export default function CategoryPage() {
                   </select>
                 </div>
                 <div className="views-icons">
-                  <img src={icon1} alt="img" />
-                  <img src={icon2} alt="img" />
+                  <img
+                    src={icon1}
+                    onClick={() => setGridView("grid-view-two")}
+                    alt="img"
+                  />
+                  <img
+                    src={icon2}
+                    onClick={() => setGridView("grid-view-three")}
+                    alt="img"
+                  />
                 </div>
               </div>
             </div>
@@ -107,7 +116,7 @@ export default function CategoryPage() {
               ? console.log(products, "data derees")
               : null} */}
 
-            <div className="products">
+            <div className={`products ${gridView}`}>
               {products && products.length > 0
                 ? products.map((product, key) => (
                     <ProductCard key={key} product={product} />

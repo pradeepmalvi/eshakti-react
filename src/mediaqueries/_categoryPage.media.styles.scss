@@ -20,12 +20,6 @@
       .product-listing {
         .products {
           grid-template-columns: 100% !important;
-
-          .product_card {
-            .img {
-              // height: 50vh !important;
-            }
-          }
         }
       }
     }
@@ -38,14 +32,17 @@
       .inner-container {
         .filters-area {
           display: none;
+          padding: 1rem;
 
           &.show {
             .price-filter,
-            .category-names-filter,
+            .brand-names-filter,
             .size-filter,
-            .color-filter {
+            .color-filter,
+            .default-filter {
               width: 100% !important;
               margin-bottom: 2rem !important;
+              margin-right: 0 !important;
             }
           }
         }
@@ -64,12 +61,6 @@
   .category-page {
     .inner-container {
       .product-listing {
-        .product_card {
-          .img {
-            // height: 32vh !important;
-          }
-        }
-
         .right-actions {
           .views-icons {
             display: none !important;
@@ -95,13 +86,28 @@
             overflow-y: scroll;
 
             .price-filter,
-            .category-names-filter,
+            .brand-names-filter,
             .size-filter,
-            .color-filter {
+            .color-filter,
+            .default-filter {
               .title {
                 font-size: 1rem;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 868px) {
+  .category-page {
+    .inner-container {
+      .product-listing {
+        .right-actions {
+          .views-icons {
+            display: none !important;
           }
         }
       }
@@ -122,9 +128,10 @@
 
           &.show {
             .price-filter,
-            .category-names-filter,
+            .brand-names-filter,
             .size-filter,
-            .color-filter {
+            .color-filter,
+            .default-filter {
               width: 100% !important;
               margin-bottom: 2rem !important;
             }
@@ -158,9 +165,10 @@
             overflow-y: scroll;
 
             .price-filter,
-            .category-names-filter,
+            .brand-names-filter,
             .size-filter,
-            .color-filter {
+            .color-filter,
+            .default-filter {
               width: 45%;
               margin-top: 0;
               margin-right: 1rem;
@@ -182,12 +190,6 @@
 
           .products {
             grid-template-columns: 46% 46%;
-
-            .product_card {
-              .img {
-                // height: 47vh;
-              }
-            }
           }
         }
       }

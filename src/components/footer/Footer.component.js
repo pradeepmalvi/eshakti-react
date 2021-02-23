@@ -53,12 +53,6 @@ export default function Footer() {
               </span>
               <Link to="/whole-sale">Wholesale</Link>
             </li>
-            <li>
-              <span className="right_arrow_icon">
-                <IoIosArrowForward />
-              </span>
-              <a href="#">Refer a Friend</a>
-            </li>
           </ul>
         </div>
         <div className="about common">

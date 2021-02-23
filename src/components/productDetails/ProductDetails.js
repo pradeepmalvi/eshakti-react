@@ -6,17 +6,11 @@ import {
   addToWishlist,
 } from "../../store/home/homeAction";
 import "./productDetails.scss";
-import {
-  AiOutlineStar,
-  AiOutlineHeart,
-  AiOutlineMail,
-  AiOutlineSync,
-  AiFillHeart,
-  AiFillStar,
-} from "react-icons/ai";
+import { AiOutlineStar, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 
 import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
+import FeedbackForm from "../feedback-form/FeedbackForm.component";
 
 // react router
 import { useParams } from "react-router-dom";
@@ -31,6 +25,8 @@ export default function ProductDetails() {
   const dispatch = useDispatch();
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
+  const [openFeedback, setOpenFeedback] = useState(false);
+
   const productDetail = useSelector((state) => state.home.productDetail);
   const tempWishlistStatus = useSelector(
     (state) => state.home.localTempWishlistItem
@@ -74,12 +70,19 @@ export default function ProductDetails() {
     dispatch(getProductById(id));
   }, []);
 
+  // for login model
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
 
+  // for registration modal
   const onOpenRegisterModal = () => setOpenRegister(true);
   const onCloseRegisterModal = () => setOpenRegister(false);
 
+  // for feedback modal
+  const onOpenFeedbackForm = () => setOpenFeedback(true);
+  const onCloseFeedbackForm = () => setOpenFeedback(false);
+
+  // for cutomisation model
   const openCustomization = () => {
     setIsCustomization(true);
   };
@@ -108,14 +111,18 @@ export default function ProductDetails() {
       }
     }
   };
+
+  // adding product to cart
   const onAddToCart = () => {
     if (!localStorage.getItem("es_user_id")) {
       toast("Please Login!", {
         type: toast.TYPE.ERROR,
         autoClose: 5000,
       });
+
       onOpenLoginModal();
     }
+
     var data = {
       user_id: localStorage.getItem("es_user_id"),
       product_id: productDetail.id,
@@ -151,7 +158,10 @@ export default function ProductDetails() {
         openRegister={onOpenRegisterModal}
         onCloseModal={onCloseLoginModal}
       />
+
       <SignUp open={openRegister} onCloseModal={onCloseRegisterModal} />
+      <FeedbackForm open={openFeedback} onCloseModal={onCloseFeedbackForm} />
+
       <div className="product-details-container">
         <div className="img-wrapper">
           <img
@@ -401,6 +411,12 @@ export default function ProductDetails() {
                 ADD TO CART
               </div>
             </div>
+          </div>
+          <div
+            className="feedback-popup-trigger"
+            onClick={() => onOpenFeedbackForm()}
+          >
+            Feedback
           </div>
         </div>
       </div>

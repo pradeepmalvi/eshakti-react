@@ -14,6 +14,7 @@
       padding: 2rem;
       background-color: #f5f3f3;
       margin-right: 3rem;
+      z-index: 100;
     }
 
     .product-listing {
@@ -78,12 +79,24 @@
       }
 
       .products {
-        display: grid;
-        grid-template-columns: 32% 32% 32%;
-        justify-content: space-between;
+        &.grid-view-three {
+          display: grid;
+          grid-template-columns: 32% 32% 32%;
+          justify-content: space-between;
 
-        .product_card {
-          margin-bottom: 3rem;
+          .product_card {
+            margin-bottom: 3rem;
+          }
+        }
+
+        &.grid-view-two {
+          display: grid;
+          grid-template-columns: 47% 47%;
+          justify-content: space-between;
+
+          .product_card {
+            margin-bottom: 3rem;
+          }
         }
       }
     }

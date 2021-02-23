@@ -3,6 +3,7 @@ import Styles from "./topNav.styles.scss";
 
 import Login from "../login/Login.component";
 import SignUp from "../signup/SignUp";
+import CurrencyChanger from "../currency-changer/CurrencyChanger.component";
 
 // importing react icons
 import { BiCaretDown, BiPhoneCall, BiUser } from "react-icons/bi";
@@ -15,6 +16,7 @@ import { Link } from "react-router-dom";
 export default function TopNav() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
+  const [openCurrencyChanger, setOpenCurrencyChanger] = useState(false);
 
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
@@ -22,10 +24,14 @@ export default function TopNav() {
   const onOpenRegisterModal = () => setOpenRegister(true);
   const onCloseRegisterModal = () => setOpenRegister(false);
 
+  const onOpenCurrencyChangerModal = () => setOpenCurrencyChanger(true);
+  const onCloseCurrencyChangerModal = () => setOpenCurrencyChanger(false);
+
   const logout = () => {
     localStorage.clear();
     window.location.reload();
   };
+
   return (
     <div className="top_nav">
       {/* login modal component */}
@@ -36,12 +42,21 @@ export default function TopNav() {
       />
       <SignUp open={openRegister} onCloseModal={onCloseRegisterModal} />
 
+      <CurrencyChanger
+        open={openCurrencyChanger}
+        onClose={onCloseCurrencyChangerModal}
+      />
+
       <div className="inner-container-topbar">
         <div className="left_items">
-          <div className="currency_selector">
-            <select name="" id="" className="selector">
-              <option value="#">USD ($)</option>
-            </select>
+          <div
+            className="currency_selector"
+            onClick={() => onOpenCurrencyChangerModal()}
+          >
+            <span className="name">USA</span>
+            <span className="dropDownIcon">
+              ($) <BiCaretDown />
+            </span>
           </div>
           <div className="email_address">
             <span className="icon">

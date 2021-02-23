@@ -46,13 +46,22 @@
 
       .currency_selector {
         padding-left: 0;
+        display: flex;
+        align-items: center;
 
-        .selector {
-          border: none;
+        .name,
+        .dropDownIcon {
           font-size: 0.9rem;
-          background-color: #ffff;
-          font-weight: 100;
-          color: #202020;
+          margin-right: 0.2rem;
+        }
+
+        .dropDownIcon {
+          display: flex;
+          align-items: center;
+
+          svg {
+            display: flex;
+          }
         }
       }
 
