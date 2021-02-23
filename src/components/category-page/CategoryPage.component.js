@@ -38,6 +38,7 @@ export default function CategoryPage() {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getProductByCategory(id));
     dispatch(getfiltersData(id));
   }, [id]);

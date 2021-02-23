@@ -60,7 +60,7 @@ export default function Navbar() {
           <Link to="/cart" className="link">
             <span className="shoping_cart icon">
               <AiOutlineShoppingCart />
-              <span className="cart_items">3</span>
+              <span className="cart_items">{cart ? cart.length : 0}</span>
             </span>
           </Link>
           <span className="whishlist icon">

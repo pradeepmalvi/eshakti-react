@@ -67,6 +67,7 @@ export default function ProductDetails() {
   }, [productDetail]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getProductById(id));
   }, []);
 
