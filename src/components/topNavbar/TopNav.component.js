@@ -62,13 +62,26 @@ export default function TopNav() {
             <span className="icon">
               <HiOutlineMail />
             </span>
-            <span className="text">customerchampion@eshakti.com</span>
+            <span
+              className="text"
+              onClick={() =>
+                window.open(
+                  "mailto:support@eshakti.com?subject=Subject&body=''"
+                )
+              }
+            >
+              customerchampion@eshakti.com
+            </span>
           </div>
           <div className="phone">
             <span className="icon">
               <BiPhoneCall />
             </span>
-            <span className="text">855 374 2584</span>
+            <span className="text">
+              <a className="link" href="tel:+1-855 374 2584">
+                855 374 2584
+              </a>
+            </span>
           </div>
         </div>
         <div className="right_items">

@@ -33,8 +33,6 @@ export default function CategoryPage() {
 
   const categoryFilters = useSelector((state) => state.home.categoryFilters);
 
-  console.log(categoryFilters, "fitlers data");
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,6 +40,8 @@ export default function CategoryPage() {
     dispatch(getProductByCategory(id));
     dispatch(getfiltersData(id));
   }, [id]);
+
+  console.log(useSelector((state) => state));
 
   return (
     <div className="category-page">
@@ -116,6 +116,7 @@ export default function CategoryPage() {
             {products && products.length > 0
               ? console.log(products, "data derees")
               : null} */}
+            {console.log(products, "products")}
 
             <div className={`products ${gridView}`}>
               {products && products.length > 0

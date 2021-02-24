@@ -1,12 +1,7 @@
 import React from "react";
 import "./productCard.styles.scss";
 
-import { addToWishlist } from "../../store/home/homeAction";
-
-// social icon images
-import Facebook from "../../assets/images/icon-11.png";
-import Pinterest from "../../assets/images/icon-2.2.png";
-import Twitter from "../../assets/images/icon-3.3.png";
+import { addToWishlist, removeFromWishlist } from "../../store/home/homeAction";
 
 import {
   FacebookShareButton,
@@ -27,6 +22,7 @@ import {
   AiOutlineStar,
   AiOutlineHeart,
   AiOutlineShareAlt,
+  AiFillHeart,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -37,12 +33,15 @@ export default function ProductCard({ product = {} }) {
   const { product_price } = product;
   const { total_price } = product;
   const { product_thumbnail } = product;
-
+  const { is_in_wishlist } = product;
+  const { wishlist_item_id } = product;
   const dispatch = useDispatch();
 
   const handleClick = (product_id) => {
     console.log(product_id);
   };
+
+  console.log("product id", id, product);
 
   return (
     <>
@@ -51,19 +50,25 @@ export default function ProductCard({ product = {} }) {
           <span
             className={"icon"}
             onClick={(e) => {
-              if (localStorage.getItem("es_login")) {
-                dispatch(
-                  addToWishlist({
-                    user_id: localStorage.getItem("es_user_id"),
-                    product_id: id,
-                  })
-                );
-              } else {
-                toast.dark("Please Login first");
+              if (!is_in_wishlist) {
+                if (localStorage.getItem("es_login")) {
+                  dispatch(
+                    addToWishlist({
+                      user_id: localStorage.getItem("es_user_id"),
+                      product_id: id,
+                    })
+                  );
+                } else {
+                  toast.dark("Please Login first");
+                }
+              } else if (is_in_wishlist) {
+                if (localStorage.getItem("es_login")) {
+                  dispatch(removeFromWishlist(wishlist_item_id));
+                }
               }
             }}
           >
-            <AiOutlineHeart />
+            {is_in_wishlist ? <AiFillHeart /> : <AiOutlineHeart />}
           </span>
           <div className="share-icon">
             <span>

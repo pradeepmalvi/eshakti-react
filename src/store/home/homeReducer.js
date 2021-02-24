@@ -26,6 +26,7 @@ const homeReducer = (state = initalState, action) => {
         ...state,
         productCategory: action.payload,
       };
+
     case SET_PRODUCT_BY_CATEGORY:
       return {
         ...state,
@@ -112,7 +113,7 @@ const homeReducer = (state = initalState, action) => {
     case ADD_TO_WISHLIST:
       return {
         ...state,
-        localTempWishlistItem: action.payload,
+        localTempWishlistItem: [{ ...action.payload }],
       };
     default:
       return state;

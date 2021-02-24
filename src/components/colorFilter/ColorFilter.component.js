@@ -1,8 +1,6 @@
 import React from "react";
 import "./colorFilter.styles.scss";
 
-import Color from "../../assets/images/black.png";
-
 export default function ColorFilter({ filterData }) {
   return (
     <div className="color-filter">
@@ -12,7 +10,11 @@ export default function ColorFilter({ filterData }) {
           filterData.value.map((eachVal, index) => (
             <div className="each-color" key={index}>
               <div className="color">
-                <input type="checkbox" value={filterData.id} />
+                <input
+                  type="checkbox"
+                  className="color-checkbox"
+                  value={filterData.id}
+                />
                 {eachVal.color_image ? (
                   <img
                     src={eachVal.color_image}
@@ -27,9 +29,6 @@ export default function ColorFilter({ filterData }) {
                     style={{ backgroundColor: eachVal.color_code }}
                   ></span>
                 )}
-              </div>
-              <div className="quantity">
-                <span className="text">1</span>
               </div>
             </div>
           ))}

@@ -7,6 +7,16 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import ImagesCustomization from "./ImagesCustomization";
 import mergeImages from "merge-images";
 
+// react share package
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "react-share";
+
 export default function ProductCustomization({
   open,
   close,
@@ -434,6 +444,30 @@ export default function ProductCustomization({
               </p>
               <div className="share">
                 <AiOutlineShareAlt /> <span> Share</span>
+                <div className="social-icons">
+                  <TwitterShareButton
+                    url={`http://eshakti.ewtlive.in/product-details/${2}`}
+                    title={"product name"}
+                    className="Demo__some-network__share-button"
+                  >
+                    <TwitterIcon size={28} round />
+                  </TwitterShareButton>
+                  <FacebookShareButton
+                    url={`http://eshakti.ewtlive.in/product-details/${2}`}
+                    title={"product name"}
+                    className="Demo__some-network__share-button"
+                  >
+                    <FacebookIcon size={28} round />
+                  </FacebookShareButton>
+
+                  <PinterestShareButton
+                    url={`http://eshakti.ewtlive.in/product-details/${2}`}
+                    title={"product name"}
+                    className="Demo__some-network__share-button"
+                  >
+                    <PinterestIcon size={28} round />
+                  </PinterestShareButton>
+                </div>
               </div>
             </div>
             <div className="right-footer">

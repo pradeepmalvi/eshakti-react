@@ -11,6 +11,7 @@ import { AiOutlineStar, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import ProductTabList from "../productTabList/ProductTabList";
 import ProductCustomization from "../productCustomization/ProductCustomization";
 import FeedbackForm from "../feedback-form/FeedbackForm.component";
+import SizeChartPopup from "../size-chart-popup/SizeChartPopup.component";
 
 // react router
 import { useParams } from "react-router-dom";
@@ -26,6 +27,7 @@ export default function ProductDetails() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
   const [openFeedback, setOpenFeedback] = useState(false);
+  const [openSizeChart, setOpenSizeChart] = useState(false);
 
   const productDetail = useSelector((state) => state.home.productDetail);
   const tempWishlistStatus = useSelector(
@@ -82,6 +84,10 @@ export default function ProductDetails() {
   // for feedback modal
   const onOpenFeedbackForm = () => setOpenFeedback(true);
   const onCloseFeedbackForm = () => setOpenFeedback(false);
+
+  // for SizeChartPopup
+  const onOpenSizeChart = () => setOpenSizeChart(true);
+  const onCloseSizeChart = () => setOpenSizeChart(false);
 
   // for cutomisation model
   const openCustomization = () => {
@@ -162,6 +168,7 @@ export default function ProductDetails() {
 
       <SignUp open={openRegister} onCloseModal={onCloseRegisterModal} />
       <FeedbackForm open={openFeedback} onCloseModal={onCloseFeedbackForm} />
+      <SizeChartPopup open={openSizeChart} onCloseModal={onCloseSizeChart} />
 
       <div className="product-details-container">
         <div className="img-wrapper">
@@ -286,10 +293,6 @@ export default function ProductDetails() {
               </div>
               <p>Change Style</p>
             </div>
-            {/* <div onClick={openCustomization} className="attribute-item">
-              <div className="attribute-box">customize style</div>
-              <p>Change Style</p>
-            </div> */}
           </div>
 
           <div className="alert-danger">
@@ -313,9 +316,6 @@ export default function ProductDetails() {
                   }}
                 ></div>
               ))}
-
-            {/* <div className="color black"></div>
-            <div className="color pink"></div> */}
           </div>
 
           <div className="color-attribute">
@@ -341,7 +341,7 @@ export default function ProductDetails() {
                 )
               )}
 
-            <div className="size-chart-btn" onClick={() => ""}>
+            <div className="size-chart-btn" onClick={() => onOpenSizeChart()}>
               Size Chart
             </div>
           </div>

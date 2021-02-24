@@ -17,6 +17,7 @@ import {
   SET_FILTERS,
   GET_WISHLIST,
   ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -101,12 +102,15 @@ export const getProductCategory = (data) => (dispatch) => {
 
 // getProductByCategory
 export const getProductByCategory = (categoryId) => (dispatch) => {
-  Axios.get(`${requests.getProductByCategory}/${categoryId}`).then((res) => {
-    dispatch({
-      type: SET_PRODUCT_BY_CATEGORY,
-      payload: res.data,
-    });
-  });
+  Axios.get(`${requests.getProductByCategory}/${categoryId}`, config).then(
+    (res) => {
+      console.log(res, "latest data getting");
+      dispatch({
+        type: SET_PRODUCT_BY_CATEGORY,
+        payload: res.data,
+      });
+    }
+  );
 };
 
 // getHomepageProducts
@@ -287,6 +291,19 @@ export const addToWishlist = (data) => (dispatch) => {
         type: ADD_TO_WISHLIST,
         payload: { itemId: data.product_id, status: res.data.status },
       });
+      console.log(res);
+    }
+  });
+};
+
+export const removeFromWishlist = (id) => (dispatch) => {
+  Axios.delete(`${requests.removeFromWishList}/${id}`, config).then((res) => {
+    if (res.status === 200) {
+      dispatch({
+        type: REMOVE_FROM_WISHLIST,
+        payload: res.data,
+      });
+      console.log(res, "on data remove");
     }
   });
 };
