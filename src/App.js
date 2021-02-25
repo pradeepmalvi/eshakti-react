@@ -49,6 +49,11 @@ import MyAccount from "./components/myAccount-page/MyAccount.component";
 import Wishlist from "./components/whishlist/Wishlist.component";
 import Search from "./components/search-page/Search.component";
 
+import UserProfile from "./components/user-profile/UserProfile.component";
+import OrderHistoryList from "./components/orderhistory/OrderHistoryList.component";
+import ManageAddress from "./components/manage-address/ManageAddress.component";
+import OrderDetailsPage from "./components/order-details-page/OrderDetailsPage.component";
+
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -122,7 +127,27 @@ function App() {
           <Route exact path="/eshakti-sizes" component={EshaktiSizes}></Route>
           <Route exact path="/whole-sale" component={WholeSale}></Route>
           <Route exact path="/how-to-measure" component={HowToMeasure}></Route>
-          <Route exact path="/my-account" component={MyAccount}></Route>
+          {/* <Route exact path="/my-account" component={MyAccount}></Route> */}
+          <MyAccount>
+            <Route exact path={`/my-account/`} render={() => <UserProfile />} />
+
+            <Route
+              exact
+              path={`/my-orders`}
+              render={() => <OrderHistoryList />}
+            />
+
+            <Route
+              exact
+              path={`/manage-address`}
+              render={() => <ManageAddress />}
+            />
+            <Route
+              exact
+              path="/order-details/:orderId"
+              render={() => <OrderDetailsPage />}
+            />
+          </MyAccount>
           <Route exact path="/wishlist" component={Wishlist}></Route>
           <Route exact path="/search" component={Search}></Route>
           {/* Footer */}
