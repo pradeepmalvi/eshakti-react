@@ -39,55 +39,6 @@ export default function Wishlist() {
           ) : (
             <h4 className="no-items">No Items in your whishlist</h4>
           )}
-
-          {/* <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div>
-          <div className="item">
-            <span className="heartIcon">
-              <BsHeartFill />
-            </span>
-            <ProductCard />
-          </div> */}
         </div>
       </div>
     </div>

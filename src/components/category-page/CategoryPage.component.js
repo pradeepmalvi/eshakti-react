@@ -41,7 +41,10 @@ export default function CategoryPage() {
     dispatch(getfiltersData(id));
   }, [id]);
 
-  console.log(useSelector((state) => state));
+  console.log(
+    useSelector((state) => state),
+    "data state"
+  );
 
   return (
     <div className="category-page">

@@ -7,6 +7,8 @@ import {
   getPages,
 } from "./store/home/homeAction";
 
+import { AppContext } from "./context/context";
+
 // responsive styles
 import "./mediaqueries/main.scss";
 
@@ -37,12 +39,6 @@ import AffilliatePage from "./components/affiliate-page/AffilliatePage.component
 import MediaSpeaks from "./components/media-speaks-page/MediaSpeaks.component";
 import EshaktiSizes from "./components/eshakti-sizes/EshaktiSizes.component";
 
-import { AppContext } from "./context/context";
-
-// importing axios
-import Axios from "./axios/axios";
-import requests from "./axios/requests";
-
 import { SET_CATEGORIES } from "./context/action.types";
 import CustomerSpeakPage from "./components/customer-speak-page/CustomerSpeakPage.component";
 import HowItWorks from "./components/how-it-works-page/HowItWorks.component";
@@ -51,6 +47,7 @@ import WholeSale from "./components/wholesale-page/WholeSale.component";
 import HowToMeasure from "./components/how-to-measure-page/HowToMeasure.component";
 import MyAccount from "./components/myAccount-page/MyAccount.component";
 import Wishlist from "./components/whishlist/Wishlist.component";
+import Search from "./components/search-page/Search.component";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,13 +59,6 @@ function App() {
   });
 
   useEffect(() => {
-    // Axios.get("/product-categories").then((res) => {
-    //   dispatchAppState({
-    //     type: SET_CATEGORIES,
-    //     payload: res.data.product_categories,
-    //   });
-    // });
-
     dispatch(getProductCategory());
     dispatch(getHomePageProducts());
   }, []);
@@ -82,6 +72,7 @@ function App() {
           <TopNav />
           <Navbar />
           <MobileMenuSidebar />
+
           {/* Routes */}
           <Route exact path="/" component={Home}></Route>
           <Route
@@ -133,6 +124,7 @@ function App() {
           <Route exact path="/how-to-measure" component={HowToMeasure}></Route>
           <Route exact path="/my-account" component={MyAccount}></Route>
           <Route exact path="/wishlist" component={Wishlist}></Route>
+          <Route exact path="/search" component={Search}></Route>
           {/* Footer */}
           <Footer />
           <BottomBar />

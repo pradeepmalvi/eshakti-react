@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../store/home/homeAction";
 import "./navbar.styles.scss";
@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 
 import { AppContext } from "../../context/context";
 import { OPEN_MENU_SIDEBAR } from "../../context/action.types";
+
+// components
+import SearchPopup from "../search-popup/SearchPopup.component";
 
 // importing icons from react-icons
 import {
@@ -22,10 +25,17 @@ export default function Navbar() {
   const cart = useSelector((state) => state.home.cart);
   const dispatch = useDispatch();
 
+  const [searchModal, setSearchModal] = useState(false);
+
   const { dispatchAppState } = useContext(AppContext);
   const categories = useSelector((state) => state.home.productCategory);
   const { width } = UseWindowSize();
   const navChangeWidth = 1322;
+
+  const openSearch = () => {
+    setSearchModal(true);
+  };
+  const closeSearch = () => setSearchModal(false);
 
   useEffect(() => {
     dispatch(getCart());
@@ -68,11 +78,12 @@ export default function Navbar() {
               <AiOutlineHeart />
             </Link>
           </span>
-          <span className="search icon">
+          <span className="search icon" onClick={() => openSearch()}>
             <AiOutlineSearch />
           </span>
         </div>
       </div>
+      <SearchPopup open={searchModal} onClose={closeSearch} />
     </div>
   ) : (
     <div className="navbar-smaller">
@@ -104,10 +115,12 @@ export default function Navbar() {
           <span className="cart_items">{cart ? cart.length : 0}</span>
         </Link>
 
-        <span className="search icon">
+        <span className="search icon" onClick={() => openSearch()}>
           <AiOutlineSearch />
         </span>
       </div>
+
+      <SearchPopup open={searchModal} onClose={closeSearch} />
     </div>
   );
 }

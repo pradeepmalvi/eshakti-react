@@ -12,8 +12,9 @@ import { Modal } from "react-responsive-modal";
 
 export default function SizeChartPopup({ open, onCloseModal }) {
   const displayWidth = useWindowSize();
-  console.log(displayWidth);
+
   const { width } = displayWidth;
+
   return (
     <Modal open={open} onClose={onCloseModal}>
       <div className="sizeChartPopup">

@@ -1,5 +1,8 @@
 import Axios from "../../axios/axios";
 import requests from "../../axios/requests";
+
+import axios from "axios";
+
 import {
   SET_PRODUCT_CATEGORY,
   SET_PRODUCT_BY_CATEGORY,
@@ -18,6 +21,7 @@ import {
   GET_WISHLIST,
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
+  SEARCHED_PRODUCTS,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -286,24 +290,37 @@ export const getWishList = (userId) => (dispatch) => {
 // add to wishlist
 export const addToWishlist = (data) => (dispatch) => {
   Axios.post(`${requests.addToWishList}`, data, config).then((res) => {
+    console.log(res);
     if (res.status === 200) {
       dispatch({
         type: ADD_TO_WISHLIST,
         payload: { itemId: data.product_id, status: res.data.status },
       });
-      console.log(res);
     }
   });
 };
 
+// remove from wishlist
 export const removeFromWishlist = (id) => (dispatch) => {
   Axios.delete(`${requests.removeFromWishList}/${id}`, config).then((res) => {
+    console.log(res);
     if (res.status === 200) {
       dispatch({
         type: REMOVE_FROM_WISHLIST,
-        payload: res.data,
+        payload: { itemId: res.data.productId, status: res.data.status },
       });
       console.log(res, "on data remove");
     }
+  });
+};
+
+//search products
+export const searchProduct = (data) => (dispatch) => {
+  Axios.post(`${requests.search}`, data).then((res) => {
+    console.log(res.data, "testing");
+    dispatch({
+      type: SEARCHED_PRODUCTS,
+      payload: res.data.products,
+    });
   });
 };

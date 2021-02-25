@@ -35,13 +35,14 @@ export default function ProductCard({ product = {} }) {
   const { product_thumbnail } = product;
   const { is_in_wishlist } = product;
   const { wishlist_item_id } = product;
+
   const dispatch = useDispatch();
+
+  console.log(is_in_wishlist);
 
   const handleClick = (product_id) => {
     console.log(product_id);
   };
-
-  console.log("product id", id, product);
 
   return (
     <>
@@ -52,6 +53,7 @@ export default function ProductCard({ product = {} }) {
             onClick={(e) => {
               if (!is_in_wishlist) {
                 if (localStorage.getItem("es_login")) {
+                  console.log("on add wishlist");
                   dispatch(
                     addToWishlist({
                       user_id: localStorage.getItem("es_user_id"),
@@ -62,6 +64,7 @@ export default function ProductCard({ product = {} }) {
                   toast.dark("Please Login first");
                 }
               } else if (is_in_wishlist) {
+                console.log("on remove wishlist");
                 if (localStorage.getItem("es_login")) {
                   dispatch(removeFromWishlist(wishlist_item_id));
                 }

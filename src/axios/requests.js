@@ -22,4 +22,5 @@ export default {
   getWishList: "get-wishlist",
   addToWishList: "add-to-wishlist",
   removeFromWishList: "remove-wishlist",
+  search: "search",
 };

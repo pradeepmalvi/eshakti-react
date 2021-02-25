@@ -30,6 +30,7 @@ export default function ProductDetails() {
   const [openSizeChart, setOpenSizeChart] = useState(false);
 
   const productDetail = useSelector((state) => state.home.productDetail);
+
   const tempWishlistStatus = useSelector(
     (state) => state.home.localTempWishlistItem
   );
@@ -71,7 +72,7 @@ export default function ProductDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getProductById(id));
-  }, []);
+  }, [id]);
 
   // for login model
   const onOpenLoginModal = () => setOpenLogin(true);
