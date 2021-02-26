@@ -19,6 +19,7 @@ import SelectFormElement from "../select-form-element/SelectFormElement.componen
 import { ToastContainer, toast } from "react-toastify";
 
 import { IoIosArrowBack } from "react-icons/io";
+import BillingAddress from "./BillingAddress";
 
 export default function ShippingInfoPage() {
   const [name, setName] = useState("");
@@ -122,6 +123,7 @@ export default function ShippingInfoPage() {
         phone: phone,
         alternate_phone: alternate_phone,
         address: address,
+        address2: address,
         address_type: address_type,
         city: city,
         country: country,
@@ -278,8 +280,10 @@ export default function ShippingInfoPage() {
               </div>
               <div className="save-info">
                 <FormInput type={"checkbox"} className="save-info-checkbox" />
-                <p>Save this information for next time</p>
+                <p>Use shipping address same as billing address</p>
               </div>
+
+              <BillingAddress></BillingAddress>
 
               <div className="bottom">
                 <div className="return-link">
