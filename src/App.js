@@ -136,7 +136,6 @@ function App() {
               path={`/my-orders`}
               render={() => <OrderHistoryList />}
             />
-
             <Route
               exact
               path={`/manage-address`}

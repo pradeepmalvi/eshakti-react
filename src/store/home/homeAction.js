@@ -22,6 +22,7 @@ import {
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
   SEARCHED_PRODUCTS,
+  SET_SHIPPING_DETAILS,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -264,12 +265,25 @@ export const updateProfilePic = (data) => (dispatch) => {
   });
 };
 
-// // get user details
+// get user details
 export const getUserDetails = (userId) => (dispatch) => {
   Axios.get(`${requests.getUserDetails}/${userId}`, config).then((res) => {
     dispatch({ type: SET_USER_DETAILS, payload: res.data });
   });
 };
+
+// // get shipping details
+export const getShippingDetails = (userId) => (dispatch) => {
+  Axios.get(`${requests.getShippingDetails}/${userId}`, config).then((res) => {
+    dispatch({
+      type: SET_SHIPPING_DETAILS,
+      payload: res.data,
+    });
+  });
+};
+
+// export const updateShippingDetails = (user)
+
 // get filters data
 export const getfiltersData = (categoryId) => (dispatch) => {
   Axios.get(`${requests.getFiltersDetails}/${categoryId}`, config).then(

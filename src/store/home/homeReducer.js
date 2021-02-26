@@ -17,6 +17,7 @@ import {
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
   SEARCHED_PRODUCTS,
+  SET_SHIPPING_DETAILS,
 } from "../types";
 
 const initalState = { tempWishlist: [] };
@@ -120,18 +121,23 @@ const homeReducer = (state = initalState, action) => {
 
     case REMOVE_FROM_WISHLIST:
       console.log(action.payload);
-      return state;
-
-    // return {
-    //   ...state,
-    //   tempWishlist: [...state.tempWishlist, action.payload],
-    // };
+      return {
+        ...state,
+        tempWishlist: [...state.tempWishlist, action.payload],
+      };
 
     case SEARCHED_PRODUCTS:
       console.log(action.payload);
       return {
         ...state,
         searchedProducts: action.payload,
+      };
+
+    case SET_SHIPPING_DETAILS:
+      console.log(action.payload);
+      return {
+        ...state,
+        shippingDetails: action.payload,
       };
 
     default:

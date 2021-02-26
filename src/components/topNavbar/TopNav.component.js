@@ -11,12 +11,14 @@ import { HiOutlineMail } from "react-icons/hi";
 import { IoLogoCodepen, IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { GrFacebookOption, GrTwitter, GrPinterest } from "react-icons/gr";
 import { RiInstagramFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function TopNav() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
   const [openCurrencyChanger, setOpenCurrencyChanger] = useState(false);
+
+  const history = useHistory();
 
   const onOpenLoginModal = () => setOpenLogin(true);
   const onCloseLoginModal = () => setOpenLogin(false);
@@ -29,6 +31,7 @@ export default function TopNav() {
 
   const logout = () => {
     localStorage.clear();
+    history.push("/");
     window.location.reload();
   };
 

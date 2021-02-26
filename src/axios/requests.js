@@ -23,4 +23,5 @@ export default {
   addToWishList: "add-to-wishlist",
   removeFromWishList: "remove-wishlist",
   search: "search",
+  getShippingDetails: "get-shipping-address",
 };
