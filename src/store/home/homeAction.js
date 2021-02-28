@@ -188,7 +188,7 @@ export const placeOrder = (data) => (dispatch) => {
       autoClose: 5000,
     });
     setTimeout(() => {
-      window.location.href = "/my-account";
+      window.location.href = "/my-account/my-orders";
     }, 1000);
   });
 };

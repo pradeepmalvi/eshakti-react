@@ -48,7 +48,7 @@ export default function OrderHistoryList() {
                   <span className="price-title-text common-title-text">
                     Price
                   </span>
-                  <div className="value-text">{order.total_order}$</div>
+                  <div className="value-text">${order.total_price}</div>
                 </div>
                 <div className="price">
                   {" "}

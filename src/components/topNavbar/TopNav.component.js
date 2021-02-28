@@ -94,7 +94,7 @@ export default function TopNav() {
                 <span className="icon">
                   <BiUser />
                 </span>
-                <Link to="/my-account" className="link">
+                <Link to="/my-account/account" className="link">
                   <span className="text">My Account</span>
                 </Link>
               </div>

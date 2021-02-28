@@ -33,6 +33,19 @@ export default function ShippingInfoPage() {
   const [zip_code, setZip_code] = useState("");
   const [landmark, setLandmark] = useState("");
   const [shipping_id, setShipping_id] = useState("");
+  const [shippingAddress, setShippingAddress] = useState(false);
+
+  const [billingname, setBillingName] = useState("");
+  const [billingphone, setBillingPhone] = useState("");
+  const [billingalternate_phone, setBillingAlternate_phone] = useState("");
+  const [billingaddress, setBillingAddress] = useState("");
+  const [billingaddress_type, setBillingAddress_type] = useState("");
+  const [billingcity, setBillingCity] = useState("");
+  const [billingcountry, setBillingCountry] = useState("");
+  const [billingstate, setBillingState] = useState("");
+  const [billingzip_code, setBillingZip_code] = useState("");
+  const [billinglandmark, setBillingLandmark] = useState("");
+  const [billingshipping_id, setBillingShipping_id] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -131,11 +144,40 @@ export default function ShippingInfoPage() {
         zip_code: zip_code,
         landmark: landmark,
       },
+
       payment: {
         mode: "COD",
         status: "Unpaid",
       },
     };
+
+    shippingAddress
+      ? (data.billing_address = {
+          name: billingname,
+          phone: billingphone,
+          alternate_phone: billingalternate_phone,
+          address: billingaddress,
+          address2: billingaddress,
+          address_type: billingaddress_type,
+          city: billingcity,
+          country: billingcountry,
+          state: billingstate,
+          zip_code: billingzip_code,
+          landmark: billinglandmark,
+        })
+      : (data.billing_address = {
+          name: name,
+          phone: phone,
+          alternate_phone: alternate_phone,
+          address: address,
+          address2: address,
+          address_type: address_type,
+          city: city,
+          country: country,
+          state: state,
+          zip_code: zip_code,
+          landmark: landmark,
+        });
 
     dispatch(placeOrder(data));
   };
@@ -279,11 +321,34 @@ export default function ShippingInfoPage() {
                 </select>
               </div>
               <div className="save-info">
-                <FormInput type={"checkbox"} className="save-info-checkbox" />
+                <FormInput
+                  type={"checkbox"}
+                  className="save-info-checkbox"
+                  checked={!shippingAddress ? true : false}
+                  onClick={() => setShippingAddress(!shippingAddress)}
+                />
                 <p>Use shipping address same as billing address</p>
               </div>
 
-              <BillingAddress></BillingAddress>
+              {shippingAddress && (
+                <BillingAddress
+                  setBillingName={(text) => setBillingName(text)}
+                  setBillingPhone={(text) => setBillingPhone(text)}
+                  setBillingAlternate_phone={(text) =>
+                    setBillingAlternate_phone(text)
+                  }
+                  setBillingAddress={(text) => setBillingAddress(text)}
+                  setBillingAddress_type={(text) =>
+                    setBillingAddress_type(text)
+                  }
+                  setBillingCity={(text) => setBillingCity(text)}
+                  setBillingCountry={(text) => setBillingCountry(text)}
+                  setBillingState={(text) => setBillingState(text)}
+                  setBillingZip_code={(text) => setBillingZip_code(text)}
+                  setBillingLandmark={(text) => setBillingLandmark(text)}
+                  setBillingShipping_id={(text) => setBillingShipping_id(text)}
+                ></BillingAddress>
+              )}
 
               <div className="bottom">
                 <div className="return-link">

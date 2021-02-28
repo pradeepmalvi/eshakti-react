@@ -20,7 +20,19 @@ import { ToastContainer, toast } from "react-toastify";
 
 import { IoIosArrowBack } from "react-icons/io";
 
-export default function BillingAddress() {
+export default function BillingAddress({
+  setBillingName,
+  setBillingPhone,
+  setBillingAlternate_phone,
+  setBillingAddress,
+  setBillingAddress_type,
+  setBillingCity,
+  setBillingCountry,
+  setBillingState,
+  setBillingZip_code,
+  setBillingLandmark,
+  setBillingShipping_id,
+}) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [alternate_phone, setAlternate_phone] = useState("");
@@ -141,17 +153,21 @@ export default function BillingAddress() {
 
   const selectCountry = (e) => {
     setCountry(e.target.value);
+    setBillingCountry(e.target.value);
     dispatch(getStateList(e.target.value));
   };
   const selectState = (e) => {
     setState(e.target.value);
+    setBillingState(e.target.value);
     dispatch(getCityList(e.target.value));
   };
   const selectCity = (e) => {
     setCity(e.target.value);
+    setBillingCity(e.target.value);
   };
   const selectPincode = (e) => {
     setZip_code(e.target.value);
+    setBillingZip_code(e.target.value);
     let data = {
       country_id: country,
       state_id: state,
@@ -162,6 +178,7 @@ export default function BillingAddress() {
   };
   const selectCharges = (e) => {
     setShipping_id(e.target.value);
+    setBillingShipping_id(e.target.value);
   };
   return (
     <div>
@@ -176,7 +193,10 @@ export default function BillingAddress() {
           className={"firstName"}
           name="name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            setBillingName(e.target.value);
+          }}
           required
         />
         {/* <FormInput
@@ -193,7 +213,10 @@ export default function BillingAddress() {
         className="residency"
         name="address"
         value={address}
-        onChange={(e) => setAddress(e.target.value)}
+        onChange={(e) => {
+          setAddress(e.target.value);
+          setBillingAddress(e.target.value);
+        }}
         required
       />
       {/* <FormInput
@@ -242,7 +265,7 @@ export default function BillingAddress() {
           required
         />
       </div>
-      <div className="inline-form-field select-charges">
+      {/* <div className="inline-form-field select-charges">
         <select onChange={selectCharges} required>
           <option>Select Charges</option>
           {shippingChargesList &&
@@ -252,7 +275,7 @@ export default function BillingAddress() {
               </option>
             ))}{" "}
         </select>
-      </div>
+      </div> */}
     </div>
   );
 }

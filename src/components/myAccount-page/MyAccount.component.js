@@ -16,13 +16,13 @@ export default function MyAccount({ children }) {
           <h4 className="navigation-title">My Account</h4>
           <div className="nav-list-container">
             <div className="nav-list">
-              <Link to={`/my-account`} className="link">
+              <Link to={`/my-account/account`} className="link">
                 Profile
               </Link>
-              <Link to={`/my-orders`} className="link">
+              <Link to={`/my-account/my-orders`} className="link">
                 My Orders
               </Link>
-              <Link to={`/manage-address`} className="link">
+              <Link to={`/my-account/manage-address`} className="link">
                 Manage Address
               </Link>
             </div>
