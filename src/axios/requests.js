@@ -24,4 +24,6 @@ export default {
   removeFromWishList: "remove-wishlist",
   search: "search",
   getShippingDetails: "get-shipping-address",
+  sendB2BForm: "b2b-enquiry",
+  getCustomerSpeaksComments: "customer-speak",
 };

@@ -23,6 +23,8 @@ import {
   REMOVE_FROM_WISHLIST,
   SEARCHED_PRODUCTS,
   SET_SHIPPING_DETAILS,
+  SET_B2B_FORM_STATUS,
+  SET_CUSTOMER_SPEAKS_COMMENTS,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -109,7 +111,6 @@ export const getProductCategory = (data) => (dispatch) => {
 export const getProductByCategory = (categoryId) => (dispatch) => {
   Axios.get(`${requests.getProductByCategory}/${categoryId}`, config).then(
     (res) => {
-      console.log(res, "latest data getting");
       dispatch({
         type: SET_PRODUCT_BY_CATEGORY,
         payload: res.data,
@@ -146,6 +147,7 @@ export const addToCart = (data) => (dispatch) => {
       autoClose: 5000,
     });
     dispatch(getCart());
+    dispatch(getProductByCategory());
   });
 };
 
@@ -166,6 +168,7 @@ export const getCart = (data) => (dispatch) => {
 export const updateCart = (data, cart_id) => (dispatch) => {
   Axios.put(`${requests.cart}/${cart_id}`, data, config).then((res) => {
     dispatch(getCart());
+    dispatch(getProductByCategory(localStorage.getItem("es_product_category")));
   });
 };
 
@@ -187,6 +190,7 @@ export const placeOrder = (data) => (dispatch) => {
       type: toast.TYPE.SUCCESS,
       autoClose: 5000,
     });
+
     setTimeout(() => {
       window.location.href = "/my-account/my-orders";
     }, 1000);
@@ -282,8 +286,6 @@ export const getShippingDetails = (userId) => (dispatch) => {
   });
 };
 
-// export const updateShippingDetails = (user)
-
 // get filters data
 export const getfiltersData = (categoryId) => (dispatch) => {
   Axios.get(`${requests.getFiltersDetails}/${categoryId}`, config).then(
@@ -304,12 +306,15 @@ export const getWishList = (userId) => (dispatch) => {
 // add to wishlist
 export const addToWishlist = (data) => (dispatch) => {
   Axios.post(`${requests.addToWishList}`, data, config).then((res) => {
-    console.log(res);
     if (res.status === 200) {
       dispatch({
         type: ADD_TO_WISHLIST,
         payload: { itemId: data.product_id, status: res.data.status },
       });
+      dispatch(
+        getProductByCategory(localStorage.getItem("es_product_category_id"))
+      );
+      dispatch(getHomePageProducts());
     }
   });
 };
@@ -317,13 +322,16 @@ export const addToWishlist = (data) => (dispatch) => {
 // remove from wishlist
 export const removeFromWishlist = (id) => (dispatch) => {
   Axios.delete(`${requests.removeFromWishList}/${id}`, config).then((res) => {
-    console.log(res);
     if (res.status === 200) {
       dispatch({
         type: REMOVE_FROM_WISHLIST,
         payload: { itemId: res.data.productId, status: res.data.status },
       });
-      console.log(res, "on data remove");
+      dispatch(getWishList(localStorage.getItem("es_user_id")));
+      dispatch(getHomePageProducts());
+      dispatch(
+        getProductByCategory(localStorage.getItem("es_product_category_id"))
+      );
     }
   });
 };
@@ -331,10 +339,24 @@ export const removeFromWishlist = (id) => (dispatch) => {
 //search products
 export const searchProduct = (data) => (dispatch) => {
   Axios.post(`${requests.search}`, data).then((res) => {
-    console.log(res.data, "testing");
     dispatch({
       type: SEARCHED_PRODUCTS,
       payload: res.data.products,
     });
+  });
+};
+
+// b2b enquiry on wholesale page
+export const b2bEnquiry = (dataToSend, notifySubmition) => (dispatch) => {
+  Axios.post(`${requests.sendB2BForm}`, dataToSend).then((res) => {
+    if (res.data.status) {
+      notifySubmition();
+    }
+  });
+};
+
+export const getCustomerSpeaksComments = () => (dispatch) => {
+  Axios.get(`${requests.getCustomerSpeaksComments}`, config).then((res) => {
+    dispatch({ type: SET_CUSTOMER_SPEAKS_COMMENTS, payload: res.data.data });
   });
 };

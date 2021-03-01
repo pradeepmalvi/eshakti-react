@@ -11,7 +11,6 @@ export default function MyAccountRoutes() {
     <div>
       <MyAccount>
         <Route exact path="/my-account/account" component={UserProfile} />
-
         <Route
           exact
           path={`/my-account/my-orders`}

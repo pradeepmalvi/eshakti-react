@@ -152,7 +152,8 @@
             align-items: flex-start;
 
             input[type="text"],
-            input[type="email"] {
+            input[type="email"],
+            input[type="number"] {
               height: 2.5rem;
               padding: 1rem;
             }
@@ -164,6 +165,7 @@
 
             textarea {
               height: 4rem;
+              padding: 1rem;
             }
 
             input,

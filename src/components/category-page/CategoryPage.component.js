@@ -39,6 +39,7 @@ export default function CategoryPage() {
     window.scrollTo(0, 0);
     dispatch(getProductByCategory(id));
     dispatch(getfiltersData(id));
+    localStorage.setItem("es_product_category_id", id);
   }, [id]);
 
   console.log(

@@ -38,12 +38,6 @@ export default function ProductCard({ product = {} }) {
 
   const dispatch = useDispatch();
 
-  console.log(is_in_wishlist);
-
-  const handleClick = (product_id) => {
-    console.log(product_id);
-  };
-
   return (
     <>
       <div className="product_card">
