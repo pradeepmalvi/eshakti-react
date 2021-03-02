@@ -4,6 +4,7 @@ import {
   getProductById,
   addToCart,
   addToWishlist,
+  removeFromWishlist,
 } from "../../store/home/homeAction";
 import "./productDetails.scss";
 import { AiOutlineStar, AiOutlineHeart, AiFillStar } from "react-icons/ai";
@@ -30,10 +31,6 @@ export default function ProductDetails() {
   const [openSizeChart, setOpenSizeChart] = useState(false);
 
   const productDetail = useSelector((state) => state.home.productDetail);
-
-  const tempWishlistStatus = useSelector(
-    (state) => state.home.localTempWishlistItem
-  );
 
   const variant =
     productDetail &&
@@ -370,12 +367,10 @@ export default function ProductDetails() {
           </div>
 
           <div className="purchasing-actions-wrapper">
-            {tempWishlistStatus ? (
-              <div className="icon">Added to wishlist</div>
-            ) : (
-              <div
-                className="icon"
-                onClick={() => {
+            <div
+              className="icon"
+              onClick={() => {
+                if (productDetail.is_in_wishlist !== true) {
                   if (localStorage.getItem("es_login")) {
                     dispatch(
                       addToWishlist({
@@ -386,12 +381,25 @@ export default function ProductDetails() {
                   } else {
                     toast.dark("Please Login first");
                   }
-                }}
-              >
-                <AiOutlineHeart></AiOutlineHeart>
-                <p>Add to Wishlist</p>
-              </div>
-            )}
+                } else if (
+                  localStorage.getItem("es_login") &&
+                  productDetail.is_in_wishlist === false
+                ) {
+                  dispatch(removeFromWishlist(productDetail.id));
+                }
+              }}
+            >
+              {ProductDetails.is_in_wishlist ? (
+                <>
+                  <span>Added to Wishlist</span>
+                </>
+              ) : (
+                <>
+                  <AiOutlineHeart />
+                  <p>Add to Wishlist</p>
+                </>
+              )}
+            </div>
 
             <div className="quantity-addtocart">
               <div className="quantity-wrapper">

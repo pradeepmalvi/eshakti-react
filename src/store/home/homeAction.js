@@ -121,7 +121,7 @@ export const getProductByCategory = (categoryId) => (dispatch) => {
 
 // getHomepageProducts
 export const getHomePageProducts = (data) => (dispatch) => {
-  Axios.get(`${requests.getHomePageProducts}`).then((res) => {
+  Axios.get(`${requests.getHomePageProducts}`, config).then((res) => {
     dispatch({
       type: SET_HOMEPAGE_PRODUCTS,
       payload: res.data,
@@ -132,6 +132,7 @@ export const getHomePageProducts = (data) => (dispatch) => {
 // Get product by id
 export const getProductById = (productId) => (dispatch) => {
   Axios.get(`${requests.getProductById}/${productId}`).then((res) => {
+    console.log(res, "product by id");
     dispatch({
       type: SET_PRODUCT_DETAILS,
       payload: res.data,
@@ -307,6 +308,7 @@ export const getWishList = (userId) => (dispatch) => {
 export const addToWishlist = (data) => (dispatch) => {
   Axios.post(`${requests.addToWishList}`, data, config).then((res) => {
     if (res.status === 200) {
+      console.log(res);
       dispatch({
         type: ADD_TO_WISHLIST,
         payload: { itemId: data.product_id, status: res.data.status },
@@ -315,6 +317,7 @@ export const addToWishlist = (data) => (dispatch) => {
         getProductByCategory(localStorage.getItem("es_product_category_id"))
       );
       dispatch(getHomePageProducts());
+      dispatch(getProductById(data.product_id));
     }
   });
 };

@@ -8,21 +8,21 @@ export default function ManageAddress() {
   let userId = localStorage.getItem("es_user_id");
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getShippingDetails(userId));
+  }, []);
+
   const shippingDetails = useSelector((state) => state.home.shippingDetails);
-  if (shippingDetails === undefined) {
-    console.log("data empty");
-  } else if (shippingDetails !== undefined) {
-    console.log(shippingDetails, "data is here");
-  }
+
   // for shipping address
-  const [name, setName] = useState();
-  const [phone, setPhone] = useState();
-  const [primryAddress, setPrimaryAddress] = useState();
-  const [secondaryAddress, setSecondaryAddress] = useState();
-  const [city, setCity] = useState();
-  const [zipCode, setZipCode] = useState();
-  const [country, setCountry] = useState();
-  const [shippingState, setShippingState] = useState();
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [primryAddress, setPrimaryAddress] = useState("");
+  const [secondaryAddress, setSecondaryAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [shippingState, setShippingState] = useState("");
 
   // for billing address
   const [billing_name, setBilling_name] = useState("");
@@ -33,13 +33,6 @@ export default function ManageAddress() {
   const [billing_zipCode, setBilling_ZipCode] = useState("");
   const [billing_country, setBilling_Country] = useState("");
   const [billing_state, setBilling_State] = useState("");
-
-  useEffect(() => {
-    dispatch(getShippingDetails(userId));
-  }, []);
-
-  if (shippingDetails !== undefined) {
-  }
 
   function onupdate(e) {
     const updateData = {

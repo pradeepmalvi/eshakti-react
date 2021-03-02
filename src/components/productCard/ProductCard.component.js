@@ -100,17 +100,7 @@ export default function ProductCard({ product = {} }) {
 
         <Link to={`/product-details/${id}`}>
           <div className="product_img">
-            <div
-              className="img"
-              // style={{
-              //   backgroundImage: `url(${
-              //     (product_thumbnail &&
-              //       product_thumbnail.length > 0 &&
-              //       product_thumbnail[0]) ||
-              //     "https://img1.eshakti.com/clothimages/CL0081518MP.jpg"
-              //   })`,
-              // }}
-            >
+            <div className="img">
               <img
                 className="img"
                 src={
