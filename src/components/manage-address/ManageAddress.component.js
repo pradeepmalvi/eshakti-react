@@ -5,14 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getShippingDetails } from "../../store/home/homeAction";
 
 export default function ManageAddress() {
-  let userId = localStorage.getItem("es_user_id");
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getShippingDetails(userId));
-  }, []);
-
-  const shippingDetails = useSelector((state) => state.home.shippingDetails);
+  const shippingDetails = useSelector((state) =>
+    state.home.shippingDetails
+      ? state.home.shippingDetails.shipping_address
+      : null
+  );
 
   // for shipping address
   const [name, setName] = useState("");
@@ -34,6 +31,29 @@ export default function ManageAddress() {
   const [billing_country, setBilling_Country] = useState("");
   const [billing_state, setBilling_State] = useState("");
 
+  let userId = localStorage.getItem("es_user_id");
+  const dispatch = useDispatch();
+  let shippingName = "";
+
+  useEffect(() => {
+    dispatch(getShippingDetails(userId));
+  }, []);
+
+  useEffect(() => {
+    if (shippingDetails) {
+      shippingName = shippingDetails.name;
+      setName(shippingDetails.name);
+      setPhone(shippingDetails.phone);
+      setPrimaryAddress(shippingDetails.address);
+      setSecondaryAddress(shippingDetails.address2);
+      setZipCode(shippingDetails.zip_code);
+      setCity(shippingDetails.city);
+      setCountry(shippingDetails.country);
+      setShippingState(shippingDetails.state);
+    }
+  }, [shippingDetails]);
+
+  console.log(shippingDetails, shippingName, "shipping details");
   function onupdate(e) {
     const updateData = {
       id: shippingDetails !== undefined ? shippingDetails.id : null,
