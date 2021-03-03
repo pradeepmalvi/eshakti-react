@@ -17,8 +17,6 @@ export default function AffilliatePage() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.home.staticPages);
 
-  console.log(state, "got it");
-
   function fetchData() {
     dispatch(getPages());
   }

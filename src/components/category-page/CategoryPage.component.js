@@ -42,11 +42,6 @@ export default function CategoryPage() {
     localStorage.setItem("es_product_category_id", id);
   }, [id]);
 
-  console.log(
-    useSelector((state) => state),
-    "data state"
-  );
-
   return (
     <div className="category-page">
       {products && products.length > 0 ? (
@@ -116,11 +111,6 @@ export default function CategoryPage() {
             <div className="number-of-results-small">
               Showing 1-12 of 99 Results
             </div>
-            {/* 
-            {products && products.length > 0
-              ? console.log(products, "data derees")
-              : null} */}
-            {console.log(products, "products")}
 
             <div className={`products ${gridView}`}>
               {products && products.length > 0

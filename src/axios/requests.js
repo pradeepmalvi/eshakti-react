@@ -26,4 +26,8 @@ export default {
   getShippingDetails: "get-shipping-address",
   sendB2BForm: "b2b-enquiry",
   getCustomerSpeaksComments: "customer-speak",
+  updateShippingDetails: "add-shipping-address",
+  getBillingDetails: "billing-address",
+  updateBillingDetails: "billing-address",
+  updateProfileDetails: "change-account",
 };

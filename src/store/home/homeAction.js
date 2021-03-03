@@ -1,8 +1,6 @@
 import Axios from "../../axios/axios";
 import requests from "../../axios/requests";
 
-import axios from "axios";
-
 import {
   SET_PRODUCT_CATEGORY,
   SET_PRODUCT_BY_CATEGORY,
@@ -23,8 +21,8 @@ import {
   REMOVE_FROM_WISHLIST,
   SEARCHED_PRODUCTS,
   SET_SHIPPING_DETAILS,
-  SET_B2B_FORM_STATUS,
   SET_CUSTOMER_SPEAKS_COMMENTS,
+  SET_BILLING_DETAILS,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -132,7 +130,6 @@ export const getHomePageProducts = (data) => (dispatch) => {
 // Get product by id
 export const getProductById = (productId) => (dispatch) => {
   Axios.get(`${requests.getProductById}/${productId}`).then((res) => {
-    console.log(res, "product by id");
     dispatch({
       type: SET_PRODUCT_DETAILS,
       payload: res.data,
@@ -277,13 +274,66 @@ export const getUserDetails = (userId) => (dispatch) => {
   });
 };
 
-// // get shipping details
+// update user details
+export const updateUserDetails = (data, notifySuccess, notifyError) => (
+  dispatch
+) => {
+  Axios.post(`${requests.updateProfileDetails}`, data, config).then((res) => {
+    if (res.data.success.status) {
+      dispatch(getUserDetails(localStorage.getItem("es_user_id")));
+      notifySuccess("profile updated successfully");
+    } else if (!res.data.success.status) {
+      notifyError("something is wrong");
+    }
+  });
+};
+
+// get shipping details
 export const getShippingDetails = (userId) => (dispatch) => {
   Axios.get(`${requests.getShippingDetails}/${userId}`, config).then((res) => {
+    console.log(res);
     dispatch({
       type: SET_SHIPPING_DETAILS,
       payload: res.data,
     });
+  });
+};
+
+// update shipping details
+export const updateShippingDetails = (data, notifySuccess, notifyError) => (
+  dispatch
+) => {
+  Axios.post(`${requests.updateShippingDetails}`, data, config).then((res) => {
+    if (res.data.success.status) {
+      dispatch(getShippingDetails(localStorage.getItem("es_user_id")));
+      notifySuccess("Data Updated sucessfully");
+    } else if (!res.data.success.status) {
+      notifyError("something is wrong");
+    }
+  });
+};
+
+// get billing details
+export const getBillingDetails = (userId) => (dispatch) => {
+  Axios.get(`${requests.getBillingDetails}/${userId}`, config).then((res) => {
+    dispatch({
+      type: SET_BILLING_DETAILS,
+      payload: res.data.billingAddress,
+    });
+  });
+};
+
+// update billing details
+export const updateBillingDetails = (data, notifySuccess, notifyError) => (
+  dispatch
+) => {
+  Axios.post(`${requests.updateBillingDetails}`, data, config).then((res) => {
+    if (res.data.success.status) {
+      dispatch(getBillingDetails(localStorage.getItem("es_user_id")));
+      notifySuccess("Data updated successfully");
+    } else if (!res.data.success.status) {
+      notifyError("something is wrong");
+    }
   });
 };
 
@@ -299,7 +349,6 @@ export const getfiltersData = (categoryId) => (dispatch) => {
 // get wishlist
 export const getWishList = (userId) => (dispatch) => {
   Axios.get(`${requests.getWishList}/${userId}`, config).then((res) => {
-    console.log(res, "wishlist");
     dispatch({ type: GET_WISHLIST, payload: res.data });
   });
 };
@@ -308,7 +357,6 @@ export const getWishList = (userId) => (dispatch) => {
 export const addToWishlist = (data) => (dispatch) => {
   Axios.post(`${requests.addToWishList}`, data, config).then((res) => {
     if (res.status === 200) {
-      console.log(res);
       dispatch({
         type: ADD_TO_WISHLIST,
         payload: { itemId: data.product_id, status: res.data.status },

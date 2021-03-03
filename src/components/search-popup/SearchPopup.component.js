@@ -23,7 +23,6 @@ export default function SearchPopup({ open, onClose }) {
 
   function onChangeInput(e) {
     setInputVal(e.target.value);
-    console.log(e.target.value);
     dispatch(searchProduct({ pname: e.target.value }));
   }
 
@@ -45,7 +44,7 @@ export default function SearchPopup({ open, onClose }) {
             </span>
           </div>
         </div>
-        {console.log(searchedProducts)}
+
         <div className="searched-items">
           {searchedProducts.length > 0 ? (
             searchedProducts.map((eachProduct, index) => (

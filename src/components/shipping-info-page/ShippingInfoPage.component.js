@@ -120,7 +120,6 @@ export default function ShippingInfoPage() {
 
     for (let i = 0; i < shippingChargesList.length; i++) {
       if (shipping_id == shippingChargesList[i].id) {
-        console.log(shippingChargesList[i]);
         shipping_charge = shippingChargesList[i].cost;
       }
     }

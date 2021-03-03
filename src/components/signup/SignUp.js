@@ -122,7 +122,7 @@ const SignUp = ({ open, onCloseModal }) => {
                 </div>
               </div>
 
-              <div className="left">
+              <div className="right">
                 <div className="form">
                   <div className="form-element-group">
                     <label htmlFor="phone">Phone</label>

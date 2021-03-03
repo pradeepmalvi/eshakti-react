@@ -17,6 +17,12 @@
       .left,
       .right {
         width: 100% !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+      }
+
+      .right {
+        text-align: center;
       }
 
       .right {
@@ -42,6 +48,10 @@
     .content {
       padding-top: 1rem !important;
       padding-bottom: 0.5rem !important;
+
+      .left {
+        padding-right: 0 !important;
+      }
     }
     .title {
       .title-text {
@@ -56,6 +66,18 @@
 
     .main-wrap {
       flex-direction: column;
+      .left {
+        padding-right: 0 !important;
+      }
+      .right {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+
+        .form {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      }
     }
   }
 }

@@ -19,6 +19,7 @@ import {
   SEARCHED_PRODUCTS,
   SET_SHIPPING_DETAILS,
   SET_CUSTOMER_SPEAKS_COMMENTS,
+  SET_BILLING_DETAILS,
 } from "../types";
 
 const initalState = { tempWishlist: [] };
@@ -142,6 +143,11 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         customerSpeaksComments: action.payload,
+      };
+    case SET_BILLING_DETAILS:
+      return {
+        ...state,
+        billingDetails: action.payload,
       };
 
     default:

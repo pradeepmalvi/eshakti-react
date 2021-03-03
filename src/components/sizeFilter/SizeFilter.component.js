@@ -2,7 +2,6 @@ import React from "react";
 import "./sizefilter.styles.scss";
 
 export default function SizeFilter({ filterData }) {
-  console.log(filterData);
   return (
     <div className="size-filter">
       <h2 className="title">{filterData.name || ""}</h2>

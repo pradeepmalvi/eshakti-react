@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { getShippingDetails } from "../../store/home/homeAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import {
+  getShippingDetails,
+  updateShippingDetails,
+  getBillingDetails,
+  updateBillingDetails,
+} from "../../store/home/homeAction";
 
 export default function ManageAddress() {
   const shippingDetails = useSelector((state) =>
@@ -10,6 +18,8 @@ export default function ManageAddress() {
       ? state.home.shippingDetails.shipping_address
       : null
   );
+
+  const billingDetails = useSelector((state) => state.home.billingDetails);
 
   // for shipping address
   const [name, setName] = useState("");
@@ -33,15 +43,14 @@ export default function ManageAddress() {
 
   let userId = localStorage.getItem("es_user_id");
   const dispatch = useDispatch();
-  let shippingName = "";
 
   useEffect(() => {
     dispatch(getShippingDetails(userId));
+    dispatch(getBillingDetails(userId));
   }, []);
 
   useEffect(() => {
     if (shippingDetails) {
-      shippingName = shippingDetails.name;
       setName(shippingDetails.name);
       setPhone(shippingDetails.phone);
       setPrimaryAddress(shippingDetails.address);
@@ -53,10 +62,28 @@ export default function ManageAddress() {
     }
   }, [shippingDetails]);
 
-  console.log(shippingDetails, shippingName, "shipping details");
-  function onupdate(e) {
-    const updateData = {
-      id: shippingDetails !== undefined ? shippingDetails.id : null,
+  useEffect(() => {
+    if (billingDetails) {
+      setBilling_name(billingDetails.name);
+      setBilling_phone(billingDetails.phone);
+      setBilling_primryAddress(billingDetails.address);
+      setBilling_SecondaryAddress(billingDetails.address2);
+      setBilling_ZipCode(billingDetails.pincode);
+      setBilling_City(billingDetails.city);
+      setBilling_Country(billingDetails.country);
+      setBilling_State(billingDetails.state);
+    }
+  }, [billingDetails]);
+
+  // notification
+  const notifySuccess = (msg) => toast.success(msg);
+  const notifyError = (msg) => toast.error(msg);
+
+  function onUpdateShipping(e) {
+    e.preventDefault();
+    // data to send to server
+    const dataToUpdate = {
+      id: shippingDetails.id,
       name: name,
       phone: phone,
       alternate_phone: "",
@@ -68,12 +95,39 @@ export default function ManageAddress() {
       state: shippingState,
       zip_code: zipCode,
       landmark: "",
-      user_id: localStorage.getItem("es_user_id"),
+      user_id: `${localStorage.getItem("es_user_id")}`,
     };
+
+    dispatch(updateShippingDetails(dataToUpdate, notifySuccess, notifyError));
+  }
+
+  function onUpdateBilling(e) {
+    e.preventDefault();
+    // data to send to server
+    const billingDataToUpdate = {
+      id: billingDetails.id,
+      name: billing_name,
+      phone: billing_phone,
+      alternate_phone: "",
+      address: billing_primryAddress,
+      address2: billing_secondaryAddress,
+      address_type: "",
+      city: billing_city,
+      country: billing_country,
+      state: billing_state,
+      zip_code: billing_zipCode,
+      landmark: "",
+      user_id: `${localStorage.getItem("es_user_id")}`,
+    };
+
+    dispatch(
+      updateBillingDetails(billingDataToUpdate, notifySuccess, notifyError)
+    );
   }
 
   return (
     <div className="manage-address">
+      <ToastContainer />
       <div className="shipping-address">
         <p className="info-side-title">Shipping Address</p>
         <form>
@@ -91,7 +145,7 @@ export default function ManageAddress() {
             <div className="password common">
               <label htmlFor="mobile">Phone</label>
               <input
-                type="text"
+                type="number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 name="mobile"
@@ -131,7 +185,7 @@ export default function ManageAddress() {
             <div className="password common">
               <label htmlFor="zip">zip Code</label>
               <input
-                type="text"
+                type="number"
                 value={zipCode}
                 onChange={(e) => setZipCode(e.target.value)}
                 name="zip"
@@ -160,7 +214,7 @@ export default function ManageAddress() {
           </div>
 
           <div className="btn">
-            <button type="submit" onClick={onupdate}>
+            <button type="submit" onClick={onUpdateShipping}>
               Update
             </button>
           </div>
@@ -206,17 +260,17 @@ export default function ManageAddress() {
                 type="text"
                 name="name"
                 value={billing_name}
-                onChange={() => {}}
+                onChange={(e) => setBilling_name(e.target.value)}
               />
             </div>
 
             <div className="mobile common">
               <label htmlFor="mobile">Phone</label>
               <input
-                type="text"
+                type="number"
                 name="mobile"
                 value={billing_phone}
-                onChange={() => {}}
+                onChange={(e) => setBilling_phone(e.target.value)}
               />
             </div>
           </div>
@@ -227,7 +281,7 @@ export default function ManageAddress() {
               type="text"
               name="primary-address"
               value={billing_primryAddress}
-              onChange={() => {}}
+              onChange={(e) => setBilling_primryAddress(e.target.value)}
             />
           </div>
           <div className="input-control input-full-width-common">
@@ -235,7 +289,7 @@ export default function ManageAddress() {
             <input
               type="text"
               value={billing_secondaryAddress}
-              onChange={() => {}}
+              onChange={(e) => setBilling_SecondaryAddress(e.target.value)}
             />
           </div>
 
@@ -246,17 +300,17 @@ export default function ManageAddress() {
                 type="text"
                 name="name"
                 value={billing_city}
-                onChange={() => {}}
+                onChange={(e) => setBilling_City(e.target.value)}
               />
             </div>
 
             <div className="password common">
               <label htmlFor="number">zip Code</label>
               <input
-                type="text"
-                name="number"
+                type="number"
+                name="zipcode"
                 value={billing_zipCode}
-                onChange={() => {}}
+                onChange={(e) => setBilling_ZipCode(e.target.value)}
               />
             </div>
           </div>
@@ -268,7 +322,7 @@ export default function ManageAddress() {
                 type="text"
                 name="country"
                 value={billing_country}
-                onChange={() => {}}
+                onChange={(e) => setBilling_Country(e.target.value)}
               />
             </div>
 
@@ -278,12 +332,14 @@ export default function ManageAddress() {
                 type="text"
                 name="country"
                 value={billing_state}
-                onChange={() => {}}
+                onChange={(e) => setBilling_State(e.target.value)}
               />
             </div>
           </div>
           <div className="btn">
-            <button type="submit">Update</button>
+            <button type="submit" onClick={onUpdateBilling}>
+              Update
+            </button>
           </div>
         </form>
       </div>

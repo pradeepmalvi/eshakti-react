@@ -27,7 +27,6 @@ export default function Search() {
 
   function onChangeInput(e) {
     setInputVal(e.target.value);
-    console.log(e.target.value);
   }
 
   function onClick() {

@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 
+// react toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useDispatch, useSelector } from "react-redux";
-import { updateProfilePic, getUserDetails } from "../../store/home/homeAction";
+import {
+  updateProfilePic,
+  getUserDetails,
+  updateUserDetails,
+} from "../../store/home/homeAction";
 
 import ImageUploader from "react-images-upload";
-import Axios from "axios";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
-
+  const [password, setPassword] = useState("");
+  const [confirmPassword, SetConfirmPassword] = useState("");
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const signedInUserDetails = useSelector((state) => state.home.signedInUser);
 
   async function getupdatedUserDetails() {
     const userId = await localStorage.getItem("es_user_id");
@@ -34,37 +42,49 @@ export default function UserProfile() {
     getupdatedUserDetails();
   };
 
-  async function getStoredUserDetails() {
-    try {
-      let userDetails = await JSON.parse(
-        localStorage.getItem("es_user_details")
-      );
-
-      if (userDetails !== null) {
-        setName(userDetails.name || "");
-        setCountry(userDetails.country || "");
-        setPhone(userDetails.phone);
-        setEmail(userDetails.email);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   useEffect(() => {
-    getStoredUserDetails();
     getupdatedUserDetails();
   }, []);
 
+  useEffect(() => {
+    if (signedInUserDetails) {
+      setEmail(signedInUserDetails.user.email);
+      setName(signedInUserDetails.user.name);
+      setPhone(signedInUserDetails.user.phone);
+      setCountry(signedInUserDetails.user.country);
+    }
+  }, [signedInUserDetails]);
+
+  // notification
+  const notifySuccess = (msg) => toast.success(msg);
+  const notifyError = (msg) => toast.error(msg);
+
+  // on update this data will be passed to server
+  const onUpdate = (e) => {
+    e.preventDefault();
+    const dataToUpdate = {
+      id: localStorage.getItem("es_user_id"),
+      name: name,
+      email: null,
+      phone: phone,
+      password: password,
+      new_password: confirmPassword,
+      country: country,
+    };
+
+    dispatch(updateUserDetails(dataToUpdate, notifySuccess, notifyError));
+  };
+
   return (
     <>
+      <ToastContainer />
       <div className="personal-info-slot">
         <div className="profile-img">
-          {state.home.signedInUser && (
+          {signedInUserDetails && (
             <img
               src={
-                state.home.userProfileImg ||
-                `http://eshakti.ewtlive.in/dashboard/${state.home.signedInUser.user.profile_pic}`
+                signedInUserDetails.userProfileImg ||
+                `http://eshakti.ewtlive.in/dashboard/${signedInUserDetails.user.profile_pic}`
               }
               width={100}
               height={100}
@@ -117,19 +137,42 @@ export default function UserProfile() {
               />
             </div>
 
-            <div className="password common">
+            <div className="phonenumber common">
               <label htmlFor="number">Phone</label>
               <input
-                type="text"
+                type="number"
                 name="number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
           </div>
+          <div className="input-control-inline">
+            <div className="name common">
+              <label htmlFor="name">Current password</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="phonenumber common">
+              <label htmlFor="number">New-Password</label>
+              <input
+                type="password"
+                name="new-password"
+                value={confirmPassword}
+                onChange={(e) => SetConfirmPassword(e.target.value)}
+              />
+            </div>
+          </div>
 
           <div className="btn">
-            <button type="submit">Update</button>
+            <button type="submit" onClick={onUpdate}>
+              Update
+            </button>
           </div>
         </form>
       </div>
