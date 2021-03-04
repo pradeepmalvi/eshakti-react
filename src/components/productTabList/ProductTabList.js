@@ -3,6 +3,7 @@ import "./productTabList.scss";
 
 export default function ProductTabList({ productDetail, feature_description }) {
   const [currentTab, setCurrectTab] = useState(1);
+
   return (
     <div className="tabs-main-wrapper">
       <div className="tabs-header">
@@ -30,6 +31,13 @@ export default function ProductTabList({ productDetail, feature_description }) {
       <div className="tabs-content">
         {currentTab === 1 ? (
           <p dangerouslySetInnerHTML={{ __html: productDetail }}></p>
+        ) : null}
+
+        {currentTab === 2 ? (
+          <p dangerouslySetInnerHTML={{ __html: feature_description }}></p>
+        ) : null}
+        {currentTab === 3 ? (
+          <p dangerouslySetInnerHTML={{ __html: feature_description }}></p>
         ) : null}
       </div>
     </div>
