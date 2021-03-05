@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductCategory,
   getHomePageProducts,
-  getPages,
+  getCurrencyRates,
 } from "./store/home/homeAction";
 
 import { AppContext } from "./context/context";
@@ -50,6 +50,9 @@ import Wishlist from "./components/whishlist/Wishlist.component";
 import Search from "./components/search-page/Search.component";
 import MyAccountRoutes from "./components/myAccount-page/MyAccountRoutes";
 
+// react cookies
+import { useCookies } from "react-cookie";
+
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -62,6 +65,7 @@ function App() {
   useEffect(() => {
     dispatch(getProductCategory());
     dispatch(getHomePageProducts());
+    dispatch(getCurrencyRates());
   }, []);
 
   return (

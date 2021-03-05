@@ -23,6 +23,7 @@ import {
   SET_SHIPPING_DETAILS,
   SET_CUSTOMER_SPEAKS_COMMENTS,
   SET_BILLING_DETAILS,
+  SET_CURRENCY_RATES,
 } from "../types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -406,8 +407,16 @@ export const b2bEnquiry = (dataToSend, notifySubmition) => (dispatch) => {
   });
 };
 
+// get customer speaks comments
 export const getCustomerSpeaksComments = () => (dispatch) => {
   Axios.get(`${requests.getCustomerSpeaksComments}`, config).then((res) => {
     dispatch({ type: SET_CUSTOMER_SPEAKS_COMMENTS, payload: res.data.data });
+  });
+};
+
+// get currency-exchange
+export const getCurrencyRates = () => (dispatch) => {
+  Axios.get(`${requests.getCurrencyRates}`).then((res) => {
+    dispatch({ type: SET_CURRENCY_RATES, payload: res.data });
   });
 };

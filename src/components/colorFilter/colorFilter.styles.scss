@@ -13,10 +13,12 @@
 
   .color-list {
     display: flex;
+    flex-wrap: wrap;
     color: #333333;
     margin-bottom: 2rem;
 
     .each-color {
+      margin-bottom: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;

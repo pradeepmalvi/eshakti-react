@@ -30,4 +30,5 @@ export default {
   getBillingDetails: "billing-address",
   updateBillingDetails: "billing-address",
   updateProfileDetails: "change-account",
+  getCurrencyRates: "currency-exchange",
 };

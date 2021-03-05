@@ -20,6 +20,7 @@ import {
   SET_SHIPPING_DETAILS,
   SET_CUSTOMER_SPEAKS_COMMENTS,
   SET_BILLING_DETAILS,
+  SET_CURRENCY_RATES,
 } from "../types";
 
 const initalState = { tempWishlist: [] };
@@ -148,6 +149,12 @@ const homeReducer = (state = initalState, action) => {
       return {
         ...state,
         billingDetails: action.payload,
+      };
+
+    case SET_CURRENCY_RATES:
+      return {
+        ...state,
+        currencyRates: action.payload.data,
       };
 
     default:

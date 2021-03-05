@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./productCard.styles.scss";
 
 import { addToWishlist, removeFromWishlist } from "../../store/home/homeAction";
+
+// react-cookies
+import { useCookies } from "react-cookie";
 
 import {
   FacebookShareButton,
@@ -27,6 +30,9 @@ import {
 import { Link } from "react-router-dom";
 
 export default function ProductCard({ product = {} }) {
+  const currencyRates = useSelector((state) => state.home);
+  const dispatch = useDispatch();
+
   const { id } = product;
   const { brand } = product;
   const { product_name } = product;
@@ -35,12 +41,35 @@ export default function ProductCard({ product = {} }) {
   const { product_thumbnail } = product;
   const { is_in_wishlist } = product;
   const { wishlist_item_id } = product;
+  const { convertedPrice, setConvertedPrice } = useState("");
+  const [cookies] = useCookies();
 
-  const dispatch = useDispatch();
+  function getConvertedPrice(pricetoconvert) {
+    const userSelectedCurrency = cookies.userSelectedCurrency;
+    const baseCurrency = "USD";
+
+    const rates = currencyRates.currencyRates.currencyRates;
+    console.log(rates);
+
+    if (baseCurrency === userSelectedCurrency) {
+      return pricetoconvert + " $";
+    }
+
+    const filterdRate = rates.filter(
+      (eachRate) => eachRate.currencyCode === userSelectedCurrency
+    );
+
+    console.log(filterdRate[0].currencySymbol, "test");
+
+    return `${(filterdRate[0].currencyValue * pricetoconvert).toFixed(2)} ${
+      filterdRate[0].currencySymbol
+    }`;
+  }
 
   return (
     <>
       <div className="product_card">
+        {console.log(cookies)}
         <div className="share-and-wish">
           <span
             className={"icon"}
@@ -115,8 +144,12 @@ export default function ProductCard({ product = {} }) {
           <div className="product_name">{product_name || "product name"}</div>
           <div className="price_and_rating">
             <div className="price">
-              <span className="prev_price">{product_price || 444}$</span>
-              <span className="current_price">{total_price || 333}$</span>
+              <span className="prev_price">
+                {getConvertedPrice(product_price) || 222}
+              </span>
+              <span className="current_price">
+                {getConvertedPrice(total_price) || 333}
+              </span>
             </div>
             <span className="rating">
               <span className="each_star">
